@@ -1,7 +1,14 @@
+import Navbar from './components/navbar/Navbar'
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Hind_Siliguri } from 'next/font/google'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Footer from './components/Footer';
+import RootProvider from '@/providers/RootProvider';
 
-const inter = Inter({ subsets: ['latin'] })
+const Hind = Hind_Siliguri({ subsets: ['latin'], weight: ["300", "400", "500", "600", "700"] });
+
+
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,7 +18,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body suppressHydrationWarning={true} className={`${Hind.className} bg-primary/[.04]`}>
+        <RootProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </RootProvider>
+      </body>
     </html>
   )
 }
