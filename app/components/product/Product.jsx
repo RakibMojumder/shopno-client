@@ -23,8 +23,6 @@ const Product = ({ badge, product }) => {
 
     try {
       addToWishList(id);
-      // const res = await axios.post(`/user/${id}`);
-      // console.log(res);
     } catch (error) {
       console.log(error);
     }

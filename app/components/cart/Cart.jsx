@@ -88,7 +88,7 @@ const Cart = () => {
                 </div>
               </div>
 
-              <div className="col-span-1 text-slate-700">
+              <div className="col-span-1 text-slate-700 flex items-center">
                 <RxCrossCircled
                   size={22}
                   className="cursor-pointer"

@@ -4,46 +4,73 @@ import Link from "next/link";
 import Button from "../Button";
 import Input from "../Input";
 import { motion as m } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useLoginUserMutation } from "@/redux/api/authApi";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/redux/features/userSlice";
+import Cookies from "js-cookie";
 
 const Login = ({ setCurrentStep }) => {
-  const handleLogin = () => {};
-  const handleChange = () => {};
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [error, setError] = useState("");
+  const [loginUser, { isLoading, data }] = useLoginUserMutation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (data?.success) {
+      Cookies.set("token", data.data.token);
+      dispatch(setUser(data.data.user));
+      setCurrentStep(1);
+    } else {
+      setError(data?.error);
+    }
+  }, [data, dispatch, setCurrentStep]);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    loginUser(formData);
+  };
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   return (
     <m.div
       key={"login"}
       initial={{ y: 0 }}
-      exit={{ y: "-100%", transition: { duration: 0.5 } }}
+      exit={{ y: "-100%", opacity: 0, transition: { duration: 0.5 } }}
       className="p-10"
     >
-      {/* {loginError && (
-          <p className="text-center mb-5 text-red-500">{loginError}</p>
-        )} */}
+      {error && (
+        <div className="py-5 mb-7 bg-red-100/50 flex justify-center items-center relative after:absolute after:top-0 after:left-0 after:h-full after:w-1 after:bg-red-400">
+          <p className="text-red-500">{error}</p>
+        </div>
+      )}
 
       <form onSubmit={handleLogin} className="space-y-6">
         <Input
           type="email"
           name="email"
           label="Email"
-          //   value={formData.email}
+          value={formData.email}
           onChange={handleChange}
         />
         <Input
           type="password"
           name="password"
           label="Password"
-          //   value={formData.password}
+          value={formData.password}
           onChange={handleChange}
         />
+        <Button type="submit" size="large" variant="filled">
+          Login
+        </Button>
       </form>
-      <Button
-        handleClick={() => setCurrentStep((prev) => prev + 1)}
-        type="submit"
-        size="large"
-        variant="filled"
-      >
-        Login
-      </Button>
+
       <p className="mt-7 text-sm text-center">
         Do not have an account?
         <Link href="/auth/register" className="text-primary hover:underline">

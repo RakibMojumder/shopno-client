@@ -26,7 +26,7 @@ const Input = ({
         className="peer w-full text-base pl-3 p-2 rounded border border-primary focus:border-none focus:outline-primary"
       />
       <label
-        className={`absolute z-[1] bg-white px-2 -translate-y-2.5 text-sm left-3 text-primary origin-[0] duration-200 peer-focus:-translate-y-2.5 peer-placeholder-shown:translate-y-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-800 peer-focus:text-sm peer-focus:text-primary`}
+        className={`absolute z-[1] bg-white px-2 -translate-y-2.5 text-sm left-3 text-primary origin-[0] duration-200 peer-focus:-translate-y-2.5 peer-placeholder-shown:translate-y-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-800 placeholder-shown:bg-white peer-focus:text-sm peer-focus:bg-white peer-focus:text-primary`}
       >
         {label}
       </label>

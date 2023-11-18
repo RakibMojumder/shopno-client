@@ -3,8 +3,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
-import StarComponent from "../components/StarComponent";
-import Button from "../components/Button";
+import StarComponent from "../../components/StarComponent";
+import Button from "../../components/Button";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FiTrash } from "react-icons/fi";
 import { useAddToWishListMutation } from "@/redux/api/authApi";
@@ -58,7 +58,7 @@ const WishListPage = () => {
             {user?.wishList?.map((product) => (
               <div
                 key={product._id}
-                className="grid grid-cols-12 gap-8 p-3 border border-primary/20 rounded"
+                className="grid grid-cols-12 gap-8 p-3 border border-primary/10 rounded"
               >
                 <div className="col-span-3">
                   <Image

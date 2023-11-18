@@ -19,7 +19,7 @@ const productApi = createApi({
         }),
 
         getSearchProduct: builder.query({
-            query: (searchValue) => `/product/search?${searchValue}}`
+            query: (searchValue) => `/product/search?value=${searchValue}}`
         })
     })
 });

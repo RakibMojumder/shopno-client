@@ -8,6 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import PhoneInput from "react-phone-input-2";
 import { useState } from "react";
 import Link from "next/link";
+import "react-phone-input-2/lib/style.css";
 
 const Register = () => {
   const [error, setError] = useState("");
@@ -78,13 +79,13 @@ const Register = () => {
           }}
           containerStyle={{
             width: "100%",
-            height: "40px",
-            border: "1px solid #7C3AED",
+            height: "44px",
+            border: "1px solid #1E1E1E",
             borderRadius: "4px",
           }}
           buttonStyle={{
             border: "none",
-            borderRight: "1px solid #7C3AED",
+            borderRight: "none",
           }}
           dropdownStyle={{
             width: "330px",

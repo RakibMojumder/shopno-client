@@ -1,7 +1,7 @@
 "use client";
 
 import Layout from "@/app/components/Layout";
-import Loader from "@/app/components/Loader";
+import Loader from "@/app/components/Loaders/Loader";
 import Product from "@/app/components/product/Product";
 import { useGetProductsByCategoryQuery } from "@/redux/api/productApi";
 import React from "react";

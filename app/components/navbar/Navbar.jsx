@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-primary">
+      <div className="bg-secondary">
         <Layout>
           <div className="flex items-center justify-between py-2 text-white text-sm">
             <div>

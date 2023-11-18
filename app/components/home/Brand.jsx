@@ -32,98 +32,98 @@ const Brand = () => {
             alt="brand image"
             height={128}
             width={128}
-            className="h-32 w-24"
+            // className="h-28 w-16"
           />
           <Image
             src={brandTwo}
             alt="brand image"
             height={128}
             width={128}
-            className="h-32 w-24"
+            // className="h-28 w-16"
           />
           <Image
             src={brandThree}
             alt="brand image"
             height={128}
             width={128}
-            className="h-32 w-24"
+            // className="h-28 w-16"
           />
           <Image
             src={brandFive}
             alt="brand image"
             height={128}
             width={128}
-            className="h-32 w-24"
+            // className="h-28 w-16"
           />
           <Image
             src={brandSix}
             alt="brand image"
             height={128}
             width={128}
-            className="h-32 w-24"
+            // className="h-28 w-16"
           />
           <Image
             src={brandSeven}
             alt="brand image"
             height={128}
             width={128}
-            className="h-32 w-24"
+            // className="h-28 w-16"
           />
           <Image
             src={brandEight}
             alt="brand image"
             height={128}
             width={128}
-            className="h-32 w-24"
+            // className="h-28 w-16"
           />
           <Image
             src={brandOne}
             alt="brand image"
             height={128}
             width={128}
-            className="h-32 w-24"
+            // className="h-28 w-16"
           />
           <Image
             src={brandTwo}
             alt="brand image"
             height={128}
             width={128}
-            className="h-32 w-24"
+            // className="h-28 w-16"
           />
           <Image
             src={brandThree}
             alt="brand image"
             height={128}
             width={128}
-            className="h-32 w-24"
+            // className="h-28 w-16"
           />
           <Image
             src={brandFive}
             alt="brand image"
             height={128}
             width={128}
-            className="h-32 w-24"
+            // className="h-28 w-16"
           />
           <Image
             src={brandSix}
             alt="brand image"
             height={128}
             width={128}
-            className="h-32 w-24"
+            // className="h-28 w-16"
           />
           <Image
             src={brandSeven}
             alt="brand image"
             height={128}
             width={128}
-            className="h-32 w-24"
+            // className="h-28 w-16"
           />
           <Image
             src={brandEight}
             alt="brand image"
             height={128}
             width={128}
-            className="h-32 w-24"
+            // className="h-28 w-16"
           />
         </Slider>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Layout from "@/app/components/Layout";
-import Loader from "@/app/components/Loader";
+import Loader from "@/app/components/Loaders/Loader";
 import ProductCount from "@/app/components/product/ProductCount";
 import { useGetProductQuery } from "@/redux/api/productApi";
 import { FiChevronRight } from "react-icons/fi";

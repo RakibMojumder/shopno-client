@@ -26,7 +26,7 @@ const UserNavMenu = () => {
       <Link href="/wish-list" className="relative">
         <AiOutlineHeart size={30} className="text-primary" />
         {user?.wishList?.length > 0 && (
-          <span className="h-6 w-6 rounded-full bg-primary text-white flex justify-center items-center absolute -top-5 -right-2 text-sm">
+          <span className="h-6 w-6 rounded-full bg-primary text-white flex justify-center items-center absolute -top-4 -right-2 text-sm">
             {user.wishList.length}
           </span>
         )}
@@ -38,7 +38,7 @@ const UserNavMenu = () => {
       >
         <LiaShoppingBagSolid size={30} className="text-primary" />
         {cart.length > 0 && (
-          <span className="h-6 w-6 rounded-full bg-primary text-white flex justify-center items-center absolute -top-5 -right-2 text-sm">
+          <span className="h-6 w-6 rounded-full bg-primary text-white flex justify-center items-center absolute -top-4 -right-2 text-sm">
             {cart.length}
           </span>
         )}

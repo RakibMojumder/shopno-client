@@ -16,7 +16,7 @@ const Banner = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 6000,
+    autoplaySpeed: 4000,
   };
 
   return (
@@ -25,26 +25,30 @@ const Banner = () => {
         <Image
           src={imgOne}
           alt="banner image"
-          height={400}
-          // className="h-[400px]"
+          height={280}
+          priority
+          className="h-[280px]"
         />
         <Image
           src={imgTwo}
           alt="banner image"
-          height={400}
-          // className="h-[400px]"
+          height={280}
+          priority
+          className="h-[280px]"
         />
         <Image
           src={imgFour}
           alt="banner image"
-          height={400}
-          // className="h-[400px]"
+          height={280}
+          priority
+          className="h-[280px]"
         />
         <Image
           src={imgFive}
           alt="banner image"
-          height={400}
-          // className="h-[400px]"
+          height={280}
+          priority
+          className="h-[280px]"
         />
       </Slider>
     </div>

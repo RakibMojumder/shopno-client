@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Layout from "../components/Layout";
+import Layout from "../../components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { numberWithCommas } from "@/utils/numberWithCommas";
@@ -10,7 +10,7 @@ import {
   increaseProduct,
   removeFromCart,
 } from "@/redux/features/cartSlice";
-import OrderSummary from "../components/cart/OrderSummary";
+import OrderSummary from "../../components/cart/OrderSummary";
 import { RxCrossCircled } from "react-icons/rx";
 
 const CartDetails = () => {
@@ -25,7 +25,7 @@ const CartDetails = () => {
       <div className="flex justify-between pb-20 pt-8">
         <div className="w-[70%]">
           <h1 className="text-xl font-semibold">Your Shopping Bag</h1>
-          <table className="w-full space-x-10 border-separate border-spacing-y-5">
+          <table className="w-full space-x-10 border-separate border-spacing-y-5 pb-10">
             <thead className="border">
               <tr>
                 <th className="font-semibold border-y border-primary/20 py-3">
@@ -54,14 +54,14 @@ const CartDetails = () => {
                       alt="product image"
                       height={80}
                       width={100}
-                      className="h-20"
+                      className="h-20 w-20"
                     />
-                    <h3>{product.name}</h3>
+                    <h3 className="leading-none font-normal">{product.name}</h3>
                   </td>
                   <td className="px-10 text-center font-semibold">
                     ৳{product.price}
                   </td>
-                  <td className="px-10 text-center">
+                  <td className="px-2 text-center">
                     <div className="inline-flex items-center text-neutral-600 h-8 border border-black/80 divide-x-[1px] divide-black">
                       <button
                         onClick={() => dispatch(increaseProduct(product))}
@@ -81,8 +81,8 @@ const CartDetails = () => {
                       </button>
                     </div>
                   </td>
-                  <td className="px-10 text-center font-semibold">
-                    {numberWithCommas(product.quantity * product.price)}
+                  <td className="text-center font-semibold">
+                    ৳ {numberWithCommas(product.quantity * product.price)}
                   </td>
 
                   <td className="px-10 text-center font-semibold">

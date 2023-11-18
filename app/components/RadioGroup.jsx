@@ -10,7 +10,7 @@ const RadioGroup = ({
   setCurrentIndex,
 }) => {
   return (
-    <div className="flex flex-col gap-y-10 w-full">
+    <div className="flex flex-col items-center gap-y-6">
       {options.map((option, index) => (
         <RadioOption
           key={index}

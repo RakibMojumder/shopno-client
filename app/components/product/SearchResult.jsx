@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import axios from "@/utils/axios.config";
 import Image from "next/image";
@@ -5,41 +7,45 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchProducts } from "@/redux/features/productSlice";
 
-const SearchResult = ({ debouncedSearchValue, setSearchValue }) => {
+const SearchResult = ({ debouncedSearchValue, setShowSearchResult }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { searchProducts } = useSelector((state) => state.product);
+  const [products, setProducts] = useState([]);
+  const { searchProducts, sortValue, categories, priceValue } = useSelector(
+    (state) => state.product
+  );
 
   useEffect(() => {
+    console.log("object");
     const handleSearch = async () => {
-      if (debouncedSearchValue) {
-        const res = await axios.get(
-          `/product/search?value=${debouncedSearchValue}`
-        );
-        dispatch(setSearchProducts(res.data.data));
-      }
-
-      return null;
+      // if (debouncedSearchValue) {
+      const res = await axios.get(
+        `/product/search?value=${debouncedSearchValue}&price=${priceValue}&categories=${categories}&sort=${sortValue}`
+      );
+      setProducts(res.data.data);
+      // }
     };
 
     handleSearch();
-  }, [debouncedSearchValue, dispatch]);
+  }, [debouncedSearchValue, categories, priceValue, sortValue, dispatch]);
 
   const handleSeeMore = () => {
-    setSearchValue("");
-    router.push("/product/search-result");
+    dispatch(setSearchProducts(products));
+    router.push("/products/search-result");
+    setShowSearchResult(false);
   };
 
   const handleNavigate = (id) => {
-    setSearchValue("");
+    dispatch(setSearchProducts(products));
     router.push(`/product/${id}`);
+    setShowSearchResult(false);
   };
 
   return (
     <div className="w-[400px] bg-white shadow-[0px_0px_8px_#ddd] p-4 pb-2 absolute top-13 left-0">
-      {searchProducts.length > 0 ? (
+      {products.length > 0 ? (
         <div className="space-y-2">
-          {searchProducts?.slice(0, 4).map((product) => (
+          {products?.slice(0, 4).map((product) => (
             <div
               key={product._id}
               onClick={() => handleNavigate(product._id)}
@@ -60,7 +66,7 @@ const SearchResult = ({ debouncedSearchValue, setSearchValue }) => {
             </div>
           ))}
 
-          {searchProducts.length > 4 && (
+          {products.length > 4 && (
             <button
               onClick={handleSeeMore}
               className="text-primary text-center py-2 text-lg font-medium mx-auto block"

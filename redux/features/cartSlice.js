@@ -4,7 +4,8 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
     cart: [],
-    showCart: false
+    showCart: false,
+    // totalAmount: 0
 };
 
 const cartSlice = createSlice({
@@ -52,7 +53,13 @@ const cartSlice = createSlice({
             findProduct.quantity -= 1;
             state.cart.filter(product => product._id !== findProduct._id).push(findProduct)
             Cookies.set('cart', JSON.stringify(state.cart));
-        }
+        },
+
+        // setTotalAmount: (state, action) => {
+        //     const totalAmount = state.cart.reduce(acc,item => acc += (item.price * item.quantity),0);
+        //     state.totalAmount = totalAmount;
+        //     console.log(totalAmount);
+        // }
     }
 });
 
