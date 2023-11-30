@@ -13,21 +13,24 @@ const Categories = () => {
   };
   return (
     <Layout>
-      <div className="flex items-center py-10 bg-white divide-x overflow-x-auto custom-scroll">
+      <h3 className="text-3xl font-semibold mt-10 mb-5 text-black">
+        Categories
+      </h3>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 bg-white divide-x">
         {categories.map((category) => (
           <div
             key={category.id}
-            onClick={() => handleClick(category.label)}
-            className="text-center px-6 shrink-0 cursor-pointer space-y-3"
+            onClick={() => handleClick(category.name)}
+            className="text-center p-4 shrink-0 cursor-pointer space-y-3 border-b"
           >
             <Image
               src={category.img}
-              height={100}
-              width={100}
+              height={60}
+              width={60}
               alt="category image"
-              className="w-14 h-14 mx-auto"
+              className="w-10 h-10 mx-auto"
             />
-            <h3>{category.label}</h3>
+            <h3>{category.name}</h3>
           </div>
         ))}
       </div>

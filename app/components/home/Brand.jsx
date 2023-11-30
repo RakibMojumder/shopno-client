@@ -1,133 +1,76 @@
 "use client";
 
-import brandOne from "@/public/assets/brand-img/brand-1.png";
-import brandTwo from "@/public/assets/brand-img/brand-2.png";
-import brandThree from "@/public/assets/brand-img/brand-3.png";
-import brandFive from "@/public/assets/brand-img/brand-5.png";
-import brandSix from "@/public/assets/brand-img/brand-6.png";
-import brandSeven from "@/public/assets/brand-img/brand-7.png";
-import brandEight from "@/public/assets/brand-img/brand-8.png";
+import { brandImage } from "@/utils/data";
 import Image from "next/image";
-import Slider from "react-slick";
+import Layout from "../Layout";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 
 const Brand = () => {
-  const settings = {
-    infinite: true,
-    slidesToShow: 7,
-    autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 2000,
-    cssEase: "linear",
-    pauseOnHover: false,
-  };
   return (
-    <div className="mb-28 w-full bg-white overflow-hidden">
-      <h1 className="text-3xl pt-12 font-bold text-black pl-10">
-        Our <span className="text-primary">Trusted</span> Company
-      </h1>
-      <div className="pb-28 pt-16">
-        <Slider {...settings}>
-          <Image
-            src={brandOne}
-            alt="brand image"
-            height={128}
-            width={128}
-            // className="h-28 w-16"
-          />
-          <Image
-            src={brandTwo}
-            alt="brand image"
-            height={128}
-            width={128}
-            // className="h-28 w-16"
-          />
-          <Image
-            src={brandThree}
-            alt="brand image"
-            height={128}
-            width={128}
-            // className="h-28 w-16"
-          />
-          <Image
-            src={brandFive}
-            alt="brand image"
-            height={128}
-            width={128}
-            // className="h-28 w-16"
-          />
-          <Image
-            src={brandSix}
-            alt="brand image"
-            height={128}
-            width={128}
-            // className="h-28 w-16"
-          />
-          <Image
-            src={brandSeven}
-            alt="brand image"
-            height={128}
-            width={128}
-            // className="h-28 w-16"
-          />
-          <Image
-            src={brandEight}
-            alt="brand image"
-            height={128}
-            width={128}
-            // className="h-28 w-16"
-          />
-          <Image
-            src={brandOne}
-            alt="brand image"
-            height={128}
-            width={128}
-            // className="h-28 w-16"
-          />
-          <Image
-            src={brandTwo}
-            alt="brand image"
-            height={128}
-            width={128}
-            // className="h-28 w-16"
-          />
-          <Image
-            src={brandThree}
-            alt="brand image"
-            height={128}
-            width={128}
-            // className="h-28 w-16"
-          />
-          <Image
-            src={brandFive}
-            alt="brand image"
-            height={128}
-            width={128}
-            // className="h-28 w-16"
-          />
-          <Image
-            src={brandSix}
-            alt="brand image"
-            height={128}
-            width={128}
-            // className="h-28 w-16"
-          />
-          <Image
-            src={brandSeven}
-            alt="brand image"
-            height={128}
-            width={128}
-            // className="h-28 w-16"
-          />
-          <Image
-            src={brandEight}
-            alt="brand image"
-            height={128}
-            width={128}
-            // className="h-28 w-16"
-          />
-        </Slider>
+    <Layout>
+      <div className="mb-28 w-full overflow-hidden">
+        <h3 className="text-3xl font-semibold my-5 text-black">
+          Our Trusted Company
+        </h3>
+        <div className="bg-white py-10">
+          <Swiper
+            navigation={{
+              nextEl: ".best-seller-next",
+              prevEl: ".best-seller-prev",
+              disabledClass: "swiper-button-disabled",
+            }}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+            }}
+            slidesPerView={5}
+            spaceBetween={12}
+            modules={[Autoplay]}
+            className="mySwiper relative flex items-center"
+            breakpoints={{
+              0: {
+                slidesPerView: 2,
+                spaceBetween: 12,
+              },
+              // when window width is >= 320px
+              320: {
+                slidesPerView: 2,
+                spaceBetween: 12,
+              },
+              // when window width is >= 480px
+              530: {
+                slidesPerView: 3,
+                spaceBetween: 12,
+              },
+              // when window width is >= 640px
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 12,
+              },
+              1024: {
+                slidesPerView: 5,
+                spaceBetween: 12,
+              },
+            }}
+          >
+            {brandImage?.map((brand) => (
+              <SwiperSlide
+                key={brand.id}
+                className="flex justify-center opacity-30 transition-all duration-500 hover:opacity-100"
+              >
+                <Image
+                  alt="brand image"
+                  src={brand.image}
+                  width={90}
+                  height={40}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

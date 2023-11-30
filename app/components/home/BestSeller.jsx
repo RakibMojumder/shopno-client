@@ -9,18 +9,26 @@ import "swiper/css/effect-coverflow";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
 // import required modules
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import Skelton from "../Skelton";
 import { useDispatch } from "react-redux";
 import { setSearchValue } from "@/redux/features/productSlice";
+import { useState } from "react";
 
 const BestSeller = () => {
   const dispatch = useDispatch();
+  const [isEnd, setIsEnd] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
   const { data, isLoading } = useQuery("products", async () => {
     dispatch(setSearchValue(""));
     const res = await axios.get("/product/best-seller");
     return res.data.data;
   });
+
+  const handleSlideChange = (swiper) => {
+    setActiveIndex(swiper.realIndex);
+    setIsEnd(swiper.isEnd);
+  };
 
   return (
     <Layout>
@@ -31,10 +39,18 @@ const BestSeller = () => {
           </h3>
           <div className="flex items-center gap-x-6">
             <button className="best-seller-prev h-10 w-10 duration-300 hover:bg-secondary/[.15] rounded-full flex justify-center items-center cursor-pointer">
-              <FaArrowLeftLong size={24} color="#7C3AED" />
+              <FaArrowLeftLong
+                className={`text-xl ${
+                  activeIndex <= 0 ? "text-primary" : "text-secondary"
+                }`}
+              />
             </button>
             <button className="best-seller-next h-10 w-10 duration-300 hover:bg-secondary/[.15] rounded-full flex justify-center items-center cursor-pointer">
-              <FaArrowRightLong size={24} color="#7C3AED" />
+              <FaArrowRightLong
+                className={`text-xl ${
+                  isEnd ? "text-primary" : "text-secondary"
+                }`}
+              />
             </button>
           </div>
         </div>
@@ -47,9 +63,7 @@ const BestSeller = () => {
           }}
           slidesPerView={5}
           spaceBetween={12}
-          // pagination={{
-          //   clickable: true,
-          // }}
+          onSlideChange={handleSlideChange}
           modules={[Navigation]}
           className="mySwiper relative"
           breakpoints={{
@@ -78,10 +92,14 @@ const BestSeller = () => {
             },
           }}
         >
+          {isLoading &&
+            [...Array(5)].map((_, index) => (
+              <SwiperSlide key={index}>
+                <Skelton />
+              </SwiperSlide>
+            ))}
           {data?.map((product) => (
             <SwiperSlide key={product._id}>
-              {isLoading &&
-                [...Array(5)].map((_, index) => <Skelton key={index} />)}
               <Product product={product} badge={true} />
             </SwiperSlide>
           ))}

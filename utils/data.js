@@ -84,4 +84,17 @@ export const pieData = [
     }
 ];
 
-export const lineChartData = [110, 134, 234, 532, 312, 153, 261, 523, 323, 513, 321, 512]
+export const lineChartData = [110, 134, 234, 532, 312, 153, 261, 523, 323, 513, 321, 512];
+
+export const brandImage = [
+    { id: 101, image: 'https://codecony.com/wp-content/uploads/2019/08/dark-client-logo-01.png' },
+    { id: 102, image: 'https://codecony.com/wp-content/uploads/2019/08/dark-client-logo-02.png' },
+    { id: 103, image: 'https://codecony.com/wp-content/uploads/2019/08/dark-client-logo-03.png' },
+    { id: 104, image: 'https://codecony.com/wp-content/uploads/2019/08/dark-client-logo-04.png' },
+    { id: 105, image: 'https://codecony.com/wp-content/uploads/2019/08/dark-client-logo-05.png' },
+    { id: 106, image: 'https://codecony.com/wp-content/uploads/2019/08/dark-client-logo-01.png' },
+    { id: 107, image: 'https://codecony.com/wp-content/uploads/2019/08/dark-client-logo-02.png' },
+    { id: 108, image: 'https://codecony.com/wp-content/uploads/2019/08/dark-client-logo-03.png' },
+    { id: 109, image: 'https://codecony.com/wp-content/uploads/2019/08/dark-client-logo-04.png' },
+    { id: 110, image: 'https://codecony.com/wp-content/uploads/2019/08/dark-client-logo-05.png' },
+]
