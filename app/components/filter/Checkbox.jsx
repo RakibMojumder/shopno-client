@@ -1,6 +1,6 @@
 "use client";
 
-import { setCategories } from "@/redux/features/productSlice";
+import { addCategories } from "@/redux/features/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Checkbox = ({ name }) => {
@@ -12,7 +12,7 @@ const Checkbox = ({ name }) => {
     <label className="checkbox-container" htmlFor={name}>
       <span className="category">{name}</span>
       <input
-        onChange={(e) => dispatch(setCategories(e.target.name))}
+        onChange={(e) => dispatch(addCategories(e.target.name))}
         name={name}
         type="checkbox"
         id={name}

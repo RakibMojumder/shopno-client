@@ -11,9 +11,13 @@ import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 // import required modules
 import { Navigation, Pagination } from "swiper/modules";
 import Skelton from "../Skelton";
+import { useDispatch } from "react-redux";
+import { setSearchValue } from "@/redux/features/productSlice";
 
 const BestSeller = () => {
+  const dispatch = useDispatch();
   const { data, isLoading } = useQuery("products", async () => {
+    dispatch(setSearchValue(""));
     const res = await axios.get("/product/best-seller");
     return res.data.data;
   });

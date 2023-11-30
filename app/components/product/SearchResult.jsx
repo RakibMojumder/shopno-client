@@ -9,7 +9,7 @@ const SearchResult = ({ setShowSearchResult }) => {
   const { searchProducts } = useSelector((state) => state.product);
 
   const handleSeeMore = () => {
-    router.push("/products/search-result");
+    router.push("/products");
     setShowSearchResult(false);
   };
 

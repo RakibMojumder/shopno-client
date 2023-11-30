@@ -4,13 +4,20 @@ import Product from "../product/Product";
 import Layout from "../Layout";
 import { useGetProductsQuery } from "@/redux/api/productApi";
 import Skelton from "../Skelton";
+import Button from "../Button";
+import { useRouter } from "next/navigation";
 
 const FeaturedProducts = () => {
+  const router = useRouter();
   const { isLoading, data } = useGetProductsQuery();
 
   if (isLoading) {
     return;
   }
+
+  const handleClick = () => {
+    router.push("/products");
+  };
 
   return (
     <Layout>
@@ -24,6 +31,11 @@ const FeaturedProducts = () => {
           {data?.data?.map((product, index) => (
             <Product key={index} product={product} />
           ))}
+        </div>
+        <div className="text-center mt-8">
+          <Button handleClick={handleClick} variant={"filled"} size={"small"}>
+            Sell All
+          </Button>
         </div>
       </div>
     </Layout>

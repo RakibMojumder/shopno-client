@@ -28,6 +28,10 @@ const productSlice = createSlice({
         },
 
         setCategories: (state, action) => {
+            state.categories = action.payload;
+        },
+
+        addCategories: (state, action) => {
             let isExists = state.categories.find(category => category === action.payload);
             if (isExists) {
                 state.categories = state.categories.filter(category => category !== action.payload);
@@ -61,6 +65,7 @@ export const {
     setPriceValue,
     addToWishList,
     setCategories,
+    addCategories,
     setSearchValue,
     setSearchProducts,
 } = productSlice.actions;

@@ -6,26 +6,20 @@ import SearchResult from "../product/SearchResult";
 import useDebounce from "@/hook/useDebounce";
 import axios from "@/utils/axios.config";
 import { useDispatch, useSelector } from "react-redux";
-import { setSearchProducts, setTotalPage } from "@/redux/features/productSlice";
+import {
+  setSearchProducts,
+  setSearchValue,
+  setTotalPage,
+} from "@/redux/features/productSlice";
 import { MdCancel } from "react-icons/md";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
-  const [searchValue, setSearchValue] = useState("");
-  const debouncedSearchValue = useDebounce(searchValue);
   const [showSearchResult, setShowSearchResult] = useState(false);
-  const { sortValue, categories, priceValue, page } = useSelector(
+  const { sortValue, categories, priceValue, page, searchValue } = useSelector(
     (state) => state.product
   );
-
-  useEffect(() => {
-    let value = localStorage.getItem("search");
-    if (value) {
-      setSearchValue(value);
-    } else {
-      setSearchValue("");
-    }
-  }, []);
+  const debouncedSearchValue = useDebounce(searchValue);
 
   useEffect(() => {
     const handleSearch = async () => {
@@ -40,9 +34,8 @@ const SearchBox = () => {
   }, [debouncedSearchValue, categories, priceValue, sortValue, dispatch, page]);
 
   const handleChange = (e) => {
-    setSearchValue(e.target.value);
+    dispatch(setSearchValue(e.target.value));
     setShowSearchResult(true);
-    localStorage.setItem("search", e.target.value);
   };
 
   return (
@@ -61,8 +54,7 @@ const SearchBox = () => {
           <MdCancel
             size={22}
             onClick={() => {
-              setSearchValue("");
-              localStorage.setItem("search", "");
+              dispatch(setSearchValue(""));
             }}
             className="absolute top-1.5 md:top-2 right-4 text-neutral-400 cursor-pointer"
           />
