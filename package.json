@@ -9,9 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nivo/core": "^0.84.0",
+    "@nivo/pie": "^0.84.0",
     "@reduxjs/toolkit": "^1.9.5",
+    "@stripe/react-stripe-js": "^2.3.2",
+    "@stripe/stripe-js": "^2.1.11",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
+    "chart.js": "^4.4.0",
+    "date-fns": "^2.30.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
     "framer-motion": "^10.13.1",
@@ -20,16 +26,22 @@
     "next": "13.4.12",
     "postcss": "8.4.27",
     "react": "18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.10.1",
     "react-image-magnify": "^2.7.4",
     "react-phone-input-2": "^2.15.1",
+    "react-query": "^3.39.3",
     "react-redux": "^8.1.2",
+    "react-responsive": "^9.0.2",
     "react-slick": "^0.29.0",
     "react-slider": "^2.0.6",
+    "sharp": "^0.32.6",
     "slick-carousel": "^1.8.1",
+    "swiper": "^11.0.5",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss": "3.3.3"
+    "tailwindcss": "3.3.3",
+    "uuid": "^9.0.1"
   }
 }

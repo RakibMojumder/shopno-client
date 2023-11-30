@@ -17,13 +17,9 @@ const productApi = createApi({
         getProductsByCategory: builder.query({
             query: (category) => `/product?category=${category}`
         }),
-
-        getSearchProduct: builder.query({
-            query: (searchValue) => `/product/search?value=${searchValue}}`
-        })
     })
 });
 
 
-export const { useGetProductQuery, useGetProductsQuery, useGetSearchProductQuery, useGetProductsByCategoryQuery } = productApi;
+export const { useGetProductQuery, useGetProductsQuery, useGetProductsByCategoryQuery } = productApi;
 export default productApi;

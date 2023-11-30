@@ -8,6 +8,7 @@ import { motion as m } from "framer-motion";
 import Button from "../Button";
 import axios from "@/utils/axios.config";
 import { useSelector } from "react-redux";
+import scrollTop from "@/utils/scrollTop";
 
 const radioOptions = [
   {
@@ -27,8 +28,10 @@ const PaymentMethod = ({ setCurrentStep, shipment }) => {
   const cart = useSelector((state) => state.cart.cart);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [processing, setProcessing] = useState(false);
 
   const handleClick = async () => {
+    setProcessing(true);
     if (selectedIndex === 1) {
       const res = await axios.post("/payment", {
         shipment,
@@ -37,10 +40,14 @@ const PaymentMethod = ({ setCurrentStep, shipment }) => {
         userPhone: user.phone,
         products: cart,
       });
-      console.log(res);
+
       if (res.data.url) {
+        setProcessing(false);
         window.location.replace(res.data.url);
       }
+    } else {
+      setCurrentStep(3);
+      scrollTop();
     }
   };
 
@@ -60,8 +67,13 @@ const PaymentMethod = ({ setCurrentStep, shipment }) => {
           setSelectedIndex={setSelectedIndex}
           setCurrentIndex={setCurrentIndex}
         />
-        <Button handleClick={handleClick} variant="filled" size="large">
-          Continue
+        <Button
+          disabled={processing}
+          handleClick={handleClick}
+          variant="filled"
+          size="large"
+        >
+          {processing ? "Processing" : "Continue"}
         </Button>
       </div>
     </m.div>

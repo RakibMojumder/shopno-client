@@ -1,21 +1,21 @@
 "use client";
 
-const ProductCount = ({ productCount, setProductCount }) => {
+const ProductCount = ({ productCount, increaseProduct, decreaseProduct }) => {
   return (
-    <div className="inline-flex items-center text-neutral-600 h-14 border bg-white divide-x-[1px]">
+    <div className="inline-flex items-center text-neutral-600">
       <button
-        onClick={() => setProductCount((prev) => prev + 1)}
-        className="px-6 h-full text-3xl"
+        onClick={increaseProduct}
+        className="h-7 w-7 text-2xl border border-primary rounded-full flex justify-center items-center "
       >
         +
       </button>
-      <span className="w-20 h-full flex justify-center items-center text-2xl font-medium">
+      <span className="w-14 h-full flex justify-center items-center text-2xl font-medium">
         {productCount}
       </span>
       <button
-        onClick={() => setProductCount((prev) => prev - 1)}
+        onClick={decreaseProduct}
         disabled={productCount <= 1}
-        className="px-6 h-full text-3xl disabled:cursor-not-allowed"
+        className="h-7 w-7 text-2xl border border-primary rounded-full flex justify-center items-center disabled:cursor-not-allowed font-bold"
       >
         -
       </button>

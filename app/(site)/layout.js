@@ -1,12 +1,16 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/navbar/Navbar";
 
-export default function SiteLayout({ children }) {
+const SiteLayout = ({ children }) => {
     return (
         <>
             <Navbar />
-            {children}
+            <div className="pb-20">
+                {children}
+            </div>
             <Footer />
         </>
     )
-}
+};
+
+export default SiteLayout;

@@ -15,6 +15,7 @@ import {
 } from "@/redux/features/cartSlice";
 import { numberWithCommas } from "@/utils/numberWithCommas";
 import { useRouter } from "next/navigation";
+import ProductCount from "../product/ProductCount";
 
 const Cart = () => {
   let total = 0;
@@ -25,12 +26,15 @@ const Cart = () => {
   const totalWithComma = numberWithCommas(total);
 
   const handleNavigate = () => {
+    if (cart.length == 0) {
+      return;
+    }
     dispatch(setShowCart(false));
     router.push("/cart-details");
   };
 
   return (
-    <m.div className="fixed inset-0 max-h-screen flex justify-end bg-black/10">
+    <m.div className="fixed inset-0 max-h-screen flex justify-end bg-black/30">
       <m.div
         initial={{ x: "100%" }}
         animate={{ x: 0, transition: { duration: 0.5 } }}
@@ -68,24 +72,11 @@ const Cart = () => {
                 <p className="text-black font-semibold">৳ {product.price}</p>
 
                 {/* PRODUCT COUNT */}
-                <div className="inline-flex items-center text-neutral-600 h-8 border border-black bg-white divide-x-[1px] divide-black">
-                  <button
-                    onClick={() => dispatch(increaseProduct(product))}
-                    className="px-3 h-full text-3xl flex justify-center items-center"
-                  >
-                    +
-                  </button>
-                  <span className="w-14 h-full flex justify-center items-center text-2xl font-medium">
-                    {product.quantity}
-                  </span>
-                  <button
-                    onClick={() => dispatch(decreaseProduct(product))}
-                    disabled={product.quantity <= 1}
-                    className="px-3 h-full text-3xl disabled:cursor-not-allowed flex justify-center items-center"
-                  >
-                    -
-                  </button>
-                </div>
+                <ProductCount
+                  productCount={product.quantity}
+                  increaseProduct={() => dispatch(increaseProduct(product))}
+                  decreaseProduct={() => dispatch(decreaseProduct(product))}
+                />
               </div>
 
               <div className="col-span-1 text-slate-700 flex items-center">

@@ -7,6 +7,7 @@ import { motion as m } from "framer-motion";
 import Select from "../Select";
 import { useEffect, useState } from "react";
 import axios from "@/utils/axios.config";
+import scrollTop from "@/utils/scrollTop";
 
 const ShipmentDetails = ({
   setCurrentStep,
@@ -53,6 +54,7 @@ const ShipmentDetails = ({
 
     setError("");
     setCurrentStep(2);
+    scrollTop();
   };
 
   return (

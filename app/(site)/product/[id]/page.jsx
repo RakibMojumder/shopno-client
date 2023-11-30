@@ -10,19 +10,21 @@ import { useState, useEffect } from "react";
 import Button from "@/app/components/Button";
 import StarComponent from "@/app/components/StarComponent";
 import ReactImageMagnify from "react-image-magnify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAddToWishListMutation } from "@/redux/api/authApi";
 import { toast } from "react-hot-toast";
 import useIsWishListProduct from "@/hook/useIsWishListProduct";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { addToCart } from "@/redux/features/cartSlice";
 
 const ProductDetailsPage = () => {
+  const router = useRouter();
   const params = useParams();
   const dispatch = useDispatch();
   const [productCount, setProductCount] = useState(1);
+  const user = useSelector((state) => state.user.user);
   const { isLoading, data } = useGetProductQuery(params.id);
-  const [addToList, response] = useAddToWishListMutation();
+  const [addToWishList, response] = useAddToWishListMutation();
   const isExist = useIsWishListProduct(params.id);
 
   useEffect(() => {
@@ -35,21 +37,34 @@ const ProductDetailsPage = () => {
     }
   }, [response]);
 
-  const handleWishList = async (id) => {
+  const handleWishList = async (e, id) => {
+    e.stopPropagation();
+    if (!user) {
+      return router.push("/auth/login");
+    }
+
     try {
-      addToList(id);
+      addToWishList(id);
     } catch (error) {
       console.log(error);
     }
   };
 
+  // const handleWishList = async (id) => {
+  //   try {
+  //     addToList(id);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   if (isLoading) return <Loader />;
 
   return (
     <Layout>
-      <div className="w-3/4 mx-auto pt-10 pb-20">
-        <div className="grid grid-cols-12 gap-10 bg-white px-10 py-8">
-          <div className="col-span-6">
+      <div className="xl:w-3/4 mx-auto pt-10 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 bg-white px-10 py-8">
+          <div className="md:col-span-6">
             <ReactImageMagnify
               {...{
                 smallImage: {
@@ -66,7 +81,7 @@ const ProductDetailsPage = () => {
               }}
             />
           </div>
-          <div className="col-span-6">
+          <div className="md:col-span-6">
             <div className="flex items-center gap-x-2 mb-5">
               Category
               <span>
@@ -89,14 +104,28 @@ const ProductDetailsPage = () => {
             </div>
 
             <div className="mt-14 space-y-8">
-              <ProductCount
-                productCount={productCount}
-                setProductCount={setProductCount}
-              />
+              <div className="inline-flex items-center text-neutral-600 h-14 border bg-white divide-x-[1px]">
+                <button
+                  onClick={() => setProductCount((prev) => prev + 1)}
+                  className="px-6 h-full text-3xl"
+                >
+                  +
+                </button>
+                <span className="w-20 h-full flex justify-center items-center text-2xl font-medium">
+                  {productCount}
+                </span>
+                <button
+                  onClick={() => setProductCount((prev) => prev - 1)}
+                  disabled={productCount <= 1}
+                  className="px-6 h-full text-3xl disabled:cursor-not-allowed"
+                >
+                  -
+                </button>
+              </div>
 
               <div className="flex items-center gap-x-5">
                 <Button
-                  handleClick={() => handleWishList(data.data._id)}
+                  handleClick={(e) => handleWishList(e, data.data._id)}
                   size="small"
                   variant="outlined"
                   className="px-3"
@@ -113,7 +142,7 @@ const ProductDetailsPage = () => {
                       addToCart({ ...data.data, quantity: productCount })
                     )
                   }
-                  size="medium"
+                  size="large"
                   variant="filled"
                   className="block"
                 >

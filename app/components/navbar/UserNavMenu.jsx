@@ -22,11 +22,11 @@ const UserNavMenu = () => {
   const cart = useSelector((state) => state.cart.cart);
 
   return (
-    <>
+    <div className="flex items-center gap-x-8">
       <Link href="/wish-list" className="relative">
-        <AiOutlineHeart size={30} className="text-primary" />
+        <AiOutlineHeart size={27} className="text-primary" />
         {user?.wishList?.length > 0 && (
-          <span className="h-6 w-6 rounded-full bg-primary text-white flex justify-center items-center absolute -top-4 -right-2 text-sm">
+          <span className="h-6 w-6 rounded-full bg-primary text-white flex justify-center items-center absolute -top-3 md:-top-4 -right-2 text-sm">
             {user.wishList.length}
           </span>
         )}
@@ -36,9 +36,9 @@ const UserNavMenu = () => {
         onClick={() => dispatch(setShowCart(true))}
         className="relative cursor-pointer"
       >
-        <LiaShoppingBagSolid size={30} className="text-primary" />
+        <LiaShoppingBagSolid size={27} className="text-primary" />
         {cart.length > 0 && (
-          <span className="h-6 w-6 rounded-full bg-primary text-white flex justify-center items-center absolute -top-4 -right-2 text-sm">
+          <span className="h-6 w-6 rounded-full bg-primary text-white flex justify-center items-center absolute -top-3 md:-top-4 -right-2 text-sm">
             {cart.length}
           </span>
         )}
@@ -56,7 +56,7 @@ const UserNavMenu = () => {
               alt="user image"
               height={40}
               width={40}
-              className="h-10 w-10 rounded-full"
+              className="h-9 w-9 rounded-full"
             />
           </button>
 
@@ -68,7 +68,7 @@ const UserNavMenu = () => {
         </div>
       )}
       <AnimatePresence>{showCart && <Cart />}</AnimatePresence>
-    </>
+    </div>
   );
 };
 

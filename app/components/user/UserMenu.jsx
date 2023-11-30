@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import userImg from "@/public/assets/user.png";
+import Link from "next/link";
 
 const UserMenu = ({ target, setShowUserMenu }) => {
   const router = useRouter();
@@ -55,18 +56,18 @@ const UserMenu = ({ target, setShowUserMenu }) => {
         <p>{user.email}</p>
       </div>
       <ul>
-        <li className="py-1.5 px-5 hover:text-primary hover:bg-primary/10 cursor-pointer">
+        <li className="py-1.5 px-5 hover:bg-secondary/10 hover:text-secondary cursor-pointer">
           Profile
         </li>
-        <li className="py-1.5 px-5 hover:text-primary hover:bg-primary/10 cursor-pointer">
-          Dashboard
+        <li className="py-1.5 px-5 hover:bg-secondary/10 hover:text-secondary cursor-pointer">
+          <Link href={"/dashboard"}>Dashboard</Link>
         </li>
-        <li className="py-1.5 px-5 hover:text-primary hover:bg-primary/10 cursor-pointer">
-          Orders
+        <li className="py-1.5 px-5 hover:bg-secondary/10 hover:text-secondary cursor-pointer">
+          <Link href={"/orders"}>Orders</Link>
         </li>
         <li
           onClick={handleLogout}
-          className="py-1.5 px-5 hover:text-primary hover:bg-primary/10 cursor-pointer"
+          className="py-1.5 px-5 hover:bg-secondary/10 hover:text-secondary cursor-pointer"
         >
           Logout
         </li>

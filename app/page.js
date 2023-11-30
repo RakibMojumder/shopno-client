@@ -7,6 +7,7 @@ import FeaturedProducts from "./components/home/FeaturedProducts";
 import RecentViews from "./components/home/RecentViews";
 import SuggestProducts from "./components/home/SuggestProducts";
 import Navbar from "./components/navbar/Navbar";
+import Categories from "./components/product/Categories";
 
 
 export default function Home() {
@@ -14,12 +15,13 @@ export default function Home() {
     <>
       <Navbar />
       <Banner />
-      {/* <BestSeller /> */}
-      <Brand />
+      {/* <Categories /> */}
+      <BestSeller />
+      <RecentViews />
+      {/* <Brand /> */}
       {/* <SuggestProducts /> */}
       <FeaturedProducts />
       <Discount />
-      {/* <RecentViews /> */}
       <Footer />
     </>
   )

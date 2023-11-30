@@ -2,13 +2,24 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: "i.ibb.co",
-                port: ''
-            },
-        ],
+        domains: ['**', "i.ibb.co", "res.cloudinary.com"]
+        // remotePatterns: [
+        //     {
+        //         protocol: 'https',
+        //         hostname: "**",
+        //         port: ''
+        //     },
+        //     {
+        //         protocol: 'https',
+        //         hostname: "i.ibb.co",
+        //         port: ''
+        //     },
+        //     {
+        //         protocol: 'https',
+        //         hostname: "res.cloudinary.com",
+        //         port: ''
+        //     },
+        // ],
     },
     target: 'server',
     optimizeFonts: false,

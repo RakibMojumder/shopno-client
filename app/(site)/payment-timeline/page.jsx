@@ -9,6 +9,12 @@ import ShipmentDetails from "../../components/cart/ShipmentDetails";
 import PaymentMethod from "../../components/cart/PaymentMethod";
 import { AnimatePresence } from "framer-motion";
 import OrderDetails from "../../components/cart/OrderDetails";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import StripePayment from "@/app/components/payment/StripePayment";
+import Layout from "@/app/components/Layout";
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_Stripe_pk);
 
 const steps = [
   {
@@ -49,78 +55,89 @@ const PaymentTimeLine = () => {
   }, [user]);
 
   return (
-    <div className="min-h-screen w-[90%] mx-auto">
-      <h1 className="text-2xl font-semibold mt-10 mb-5">Payment</h1>
-      <div className="grid grid-cols-12 gap-8">
-        <div className="col-span-3">
-          {steps.map((step, i) => (
-            <div key={step.id} className="">
-              <div className="flex gap-3 items-center">
-                <span className="w-10">
-                  {currentStep === i && (
-                    <FiAlertCircle size={33} className="text-red-500" />
-                  )}
-                  {currentStep > i && (
-                    <BsCheckCircle size={32} className="text-secondary" />
-                  )}
-                  {currentStep < i && <BsCircle size={30} />}
-                </span>
-                <div className="flex-1">
-                  <h4
-                    className={`text-lg font-medium ${
-                      currentStep === i && "text-red-500"
-                    } ${currentStep < i && "text-black"} ${
-                      currentStep > i && "text-secondary"
-                    }`}
-                  >
-                    {step.step}
-                  </h4>
-                  <p className="leading-none text-neutral-600">
-                    {step.details}
-                  </p>
+    <Layout>
+      <div className="min-h-screen mx-auto">
+        <h1 className="text-2xl font-semibold mt-10 mb-5">Payment</h1>
+        <div className="grid grid-cols-12 gap-8">
+          <div className="col-span-3">
+            {steps.map((step, i) => (
+              <div key={step.id} className="">
+                <div className="flex gap-3 items-center">
+                  <span className="w-10">
+                    {currentStep === i && (
+                      <FiAlertCircle size={33} className="text-red-500" />
+                    )}
+                    {currentStep > i && (
+                      <BsCheckCircle size={32} className="text-secondary" />
+                    )}
+                    {currentStep < i && <BsCircle size={30} />}
+                  </span>
+                  <div className="flex-1">
+                    <h4
+                      className={`text-lg font-medium ${
+                        currentStep === i && "text-red-500"
+                      } ${currentStep < i && "text-black"} ${
+                        currentStep > i && "text-secondary"
+                      }`}
+                    >
+                      {step.step}
+                    </h4>
+                    <p className="leading-none text-neutral-600">
+                      {step.details}
+                    </p>
+                  </div>
                 </div>
+                <div
+                  className={`${
+                    i === 3 && "hidden"
+                  } bg-primary/40 h-9 w-[2px] my-3 ml-3.5`}
+                ></div>
               </div>
-              <div
-                className={`${
-                  i === 3 && "hidden"
-                } bg-primary/40 h-9 w-[2px] my-3 ml-3.5`}
-              ></div>
-            </div>
-          ))}
-        </div>
-        <div className="col-span-5 border-r border-l">
-          <AnimatePresence>
-            {currentStep === 0 && <Login setCurrentStep={setCurrentStep} />}
-          </AnimatePresence>
-          <AnimatePresence>
-            {currentStep === 1 && (
-              <ShipmentDetails
-                district={district}
-                division={division}
-                address={address}
-                postCode={postCode}
-                setDistrict={setDistrict}
-                setDivision={setDivision}
-                setAddress={setAddress}
-                setPostCode={setPostCode}
-                setCurrentStep={setCurrentStep}
-              />
-            )}
-          </AnimatePresence>
-          <AnimatePresence>
-            {currentStep === 2 && (
-              <PaymentMethod
-                setCurrentStep={setCurrentStep}
-                shipment={{ district, division, address, postCode }}
-              />
-            )}
-          </AnimatePresence>
-        </div>
-        <div className="col-span-4">
-          <OrderDetails />
+            ))}
+          </div>
+          <div className="col-span-5 border-r border-l">
+            <Elements stripe={stripePromise}>
+              <AnimatePresence>
+                {currentStep === 0 && <Login setCurrentStep={setCurrentStep} />}
+              </AnimatePresence>
+              <AnimatePresence>
+                {currentStep === 1 && (
+                  <ShipmentDetails
+                    district={district}
+                    division={division}
+                    address={address}
+                    postCode={postCode}
+                    setDistrict={setDistrict}
+                    setDivision={setDivision}
+                    setAddress={setAddress}
+                    setPostCode={setPostCode}
+                    setCurrentStep={setCurrentStep}
+                  />
+                )}
+              </AnimatePresence>
+              <AnimatePresence>
+                {currentStep === 2 && (
+                  <PaymentMethod
+                    setCurrentStep={setCurrentStep}
+                    shipment={{ district, division, address, postCode }}
+                  />
+                )}
+              </AnimatePresence>
+              <AnimatePresence>
+                {currentStep == 3 && (
+                  <StripePayment
+                    shipment={{ district, division, address, postCode }}
+                  />
+                )}
+              </AnimatePresence>
+            </Elements>
+          </div>
+          <div className="col-span-4">
+            <OrderDetails />
+          </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

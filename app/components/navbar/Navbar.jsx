@@ -5,23 +5,29 @@ import SearchBox from "./SearchBox";
 import NavItems from "./NavItems";
 import Layout from "../Layout";
 import { useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
 import { useGetLoginUserQuery } from "@/redux/api/authApi";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUser } from "@/redux/features/userSlice";
 import UserNavMenu from "./UserNavMenu";
-import { setCart } from "@/redux/features/cartSlice";
+import { setCart, setRecentView } from "@/redux/features/cartSlice";
 import Cookies from "js-cookie";
+import { format } from "date-fns";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const { showAuthModal } = useSelector((state) => state.user);
   const { isSuccess, isLoading, data } = useGetLoginUserQuery();
 
   useEffect(() => {
     dispatch(
       setCart(Cookies.get("cart") ? JSON.parse(Cookies.get("cart")) : [])
     );
+
+    dispatch(
+      setRecentView(
+        Cookies.get("recent-view") ? JSON.parse(Cookies.get("recent-view")) : []
+      )
+    );
+
     if (isLoading) {
       return;
     }
@@ -43,24 +49,23 @@ const Navbar = () => {
             <div>
               <p>+880 1829218489</p>
             </div>
-            <div>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit..
-            </div>
-            <div>Lorem ipsum dolor.</div>
+            <div>Shopno shopping center.</div>
+            <div>{format(new Date(), "PP")}</div>
           </div>
         </Layout>
       </div>
-      <div className="bg-white shadow-md py-4 sticky top-0 z-40">
+      <div className="bg-white border-b py-2 md:py-4 sticky top-0 z-40">
         <Layout>
-          <div className="flex items-center gap-x-8">
+          <div className="flex flex-wrap md:flex-nowrap gap-y-2 md:gap-y-0 items-center justify-between md:gap-x-6 lg:gap-x-8 xl:gap-x-14">
             <Logo />
             <SearchBox />
-            <NavItems />
-            <UserNavMenu />
+            <div className="hidden sm:flex justify-end md:justify-between items-center flex-1 md:flex-none lg:w-[35%] xl:w-[30%] order-2 md:order-3">
+              <NavItems />
+              <UserNavMenu />
+            </div>
           </div>
         </Layout>
       </div>
-      <AnimatePresence>{showAuthModal && <AuthModal />}</AnimatePresence>
     </>
   );
 };

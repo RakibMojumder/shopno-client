@@ -11,32 +11,77 @@ import gymnasium from '@/public/assets/category-img/gym.png'
 import homeDecor from '@/public/assets/category-img/home-decor.png'
 import sports from '@/public/assets/category-img/sports.png'
 
-export const navItems = [
-    {
-        id: 101,
-        label: "Categories",
-        subCate: [
-            { id: 1, label: "Fashion", img: fashion },
-            { id: 2, label: "Electronics", img: electronics },
-            { id: 3, label: "Beauty", img: beauty },
-            { id: 4, label: "Automobile", img: automobile },
-            { id: 5, label: "Baby", img: baby },
-            { id: 6, label: "Laptop", img: laptop },
-            { id: 7, label: "Kitchen", img: kitchen },
-            { id: 8, label: "Mobile", img: mobile },
-            { id: 9, label: "Health", img: health },
-            { id: 10, label: "Gymnasium", img: gymnasium },
-            { id: 11, label: "Home Decor", img: homeDecor },
-            { id: 12, label: "Sports", img: sports },
-        ],
-    },
-    {
-        id: 102,
-        label: `what's new`,
-    },
-    {
-        id: 103,
-        label: "Deal",
-    },
-    { id: 104, label: "Delivery" },
+export const categories = [
+    { id: 101, name: "Fashion", img: fashion },
+    { id: 102, name: "Electronics", img: electronics },
+    { id: 103, name: "Beauty", img: beauty },
+    { id: 104, name: "Automobile", img: automobile },
+    { id: 105, name: "Baby", img: baby },
+    { id: 106, name: "Laptop", img: laptop },
+    { id: 107, name: "Kitchen", img: kitchen },
+    { id: 108, name: "Mobile", img: mobile },
+    { id: 109, name: "Health", img: health },
+    { id: 110, name: "Gymnasium", img: gymnasium },
+    { id: 111, name: "Home Decor", img: homeDecor },
+    { id: 112, name: "Sports", img: sports },
 ];
+
+
+export const pieData = [
+    {
+        "id": "fashion",
+        "label": "fashion",
+        "value": 203,
+        "color": "hsl(55, 70%, 50%)"
+    },
+    {
+        "id": "electronics",
+        "label": "electronics",
+        "value": 570,
+        "color": "hsl(182, 70%, 50%)"
+    },
+    {
+        "id": "automobile",
+        "label": "automobile",
+        "value": 542,
+        "color": "hsl(299, 70%, 50%)"
+    },
+    {
+        "id": "kitchen",
+        "label": "kitchen",
+        "value": 174,
+        "color": "#22092C"
+    },
+    {
+        "id": "mobile",
+        "label": "mobile",
+        "value": 532,
+        "color": "#D62728"
+    },
+    {
+        "id": "health",
+        "label": "health",
+        "value": 532,
+        "color": "#7C3AED"
+    },
+    {
+        "id": "gymnasium",
+        "label": "gymnasium",
+        "value": 532,
+        "color": "#5f64f4"
+    },
+    {
+        "id": "home decor",
+        "label": "home decor",
+        "value": 532,
+        "color": "#2AC764"
+    },
+    {
+        "id": "sports",
+        "label": "sports",
+        "value": 532,
+        "color": "hsl(19, 70%, 50%)"
+    }
+];
+
+export const lineChartData = [110, 134, 234, 532, 312, 153, 261, 523, 323, 513, 321, 512]

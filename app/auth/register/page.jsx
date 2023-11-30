@@ -6,33 +6,35 @@ import { useRegisterUserMutation } from "@/redux/api/authApi";
 import { motion as m } from "framer-motion";
 import { FcGoogle } from "react-icons/fc";
 import PhoneInput from "react-phone-input-2";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import "react-phone-input-2/lib/style.css";
+import { useRouter } from "next/navigation";
 
 const Register = () => {
+  const router = useRouter();
   const [error, setError] = useState("");
-  const [registerUser, { isLoading, isSuccess, data }] =
-    useRegisterUserMutation();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     phone: "",
     password: "",
   });
+  const [registerUser, { isLoading, isSuccess, data }] =
+    useRegisterUserMutation(formData);
 
-  //   useEffect(() => {
-  //     if (isLoading) {
-  //       return;
-  //     }
+  useEffect(() => {
+    if (isLoading) {
+      return;
+    }
 
-  //     if (!data?.success) {
-  //       setError(data?.error);
-  //     }
-  //     if (data?.success) {
-  //       setActiveAuth("login");
-  //     }
-  //   }, [isLoading, data?.error, data?.success, setActiveAuth, isSuccess]);
+    if (!data?.success) {
+      setError(data?.error);
+    }
+    if (data?.success) {
+      router.push("/auth/login");
+    }
+  }, [isLoading, data?.error, data?.success, isSuccess, router]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -53,7 +55,11 @@ const Register = () => {
         <h2 className="text-3xl text-primary font-bold uppercase">Register</h2>
       </div>
 
-      {error && <p className="text-center mb-5 text-red-500">{error}</p>}
+      {error && (
+        <div className="py-5 mb-7 bg-red-100/50 flex justify-center items-center relative after:absolute after:top-0 after:left-0 after:h-full after:w-1 after:bg-red-400">
+          <p className="text-red-500">{error}</p>
+        </div>
+      )}
       <form onSubmit={handleRegister} className="space-y-6">
         <Input
           type="text"

@@ -9,6 +9,7 @@ import { useLoginUserMutation } from "@/redux/api/authApi";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/redux/features/userSlice";
 import Cookies from "js-cookie";
+import scrollTop from "@/utils/scrollTop";
 
 const Login = ({ setCurrentStep }) => {
   const [formData, setFormData] = useState({
@@ -25,6 +26,7 @@ const Login = ({ setCurrentStep }) => {
       Cookies.set("token", data.data.token);
       dispatch(setUser(data.data.user));
       setCurrentStep(1);
+      scrollTop();
     } else {
       setError(data?.error);
     }

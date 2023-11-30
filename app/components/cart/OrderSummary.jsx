@@ -8,7 +8,7 @@ const OrderSummary = ({ total, totalWithComma }) => {
   const router = useRouter();
 
   return (
-    <div className="w-[350px] h-[340px] p-4 border bg-white">
+    <div className="w-[350px] h-[340px] p-4 border bg-white mx-auto">
       <h1 className="pb-0.5 border-b border-primary/20 text-xl font-semibold">
         Order Summery
       </h1>
@@ -36,7 +36,7 @@ const OrderSummary = ({ total, totalWithComma }) => {
         Continue
         <span className="h-2 w-2 rounded-full bg-white"></span>
         <span className="text-lg font-semibold">
-          ৳ {Number(totalWithComma) + 150}
+          ৳ {numberWithCommas(total + 150)}
         </span>
       </Button>
     </div>

@@ -1,25 +1,36 @@
 "use client";
-
-import Layout from "@/app/components/Layout";
+import Button from "@/app/components/Button";
+import Pagination from "@/app/components/filter/Pagination";
 import Product from "@/app/components/product/Product";
-import { useSelector } from "react-redux";
+import { setShowFilter } from "@/redux/features/productSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const SearchResultPage = () => {
-  const { searchProducts } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+  const { searchProducts, totalPage } = useSelector((state) => state.product);
 
   return (
-    <Layout>
-      <div className="pt-10 pb-20">
-        <h3 className="text-2xl text-black font-semibold mb-5">
-          Search <span className="text-primary">Result</span>
+    <div className="pt-5 pb-20">
+      <div className="mb-5 flex justify-between items-center">
+        <h3 className="text-2xl text-black font-semibold flex justify-between items-center">
+          Search Result
         </h3>
-        <div className="grid grid-cols-5 gap-3">
-          {searchProducts?.map((product) => (
-            <Product key={product._id} product={product} />
-          ))}
-        </div>
+        <Button
+          handleClick={() => dispatch(setShowFilter(true))}
+          variant="outlined"
+          size="small"
+          className="block sm:hidden"
+        >
+          Filter
+        </Button>
       </div>
-    </Layout>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+        {searchProducts?.map((product) => (
+          <Product key={product._id} product={product} />
+        ))}
+      </div>
+      {totalPage > 1 && <Pagination />}
+    </div>
   );
 };
 

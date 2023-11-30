@@ -26,6 +26,7 @@ const Button = ({
     <button
       type={type}
       onClick={handleClick}
+      disabled={disabled}
       className={twMerge(
         "border border-primary rounded font-medium uppercase",
         sizes[size],

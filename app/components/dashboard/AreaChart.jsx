@@ -1,0 +1,94 @@
+"use client";
+
+import { lineChartData } from "@/utils/data";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend,
+} from "chart.js";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend
+);
+
+const AreaChart = () => {
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Chart.js Line Chart",
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+      y: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+  };
+
+  const labels = [
+    "Jan",
+    "Feb",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        fill: true,
+        label: "Dataset 2",
+        data: lineChartData,
+        borderColor: "#7C3AED",
+        backgroundColor: ({ chart: { ctx } }) => {
+          const bg = ctx.createLinearGradient(0, 0, 0, 400);
+          bg.addColorStop(0.2, "rgba(124, 58, 237, .5)");
+          bg.addColorStop(1, "rgba(124, 58, 237, .1)");
+          return bg;
+        },
+      },
+    ],
+  };
+
+  return (
+    <div className="col-span-7 rounded-xl p-5 bg-white">
+      <Line options={options} data={data} />
+    </div>
+  );
+};
+
+export default AreaChart;

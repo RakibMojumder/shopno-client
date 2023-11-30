@@ -5,7 +5,7 @@ const { createSlice } = require("@reduxjs/toolkit");
 const initialState = {
     cart: [],
     showCart: false,
-    // totalAmount: 0
+    recentView: []
 };
 
 const cartSlice = createSlice({
@@ -55,13 +55,20 @@ const cartSlice = createSlice({
             Cookies.set('cart', JSON.stringify(state.cart));
         },
 
-        // setTotalAmount: (state, action) => {
-        //     const totalAmount = state.cart.reduce(acc,item => acc += (item.price * item.quantity),0);
-        //     state.totalAmount = totalAmount;
-        //     console.log(totalAmount);
-        // }
+        // RECENT VIEW
+        setRecentView: (state, action) => {
+            state.recentView = action.payload
+        },
+
+        addRecentView: (state, action) => {
+            const find = state.recentView.find(product => product._id === action.payload._id);
+            if (!find) {
+                state.recentView.push(action.payload);
+                Cookies.set('recent-view', JSON.stringify(state.recentView), { expires: 45 })
+            }
+        }
     }
 });
 
-export const { addToCart, setCart, removeFromCart, setShowCart, increaseProduct, decreaseProduct } = cartSlice.actions;
+export const { addToCart, setCart, setRecentView, removeFromCart, setShowCart, increaseProduct, decreaseProduct, addRecentView } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -5,7 +5,10 @@ const initialState = {
     categories: [],
     searchValue: '',
     searchProducts: [],
-    priceValue: [0, 5000]
+    priceValue: [0, 10000],
+    page: 0,
+    totalPage: 0,
+    showFilter: false,
 }
 
 const productSlice = createSlice({
@@ -21,10 +24,7 @@ const productSlice = createSlice({
         },
 
         setSortValue: (state, action) => {
-            // state.sortValue = action.payload;
-            let newState = { ...state, sortValue: action.payload };
-            state = newState
-            console.log(newState);
+            state.sortValue = action.payload;
         },
 
         setCategories: (state, action) => {
@@ -37,11 +37,26 @@ const productSlice = createSlice({
         },
         setPriceValue: (state, action) => {
             state.priceValue = action.payload;
+        },
+
+        setPage: (state, action) => {
+            state.page = action.payload;
+        },
+
+        setTotalPage: (state, action) => {
+            state.totalPage = action.payload;
+        },
+
+        setShowFilter: (state, action) => {
+            state.showFilter = action.payload;
         }
     }
 });
 
 export const {
+    setPage,
+    setShowFilter,
+    setTotalPage,
     setSortValue,
     setPriceValue,
     addToWishList,

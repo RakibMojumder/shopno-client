@@ -2,24 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion as m } from "framer-motion";
+import useClickOutside from "@/hook/useClickOutside";
 
 const Select = ({ options, value, setValue, label }) => {
   const ref = useRef();
   // const [options, setValue] = useState("");
   const [showOptions, setShowOptions] = useState(false);
-
-  useEffect(() => {
-    const handler = (e) => {
-      if (!ref.current?.contains(e.target)) {
-        setShowOptions(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  }, []);
+  useClickOutside(ref, () => setShowOptions(false));
 
   const handleClick = (division) => {
     setValue(division);
@@ -52,13 +41,13 @@ const Select = ({ options, value, setValue, label }) => {
           }}
           className="w-full bg-white py-3 shadow-[0px_0px_8px_#ddd] mt-5 absolute top-7 left-0 z-10"
         >
-          {options?.map((division) => (
+          {options?.map((value) => (
             <div
-              onClick={() => handleClick(division.name)}
-              key={division._id}
+              onClick={() => handleClick(value.name)}
+              key={value._id ? value._id : value.id}
               className="py-1 text-center hover:bg-secondary/10 hover:text-secondary cursor-pointer"
             >
-              {division.name}
+              {value.name}
             </div>
           ))}
         </m.div>

@@ -1,4 +1,5 @@
 import './globals.css'
+import "swiper/css";
 import { Hind_Siliguri } from 'next/font/google'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -15,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className={`${Hind.className} bg-primary/[.04]`}>
+      <body suppressHydrationWarning={true} className={`${Hind.className} bg-primary/[.05]`}>
         <RootProvider>
           {children}
         </RootProvider>

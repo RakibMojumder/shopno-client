@@ -27,28 +27,28 @@ const Banner = () => {
           alt="banner image"
           height={280}
           priority
-          className="h-[280px]"
+          className="lg:h-[250px] xl:h-[280px]"
         />
         <Image
           src={imgTwo}
           alt="banner image"
           height={280}
           priority
-          className="h-[280px]"
+          className="lg:h-[250px] xl:h-[280px]"
         />
         <Image
           src={imgFour}
           alt="banner image"
           height={280}
           priority
-          className="h-[280px]"
+          className="lg:h-[250px] xl:h-[280px]"
         />
         <Image
           src={imgFive}
           alt="banner image"
           height={280}
           priority
-          className="h-[280px]"
+          className="lg:h-[250px] xl:h-[280px]"
         />
       </Slider>
     </div>

@@ -5,20 +5,27 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { motion as m } from "framer-motion";
 import StarComponent from "../StarComponent";
 import { useRouter } from "next/navigation";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAddToWishListMutation } from "@/redux/api/authApi";
 import useIsWishListProduct from "@/hook/useIsWishListProduct";
+import { addRecentView } from "@/redux/features/cartSlice";
 
 const Product = ({ badge, product }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const isExist = useIsWishListProduct(product._id);
   const user = useSelector((state) => state.user.user);
   const [addToWishList, response] = useAddToWishListMutation();
 
+  const handleClick = (product) => {
+    dispatch(addRecentView(product));
+    router.push(`/product/${product._id}`);
+  };
+
   const handleWishList = async (e, id) => {
     e.stopPropagation();
     if (!user) {
-      return router.replace("/auth/login");
+      return router.push("/auth/login");
     }
 
     try {
@@ -30,22 +37,23 @@ const Product = ({ badge, product }) => {
 
   return (
     <m.div
-      initial={{ y: 150, opacity: 0 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{
-        y: 0,
         opacity: 1,
-        transition: { duration: 0.5, ease: "easeOut" },
+        y: 0,
+        transition: { duration: 0.6, ease: "easeOut" },
       }}
       viewport={{ once: true }}
-      onClick={() => router.push(`/product/${product._id}`)}
-      className="h-[365px] cursor-pointer bg-white shadow relative overflow-hidden group"
+      onClick={() => handleClick(product)}
+      className="h-[350px] cursor-pointer bg-white shadow relative overflow-hidden group"
     >
       <Image
         src={product.image}
         alt="product image"
-        width={206}
-        height={208}
-        className="w-full h-52"
+        width="0"
+        height="0"
+        sizes="100vw"
+        className="h-52 w-full"
       />
       <div className="p-3">
         <div className="font-medium group-hover:text-primary h-16">
@@ -58,7 +66,9 @@ const Product = ({ badge, product }) => {
 
         <div className="flex gap-1 mb-3">
           <StarComponent star={product.rating} />{" "}
-          <span className="leading-none text-sm">({product.totalRating})</span>
+          <span className="leading-none text-sm">
+            ({product.totalRating ? product.totalRating : 0})
+          </span>
         </div>
 
         <div className="flex justify-between items-center">
@@ -78,7 +88,7 @@ const Product = ({ badge, product }) => {
         </div>
       </div>
       {badge && (
-        <p className="bg-primary py-1 text-sm text-center text-white absolute top-6 -left-16 w-full -rotate-45">
+        <p className="bg-secondary py-1 text-sm text-center text-white absolute top-6 -left-16 w-full -rotate-45">
           Best Seller
         </p>
       )}

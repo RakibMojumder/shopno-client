@@ -7,8 +7,9 @@ const middleware = async (request) => {
     const user = await verify(token)
 
     const authPath = ['/auth/login', '/auth/register'];
-    const securePath = ['/wish-list']
-
+    const securePath = ['/wish-list', '/orders']
+    const adminPath = ['/dashboard', '/dashboard/admins', '/dashboard/managers', '/dashboard/users', '/dashboard/products', '/dashboard/add-products', '/dashboard/orders', '/dashboard/delivered'];
+    const isAdmin = user?.role === 'admin';
 
     if (user && authPath.includes(path)) {
         return NextResponse.redirect(new URL('/', request.nextUrl))
@@ -17,10 +18,14 @@ const middleware = async (request) => {
     if (!user && securePath.includes(path)) {
         return NextResponse.redirect(new URL('/auth/login', request.nextUrl));
     }
+
+    if (!isAdmin && adminPath.includes(path)) {
+        return NextResponse.redirect(new URL('/', request.nextUrl))
+    }
 };
 
 export const config = {
-    matcher: ['/', '/auth/:path*', '/wish-list']
+    matcher: ['/', '/auth/:path*', '/wish-list', '/dashboard', '/dashboard/:path*', '/orders']
 }
 
 export default middleware;
