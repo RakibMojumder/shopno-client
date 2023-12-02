@@ -6,6 +6,7 @@ import { useGetProductsQuery } from "@/redux/api/productApi";
 import Skelton from "../Skelton";
 import Button from "../Button";
 import { useRouter } from "next/navigation";
+import Grid from "../Grid";
 
 const FeaturedProducts = () => {
   const router = useRouter();
@@ -22,16 +23,16 @@ const FeaturedProducts = () => {
   return (
     <Layout>
       <div className="pb-28">
-        <h2 className="text-3xl font-semibold text-black mb-5">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-black mb-5">
           Our Featured Products
         </h2>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+        <Grid>
           {isLoading &&
             [...Array(10)].map((_, index) => <Skelton key={index} />)}
           {data?.data?.map((product, index) => (
             <Product key={index} product={product} />
           ))}
-        </div>
+        </Grid>
         <div className="text-center mt-8">
           <Button handleClick={handleClick} variant={"filled"} size={"small"}>
             Sell All

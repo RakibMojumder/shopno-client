@@ -11,6 +11,7 @@ import axios from "@/utils/axios.config";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
 import imagePreview from "../../../public/assets/image-preview.png";
+import { useSelector } from "react-redux";
 
 const AddProducts = () => {
   const token = Cookies.get("token");

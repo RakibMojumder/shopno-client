@@ -43,7 +43,7 @@ const UserMenu = ({ target, setShowUserMenu }) => {
       initial={{ opacity: 0, y: 50 }}
       exit={{ opacity: 0, y: 50, transition: { duration: 0.2 } }}
       animate={{ opacity: 1, y: 0, transition: { duration: 0.2 } }}
-      className="w-64 py-2 absolute top-14 right-5 border bg-white shadow-[0px_0px_4px_#ddd] rounded"
+      className="w-64 py-2 absolute top-14 right-5 border bg-white shadow-[0px_0px_4px_#ddd] rounded z-50"
     >
       <div className="border-b w-full p-4 mb-2 text-center">
         <Image

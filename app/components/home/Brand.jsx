@@ -10,7 +10,7 @@ const Brand = () => {
   return (
     <Layout>
       <div className="mb-28 w-full overflow-hidden">
-        <h3 className="text-3xl font-semibold my-5 text-black">
+        <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold my-5 text-black">
           Our Trusted Company
         </h3>
         <div className="bg-white py-10">

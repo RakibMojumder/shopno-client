@@ -2,13 +2,13 @@
 
 import Loader from "@/app/components/Loaders/Loader";
 import UserBody from "@/app/components/dashboard/UserBody";
-import { useQuery } from "react-query";
-import axios from "@/utils/axios.config";
 import UserHeader from "@/app/components/dashboard/UserHeader";
+import axios from "@/utils/axios.config";
+import { useQuery } from "react-query";
 
-const Users = () => {
-  const { data, isLoading } = useQuery(["users"], async () => {
-    const res = await axios.get("/admin/get-users?role=user");
+const Managers = () => {
+  const { data, isLoading } = useQuery(["manager"], async () => {
+    const res = await axios.get("/admin/get-users?role=manager");
     return res.data.data;
   });
 
@@ -19,14 +19,16 @@ const Users = () => {
   return (
     <>
       <div className="text-center mb-3">
-        <h1 className="text-2xl font-semibold uppercase leading-none">Users</h1>
-        <h3>List of Users</h3>
+        <h1 className="text-2xl font-semibold uppercase leading-none">
+          Mangers
+        </h1>
+        <h3>List of Managers</h3>
       </div>
-      <div>
+      <div className="space-y-0.5">
         {/* Header */}
         <UserHeader />
         {/* Body */}
-        <div className="space-y-0.5">
+        <div>
           {data?.map((user) => (
             <UserBody key={user._id} user={user} />
           ))}
@@ -36,4 +38,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default Managers;

@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const productApi = createApi({
     reducerPath: 'productsAPI',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5000',
+        baseUrl: process.env.NEXT_PUBLIC_SERVER_URL,
     }),
     endpoints: (builder) => ({
         getProduct: builder.query({

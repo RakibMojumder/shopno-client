@@ -34,7 +34,7 @@ const BestSeller = () => {
     <Layout>
       <div className="pt-20 pb-28">
         <div className="flex items-center justify-between">
-          <h3 className="text-3xl font-semibold my-5 text-black">
+          <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold my-5 text-black">
             Best Seller
           </h3>
           <div className="flex items-center gap-x-6">
@@ -61,23 +61,23 @@ const BestSeller = () => {
             prevEl: ".best-seller-prev",
             disabledClass: "swiper-button-disabled",
           }}
-          slidesPerView={5}
+          // slidesPerView={5}
           spaceBetween={12}
           onSlideChange={handleSlideChange}
           modules={[Navigation]}
           className="mySwiper relative"
           breakpoints={{
             0: {
-              slidesPerView: 1,
+              slidesPerView: 2,
               spaceBetween: 12,
             },
             // when window width is >= 320px
-            320: {
+            450: {
               slidesPerView: 2,
               spaceBetween: 12,
             },
             // when window width is >= 480px
-            530: {
+            620: {
               slidesPerView: 3,
               spaceBetween: 12,
             },

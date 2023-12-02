@@ -8,7 +8,7 @@ const OrderSummary = ({ total, totalWithComma }) => {
   const router = useRouter();
 
   return (
-    <div className="w-[350px] h-[340px] p-4 border bg-white mx-auto">
+    <div className="w-full sm:w-[350px] h-[340px] p-4 border bg-white mx-auto">
       <h1 className="pb-0.5 border-b border-primary/20 text-xl font-semibold">
         Order Summery
       </h1>

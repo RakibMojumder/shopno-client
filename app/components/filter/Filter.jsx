@@ -15,7 +15,7 @@ const Filter = () => {
   const dispatch = useDispatch();
   const { showFilter } = useSelector((state) => state.product);
   const isMobile = useMediaQuery({
-    query: "(max-width: 450px)",
+    query: "(max-width: 620px)",
   });
   return (
     <m.div
@@ -24,17 +24,17 @@ const Filter = () => {
       exit={{ x: isMobile ? "100%" : 0, transition: { duration: 0.5 } }}
       className={`${
         showFilter
-          ? "fixed top-0 left-0 w-full h-full overflow-y-auto sm:static z-50 sm:w-[250px] block"
-          : "hidden sm:block"
-      } sm:w-[250px]`}
+          ? "fixed top-0 left-0 w-full h-full overflow-y-auto md:static z-50 md:w-[250px] block"
+          : "hidden md:block"
+      } md:w-[230px] md:block`}
     >
       <div className="bg-white p-4">
-        <div className="mb-4 flex justify-between items-center sticky top-0 left-0 sm:static z-40 sm:z-auto bg-white pb-2 border-b sm:border-none">
+        <div className="mb-4 flex justify-between items-center sticky top-0 left-0 xl:static z-40 xl:z-auto bg-white pb-2 border-b sm:border-none">
           <h2 className="text-2xl font-bold">Filter</h2>
           <RxCross1
             onClick={() => dispatch(setShowFilter(false))}
             size={27}
-            className="cursor-pointer block sm:hidden"
+            className="cursor-pointer block md:hidden"
           />
         </div>
         <PriceSlider />

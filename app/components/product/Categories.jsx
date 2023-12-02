@@ -13,7 +13,7 @@ const Categories = () => {
   };
   return (
     <Layout>
-      <h3 className="text-3xl font-semibold mt-10 mb-5 text-black">
+      <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mt-10 mb-5 text-black">
         Categories
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 bg-white divide-x">

@@ -2,7 +2,7 @@ import React from "react";
 
 const UserBody = ({ user }) => {
   return (
-    <div className="flex items-center text-center p-2 bg-secondary/10">
+    <div className="flex items-center text-center p-2 bg-secondary/5">
       <div className="w-full px-2 text-ellipsis overflow-hidden">
         {user._id}
       </div>

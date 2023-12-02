@@ -9,8 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAddToWishListMutation } from "@/redux/api/authApi";
 import useIsWishListProduct from "@/hook/useIsWishListProduct";
 import { addRecentView } from "@/redux/features/cartSlice";
+import { twMerge } from "tailwind-merge";
 
-const Product = ({ badge, product }) => {
+const Product = ({ badge, product, className }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const isExist = useIsWishListProduct(product._id);
@@ -45,7 +46,10 @@ const Product = ({ badge, product }) => {
       }}
       viewport={{ once: true }}
       onClick={() => handleClick(product)}
-      className="h-[350px] cursor-pointer bg-white shadow relative overflow-hidden group"
+      className={twMerge(
+        "h-[310px] md:h-[350px] cursor-pointer bg-white shadow relative overflow-hidden group",
+        className
+      )}
     >
       <Image
         src={product.image}
@@ -53,7 +57,7 @@ const Product = ({ badge, product }) => {
         width="0"
         height="0"
         sizes="100vw"
-        className="h-52 w-full"
+        className="h-40 md:h-52 w-full"
       />
       <div className="p-3">
         <div className="font-medium group-hover:text-primary h-16">

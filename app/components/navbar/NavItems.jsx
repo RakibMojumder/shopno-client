@@ -3,9 +3,8 @@
 import useClickOutside from "@/hook/useClickOutside";
 import { categories } from "@/utils/data";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 
 const NavItems = () => {
@@ -20,7 +19,7 @@ const NavItems = () => {
   };
 
   return (
-    <div className="relative font-medium sm:hidden md:block">
+    <div className="relative font-medium hidden xl:block">
       <div ref={ref}>
         <div
           onClick={() => setShow((prev) => !prev)}
@@ -40,12 +39,12 @@ const NavItems = () => {
               : "invisible translate-y-3 opacity-0"
           }`}
         >
-          <div className="w-[550px] absolute top-10 -left-44 grid grid-cols-2 rounded-md bg-white shadow-[0px_0px_8px_#ddd] gap-3 p-4 z-20">
+          <div className="w-[550px] absolute top-20 lg:top-10 -right-14 lg:-right-10 grid grid-cols-2 rounded-md bg-white shadow-[0px_0px_8px_#ddd] gap-3 p-4 z-50">
             {categories.map((category) => (
               <div
                 onClick={() => handleClick(category.name)}
                 key={category.id}
-                className="w-full bg-gray-100 rounded py-4 pl-4 flex items-center gap-x-4 transition-transform duration-300 hover:scale-105 cursor-pointer"
+                className="w-full bg-gray-100 rounded py-2 lg:py-4 pl-4 flex items-center gap-x-4 transition-transform duration-300 hover:scale-105 cursor-pointer"
               >
                 <Image
                   src={category.img}

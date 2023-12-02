@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 const authApi = createApi({
     reducerPath: 'authAPI',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5000/user',
+        baseUrl: `${process.env.NEXT_PUBLIC_SERVER_URL}/user`,
         // headers: {
         //     authorization: `Bearer ${Cookies.get('token')}`
         // },

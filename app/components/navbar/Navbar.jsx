@@ -49,17 +49,17 @@ const Navbar = () => {
             <div>
               <p>+880 1829218489</p>
             </div>
-            <div>Shopno shopping center.</div>
+            <div>10% Discount Today.</div>
             <div>{format(new Date(), "PP")}</div>
           </div>
         </Layout>
       </div>
-      <div className="bg-white border-b py-2 md:py-4 sticky top-0 z-40">
+      <div className="bg-white border-b py-2 md:py-4 sticky top-0 z-50">
         <Layout>
-          <div className="flex flex-wrap md:flex-nowrap gap-y-2 md:gap-y-0 items-center justify-between md:gap-x-6 lg:gap-x-8 xl:gap-x-14">
+          <div className="flex flex-wrap lg:flex-nowrap gap-y-2 items-center justify-between md:gap-x-6 lg:gap-x-8 xl:gap-x-14">
             <Logo />
             <SearchBox />
-            <div className="hidden sm:flex justify-end md:justify-between items-center flex-1 md:flex-none lg:w-[35%] xl:w-[30%] order-2 md:order-3">
+            <div className="flex justify-end xl:justify-between items-center flex-1 md:flex-none lg:w-[30%] order-2 md:order-3">
               <NavItems />
               <UserNavMenu />
             </div>

@@ -13,7 +13,7 @@ import Link from "next/link";
 
 const Sidebar = () => {
   return (
-    <div className="w-[220px] bg-secondary text-white p-3 pr-0 overflow-x-hidden">
+    <div className="w-[240px] bg-secondary text-white p-3 pr-0 overflow-x-hidden">
       <Link href={"/"} className="flex items-center gap-x-3 mt-5">
         <Image src={DashLogo} alt="logo" height={60} width={60} />
         <div className="uppercase">
@@ -52,19 +52,16 @@ const Sidebar = () => {
           href={"/dashboard/add-products"}
           icon={IoIosAddCircle}
         />
-        {/* <li className="py-2 pl-5 bg-white text-primary rounded-l-full relative after:absolute before:absolute after:bottom-full after:right-0 after:h-12 after:w-12 after:bg-transparent after:rounded-full after:shadow-[35px_30px_0px_10px_#fff] after:pointer-events-none before:top-full before:right-0 before:h-12 before:w-12 before:bg-transparent before:rounded-full before:shadow-[35px_-30px_0px_10px_#fff] before:pointer-events-none">
-          Home
-        </li> */}
         <DashboardLink
           label={"Orders"}
           href={"/dashboard/orders"}
           icon={FaCartShopping}
         />
-        <DashboardLink
+        {/* <DashboardLink
           label={"Delivered"}
           href={"/dashboard/delivered"}
           icon={TbTruckDelivery}
-        />
+        /> */}
       </ul>
     </div>
   );

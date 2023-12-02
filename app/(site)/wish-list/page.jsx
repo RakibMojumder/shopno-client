@@ -12,9 +12,11 @@ import { toast } from "react-hot-toast";
 import cartImage from "@/public/assets/images.png";
 import { useEffect } from "react";
 import { addToCart } from "@/redux/features/cartSlice";
+import { useRouter } from "next/navigation";
 
 const WishListPage = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const user = useSelector((state) => state.user.user);
   const [addToList, response] = useAddToWishListMutation();
 
@@ -41,7 +43,7 @@ const WishListPage = () => {
   };
 
   return (
-    <div className="w-1/2 mx-auto mt-10 mb-20 bg-white p-8">
+    <div className="w-[95%] lg:w-3/4 xl:w-1/2 mx-auto mt-10 mb-20 bg-white p-2 sm:p-4 md:p-8">
       {user?.wishList.length < 1 ? (
         <div className="flex flex-col items-center gap-y-3">
           <h1 className="text-lg font-semibold text-black">
@@ -58,19 +60,24 @@ const WishListPage = () => {
             {user?.wishList?.map((product) => (
               <div
                 key={product._id}
-                className="grid grid-cols-12 gap-8 p-3 border border-primary/10 rounded"
+                className="grid grid-cols-1 sm:grid-cols-12 gap-8 p-3 border border-primary/10 rounded"
               >
-                <div className="col-span-3">
+                <div className="sm:col-span-3">
                   <Image
                     src={product.image}
                     alt="product image"
                     width={130}
                     height={80}
-                    className="h-full w-full"
+                    className="h-40 sm:h-full w-full"
                   />
                 </div>
-                <div className="col-span-9 space-y-2">
-                  <h1 className="text-lg leading-none">{product.name}</h1>
+                <div className="sm:col-span-9 space-y-2">
+                  <h1
+                    onClick={() => router.push(`/product/${product._id}`)}
+                    className="md:text-lg leading-none hover:underline cursor-pointer"
+                  >
+                    {product.name}
+                  </h1>
                   <div className="flex gap-x-2">
                     <StarComponent star={product.rating} className="text-xs" />
                     <span className="text-xs">

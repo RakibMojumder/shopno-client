@@ -34,12 +34,12 @@ const Cart = () => {
   };
 
   return (
-    <m.div className="fixed inset-0 max-h-screen flex justify-end bg-black/30">
+    <m.div className="fixed inset-0 max-h-screen flex justify-end bg-black/30 z-50">
       <m.div
         initial={{ x: "100%" }}
         animate={{ x: 0, transition: { duration: 0.5 } }}
         exit={{ x: "100%", transition: { duration: 0.5 } }}
-        className="fixed top-0 w-[390px] h-full bg-white shadow-sm flex flex-col justify-between"
+        className="fixed top-0 w-full md:w-[390px] h-full bg-white shadow-sm flex flex-col justify-between"
       >
         <div className="text-lg text-black font-medium flex justify-between items-center p-4 border-b border-primary/30 uppercase">
           <h1 className="flex gap-x-2">
