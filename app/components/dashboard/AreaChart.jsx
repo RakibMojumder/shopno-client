@@ -49,6 +49,8 @@ const AreaChart = () => {
         },
       },
     },
+    maintainAspectRatio: false,
+    width: "100%",
   };
 
   const labels = [
@@ -85,8 +87,8 @@ const AreaChart = () => {
   };
 
   return (
-    <div className="col-span-7 rounded-xl p-5 bg-white">
-      <Line options={options} data={data} />
+    <div className="xl:col-span-7 rounded-xl p-5 bg-white">
+      <Line options={options} data={data} style={{ width: "100%!" }} />
     </div>
   );
 };

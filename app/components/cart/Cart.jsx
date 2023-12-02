@@ -1,11 +1,10 @@
 "use client";
 
-import { RxCross1 } from "react-icons/rx";
 import { motion as m } from "framer-motion";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
-import { RxCrossCircled } from "react-icons/rx";
+import { RxCrossCircled, RxCross1 } from "react-icons/rx";
 import Button from "../Button";
 import {
   decreaseProduct,

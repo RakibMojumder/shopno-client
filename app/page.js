@@ -15,8 +15,8 @@ export default function Home() {
       <Navbar />
       <Banner />
       <Categories />
-      <BestSeller />
       <RecentViews />
+      <BestSeller />
       {/* <SuggestProducts /> */}
       <FeaturedProducts />
       <Brand />

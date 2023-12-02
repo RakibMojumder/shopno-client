@@ -17,10 +17,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className={`${Hind.className} bg-primary/[.05] 3xl:w-[1320px] mx-auto`}>
-        <RootProvider>
-          {children}
-        </RootProvider>
+      <body suppressHydrationWarning={true} className={`${Hind.className} bg-primary/[.05]`}>
+        <div className="3xl:w-[1420px] mx-auto">
+          <RootProvider>
+            {children}
+          </RootProvider>
+        </div>
       </body>
     </html>
   )

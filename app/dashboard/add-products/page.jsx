@@ -69,7 +69,7 @@ const AddProducts = () => {
   };
 
   return (
-    <div className="w-1/2 mx-auto">
+    <div className="lg:w-2/3 xl:w-1/2 mx-auto">
       <h3 className="text-xl font-semibold uppercase my-5 text-center">
         Add Product
       </h3>
@@ -85,7 +85,7 @@ const AddProducts = () => {
           }
         />
 
-        <div className="flex items-center gap-x-5">
+        <div className="flex flex-col sm:flex-row items-center gap-y-5 sm:gap-x-5">
           <Input
             type="number"
             name="price"

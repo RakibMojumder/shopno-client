@@ -9,14 +9,14 @@ import TotalUsers from "../components/dashboard/TotalUsers";
 const Dashboard = () => {
   return (
     <>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5">
         <Sales />
         <TotalOrder />
         <TotalEarned />
         <TotalUsers />
       </div>
-      <div className="grid grid-cols-12 gap-5 my-14">
-        <div className="col-span-4 bg-white p-5 rounded-xl">
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-5 my-5">
+        <div className="xl:col-span-4 bg-white p-5 rounded-xl">
           <h3 className="text-xl font-semibold mb-3">Payment Method</h3>
           <div className="space-y-4">
             <div>
@@ -39,9 +39,9 @@ const Dashboard = () => {
         </div>
         <PieChart data={pieData} />
       </div>
-      <div className="grid grid-cols-12 gap-5">
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-5">
         <AreaChart />
-        <div className="col-span-5 grid grid-cols-2 gap-5">
+        <div className="xl:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-5">
           <Sales />
           <TotalOrder />
           <TotalEarned />

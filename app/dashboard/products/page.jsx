@@ -39,9 +39,9 @@ const Products = () => {
   };
 
   return (
-    <>
+    <div className="px-6 sm:px-0">
       <div className="mb-5">
-        <div className="w-1/2 mx-auto relative">
+        <div className="sm:w-2/3 2xl:w-1/2 mx-auto relative">
           <input
             type="text"
             value={searchValue}
@@ -60,7 +60,7 @@ const Products = () => {
           )}
         </div>
       </div>
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
         {isLoading && [...Array(10)].map((_, index) => <Skelton key={index} />)}
 
         {data?.map((product) => (
@@ -73,7 +73,7 @@ const Products = () => {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

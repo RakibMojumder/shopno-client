@@ -3,7 +3,7 @@ import { FcSalesPerformance } from "react-icons/fc";
 
 const Sales = () => {
   return (
-    <div className="p-2 border border-[#f5df86] h-52 rounded-xl flex flex-col gap-y-4 justify-center items-center bg-white">
+    <div className="p-2 h-52 rounded-xl flex flex-col gap-y-4 justify-center items-center bg-white">
       <span className="h-16 w-16 rounded-full bg-[#FEF3C7] flex justify-center items-center">
         <FcSalesPerformance size={35} />
       </span>

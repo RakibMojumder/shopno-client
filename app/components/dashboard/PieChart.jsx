@@ -3,7 +3,7 @@
 import { ResponsivePie } from "@nivo/pie";
 
 const PieChart = ({ data }) => (
-  <div className="col-span-8 h-[400px] relative border bg-white rounded-xl">
+  <div className="xl:col-span-8 h-[400px] relative border bg-white rounded-xl">
     <ResponsivePie
       data={data}
       margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
