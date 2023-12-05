@@ -1,24 +1,15 @@
 import React from "react";
+import { Td, Tr } from "react-super-responsive-table";
 
 const UserBody = ({ user }) => {
   return (
-    <div className="flex items-center text-center p-2 bg-secondary/5">
-      <div className="w-full px-2 text-ellipsis overflow-hidden">
-        {user._id}
-      </div>
-      <div className="w-full px-2 text-ellipsis overflow-hidden">
-        {user.username}
-      </div>
-      <div className="w-full px-2 text-ellipsis overflow-hidden">
-        {user.email}
-      </div>
-      <div className="w-full px-2 text-ellipsis overflow-hidden">
-        {user.phone}
-      </div>
-      <div className="w-full px-2 text-ellipsis overflow-hidden">
-        {user.role}
-      </div>
-    </div>
+    <Tr>
+      <Td className="text-center py-1">{user._id}</Td>
+      <Td className="text-center py-1">{user.username}</Td>
+      <Td className="text-center py-1">{user.email}</Td>
+      <Td className="text-center py-1">{user.phone}</Td>
+      <Td className="text-center py-1">{user.role}</Td>
+    </Tr>
   );
 };
 

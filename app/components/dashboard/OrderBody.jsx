@@ -1,22 +1,17 @@
 import Image from "next/image";
+import { Td, Tr } from "react-super-responsive-table";
 
-const OrderBody = ({ product, email }) => {
+const OrderBody = ({ product, email, transactionId }) => {
   return (
-    <div className="flex items-center text-center p-2 bg-secondary/5">
-      <div className="w-14 px-2 text-ellipsis overflow-hidden">
+    <Tr className="bg-secondary/5">
+      <Td className="text-center py-1">
         <Image alt="product image" src={product.image} width={40} height={40} />
-      </div>
-      <div className="w-full px-2 text-ellipsis overflow-hidden">
-        {product.name}
-      </div>
-      <div className="w-full px-2 text-ellipsis overflow-hidden">
-        {product.price}
-      </div>
-      <div className="w-full px-2 text-ellipsis overflow-hidden">{email}</div>
-      <div className="w-full px-2 text-ellipsis overflow-hidden">
-        {product.transactionId}
-      </div>
-    </div>
+      </Td>
+      <Td className="text-center py-1">{product.name}</Td>
+      <Td className="text-center py-1">{product.price}</Td>
+      <Td className="text-center py-1">{email}</Td>
+      <Td className="text-center py-1">{transactionId}</Td>
+    </Tr>
   );
 };
 

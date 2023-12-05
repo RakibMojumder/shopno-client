@@ -17,7 +17,7 @@ const Sidebar = ({ showDashboard, setShowDashboard }) => {
 
   const handleNavigate = (href) => {
     setShowDashboard(false);
-    router.push(`/dashboard/${href}`);
+    router.push(`http://localhost:3000/${href}`);
   };
 
   return (
@@ -25,7 +25,6 @@ const Sidebar = ({ showDashboard, setShowDashboard }) => {
       key={"sidebar"}
       initial={{ x: "-100%" }}
       whileInView={{ x: 0, transition: { duration: 0.5 } }}
-      exit={{ x: "-100%", transition: { duration: 0.5 } }}
       className={`w-full sm:w-[240px] bg-secondary text-white p-3 pr-0 overflow-x-hidden overflow-y-auto ${
         showDashboard
           ? "fixed top-0 left-0 h-full z-50 md:static"
@@ -57,49 +56,49 @@ const Sidebar = ({ showDashboard, setShowDashboard }) => {
       <ul className="mt-8 pl-2 space-y-1">
         <DashboardLink
           label={"Dashboard"}
-          href="/"
+          href={"/dashboard"}
           icon={MdOutlineDashboard}
           handleNavigate={handleNavigate}
         />
         <DashboardLink
           label={"Admins"}
-          href={"/admins"}
+          href={"/dashboard/admins"}
           icon={RiAdminFill}
           handleNavigate={handleNavigate}
         />
         <DashboardLink
           label={"Managers"}
-          href={"/managers"}
+          href={"/dashboard/managers"}
           icon={MdManageAccounts}
           handleNavigate={handleNavigate}
         />
         <DashboardLink
           label={"Users"}
-          href={"/users"}
+          href={"/dashboard/users"}
           icon={FaUsers}
           handleNavigate={handleNavigate}
         />
         <DashboardLink
           label={"Products"}
-          href={"/products"}
+          href={"/dashboard/products"}
           icon={MdManageAccounts}
           handleNavigate={handleNavigate}
         />
         <DashboardLink
           label={"Add Products"}
-          href={"/add-products"}
+          href={"/dashboard/add-products"}
           icon={IoIosAddCircle}
           handleNavigate={handleNavigate}
         />
         <DashboardLink
           label={"Orders"}
-          href={"/orders"}
+          href={"/dashboard/orders"}
           icon={FaCartShopping}
           handleNavigate={handleNavigate}
         />
         {/* <DashboardLink
           label={"Delivered"}
-          href={"/delivered"}
+          href={"/dashboard/delivered"}
           icon={TbTruckDelivery}
         /> */}
       </ul>

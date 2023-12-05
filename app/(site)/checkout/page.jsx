@@ -56,10 +56,10 @@ const PaymentTimeLine = () => {
 
   return (
     <Layout>
-      <div className="min-h-screen mx-auto">
-        <h1 className="text-2xl font-semibold mt-10 mb-5">Payment</h1>
-        <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-3">
+      <div className="min-h-screen mx-auto mt-6 lg:mt-10">
+        {/* <h1 className="text-2xl font-semibold mt-10 mb-5">Checkout</h1> */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-8">
+          <div className="hidden xl:block xl:col-span-3">
             {steps.map((step, i) => (
               <div key={step.id} className="">
                 <div className="flex gap-3 items-center">
@@ -95,7 +95,7 @@ const PaymentTimeLine = () => {
               </div>
             ))}
           </div>
-          <div className="col-span-5 border-r border-l">
+          <div className="xl:col-span-5 border-r xl:border-l p-5 pl-0 xl:p-10">
             <Elements stripe={stripePromise}>
               <AnimatePresence>
                 {currentStep === 0 && <Login setCurrentStep={setCurrentStep} />}
@@ -132,7 +132,7 @@ const PaymentTimeLine = () => {
               </AnimatePresence>
             </Elements>
           </div>
-          <div className="col-span-4">
+          <div className="hidden md:block xl:col-span-4">
             <OrderDetails />
           </div>
         </div>

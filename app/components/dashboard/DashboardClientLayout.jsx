@@ -9,7 +9,7 @@ const DashboardClientLayout = ({ children }) => {
   const [showDashboard, setShowDashboard] = useState(false);
   return (
     <div className="h-screen flex bg-[#EDE9FE]/20">
-      <AnimatePresence initial={false}>
+      <AnimatePresence>
         <Sidebar
           showDashboard={showDashboard}
           setShowDashboard={setShowDashboard}

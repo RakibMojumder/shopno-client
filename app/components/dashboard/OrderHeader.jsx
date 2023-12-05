@@ -1,18 +1,17 @@
 import React from "react";
+import { Th, Thead, Tr } from "react-super-responsive-table";
 
 const OrderHeader = () => {
   return (
-    <div className="flex items-center text-center p-3 rounded-t-lg bg-secondary text-white divide-x">
-      <div className="w-14 px-2 text-ellipsis overflow-hidden">Image</div>
-      <div className="flex-1 px-2 text-ellipsis overflow-hidden">Name</div>
-      <div className="flex-1 px-2 text-ellipsis overflow-hidden">Price</div>
-      <div className="flex-1 px-2 text-ellipsis overflow-hidden">
-        Customer Email
-      </div>
-      <div className="flex-1 px-2 text-ellipsis overflow-hidden">
-        TransactionID
-      </div>
-    </div>
+    <Thead>
+      <Tr className="border bg-secondary text-white">
+        <Th className="py-2">Image</Th>
+        <Th className="py-2">Name</Th>
+        <Th className="py-2">Price</Th>
+        <Th className="py-2">Customer Email</Th>
+        <Th className="py-2">TransactionID</Th>
+      </Tr>
+    </Thead>
   );
 };
 

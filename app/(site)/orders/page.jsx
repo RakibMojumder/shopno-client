@@ -44,7 +44,7 @@ const Orders = () => {
                 <Tbody>
                   {order.orders.map((products) =>
                     products.map((product) => (
-                      <Tr key={product._id} className="bg-primary/5">
+                      <Tr key={product._id} className="bg-white">
                         <Td className="py-1 pl-3 flex items-center text-lg font-medium gap-x-5">
                           <Image
                             src={product.image}
@@ -67,53 +67,6 @@ const Orders = () => {
                   )}
                 </Tbody>
               </Table>
-              {/* <table className="w-full space-x-10 overflow-x-auto border-separate border-spacing-y-1 pb-10">
-                <thead className="border bg-primary text-white">
-                  <tr>
-                    <th className="font-semibold border-b border-primary/20 py-3">
-                      Product
-                    </th>
-                    <th className="font-semibold border-b border-primary/20 py-3">
-                      Price
-                    </th>
-                    <th className="font-semibold border-b border-primary/20 py-3">
-                      Quantity
-                    </th>
-                    <th className="font-semibold border-b border-primary/20 py-3">
-                      Total Price
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="space-y-10">
-                  {order?.orders?.map((products) =>
-                    products.map((product) => (
-                      <tr key={product._id} className="bg-primary/5">
-                        <td className="border-b py-1 pl-3 flex items-center text-lg font-medium gap-x-5">
-                          <Image
-                            src={product.image}
-                            alt="product image"
-                            height={80}
-                            width={100}
-                            className="h-10 w-10"
-                          />
-                          <h3 className="leading-none font-normal">
-                            {product.name.slice(0, 30)}
-                          </h3>
-                        </td>
-                        <td className="border-b py-1 px-10 text-center font-semibold">
-                          ৳{product.price}
-                        </td>
-                        <td className="border-b py-1 px-10 text-center font-semibold">
-                          {product.quantity}
-                        </td>
-                        <td className="border-b py-1 text-center font-semibold">
-                          ৳ {numberWithCommas(product.quantity * product.price)}
-                        </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table> */}
             </div>
           </div>
         ))}

@@ -49,7 +49,7 @@ const CartDetails = () => {
               </thead>
               <tbody>
                 {cart?.map((product) => (
-                  <tr key={product._id} className="bg-primary/5">
+                  <tr key={product._id} className="bg-white">
                     <td className="flex items-center text-lg font-medium gap-x-5">
                       <Image
                         src={product.image}
@@ -58,7 +58,7 @@ const CartDetails = () => {
                         width={100}
                         className="h-14 w-14"
                       />
-                      <h3 className="leading-none font-normal">
+                      <h3 className="leading-none font-normal text-ellipsis">
                         {product.name.slice(0, 20)}
                       </h3>
                     </td>

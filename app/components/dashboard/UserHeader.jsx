@@ -1,14 +1,17 @@
 import React from "react";
+import { Th, Thead, Tr } from "react-super-responsive-table";
 
 const UserHeader = () => {
   return (
-    <div className="flex items-center text-center p-3 rounded-t-lg bg-secondary text-white divide-x-2 sticky top-16">
-      <div className="w-full px-2 text-ellipsis overflow-hidden">ID</div>
-      <div className="w-full px-2 text-ellipsis overflow-hidden">Name</div>
-      <div className="w-full px-2 text-ellipsis overflow-hidden">Email</div>
-      <div className="w-full px-2 text-ellipsis overflow-hidden">Phone</div>
-      <div className="w-full px-2 text-ellipsis overflow-hidden">Role</div>
-    </div>
+    <Thead>
+      <Tr className="border bg-primary text-white">
+        <Th className="py-2">ID</Th>
+        <Th className="py-2">Name</Th>
+        <Th className="py-2">Email</Th>
+        <Th className="py-2">Phone</Th>
+        <Th className="py-2">Role</Th>
+      </Tr>
+    </Thead>
   );
 };
 

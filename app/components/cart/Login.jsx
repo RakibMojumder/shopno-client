@@ -45,14 +45,14 @@ const Login = ({ setCurrentStep }) => {
       key={"login"}
       initial={{ y: 0 }}
       exit={{ y: "-100%", opacity: 0, transition: { duration: 0.5 } }}
-      className="p-10"
     >
       {error && (
-        <div className="py-5 mb-7 bg-red-100/50 flex justify-center items-center relative after:absolute after:top-0 after:left-0 after:h-full after:w-1 after:bg-red-400">
+        <div className="py-5 mb-7 bg-red-100/50 flex justify-center xl:items-center relative after:absolute after:top-0 after:left-0 after:h-full after:w-1 after:bg-red-400">
           <p className="text-red-500">{error}</p>
         </div>
       )}
 
+      <h1 className="text-lg font-semibold mt-10 mb-5">Login</h1>
       <form onSubmit={handleLogin} className="space-y-6">
         <Input
           type="email"

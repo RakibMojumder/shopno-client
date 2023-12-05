@@ -28,12 +28,12 @@ const OrderSummary = ({ total, totalWithComma }) => {
         </div>
       </div>
       <Button
-        handleClick={() => router.push("/payment-timeline")}
+        handleClick={() => router.push("/checkout")}
         variant="filled"
         size="large"
         className="px-6 flex items-center justify-between gap-x-6"
       >
-        Continue
+        Checkout
         <span className="h-2 w-2 rounded-full bg-white"></span>
         <span className="text-lg font-semibold">
           ৳ {numberWithCommas(total + 150)}

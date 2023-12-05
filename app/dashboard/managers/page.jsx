@@ -5,6 +5,7 @@ import UserBody from "@/app/components/dashboard/UserBody";
 import UserHeader from "@/app/components/dashboard/UserHeader";
 import axios from "@/utils/axios.config";
 import { useQuery } from "react-query";
+import { Table, Tbody } from "react-super-responsive-table";
 
 const Managers = () => {
   const { data, isLoading } = useQuery(["manager"], async () => {
@@ -24,16 +25,16 @@ const Managers = () => {
         </h1>
         <h3>List of Managers</h3>
       </div>
-      <div className="space-y-0.5">
+      <Table className="space-y-0.5">
         {/* Header */}
         <UserHeader />
         {/* Body */}
-        <div>
+        <Tbody className="bg-secondary/5">
           {data?.map((user) => (
             <UserBody key={user._id} user={user} />
           ))}
-        </div>
-      </div>
+        </Tbody>
+      </Table>
     </>
   );
 };
