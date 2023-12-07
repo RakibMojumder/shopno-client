@@ -11,20 +11,25 @@ import { FaCartShopping } from "react-icons/fa6";
 import { motion as m } from "framer-motion";
 import { FaAngleLeft } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
+import { useMediaQuery } from "react-responsive";
 
 const Sidebar = ({ showDashboard, setShowDashboard }) => {
   const router = useRouter();
+  const isMobile = useMediaQuery({
+    query: "(max-width: 620px)",
+  });
 
   const handleNavigate = (href) => {
     setShowDashboard(false);
-    router.push(`http://localhost:3000/${href}`);
+    router.push(`${href}`);
   };
 
   return (
     <m.div
       key={"sidebar"}
-      initial={{ x: "-100%" }}
+      initial={{ x: isMobile ? "-100%" : 0 }}
       whileInView={{ x: 0, transition: { duration: 0.5 } }}
+      exit={{ x: isMobile ? "100%" : 0, transition: { duration: 0.5 } }}
       className={`w-full sm:w-[240px] bg-secondary text-white p-3 pr-0 overflow-x-hidden overflow-y-auto ${
         showDashboard
           ? "fixed top-0 left-0 h-full z-50 md:static"
@@ -32,7 +37,10 @@ const Sidebar = ({ showDashboard, setShowDashboard }) => {
       }`}
     >
       <div className="flex items-center justify-between pr-2">
-        <div className="flex items-center gap-x-3">
+        <div
+          onClick={() => router.push("/")}
+          className="flex items-center gap-x-3 cursor-pointer"
+        >
           <Image
             src={DashLogo}
             alt="logo"

@@ -8,6 +8,7 @@ import { motion as m } from "framer-motion";
 import { useState } from "react";
 import EditProduct from "../modal/EditProduct";
 import DeleteProduct from "../modal/DeleteProduct";
+import { numberWithCommas } from "@/utils/numberWithCommas";
 
 const AdminProduct = ({ product, showMenuId, handleShowMenuId, refetch }) => {
   const [viewProduct, setViewProduct] = useState(false);
@@ -38,9 +39,13 @@ const AdminProduct = ({ product, showMenuId, handleShowMenuId, refetch }) => {
         <div className="flex justify-between items-center">
           <div className="flex">
             <p className="font-semibold text-primary text-xl">
-              ৳ {product.price}
+              ৳ {numberWithCommas(product.price)}
             </p>
-            <del className="text-sm ml-1">{product.discountPrice}</del>
+            <del className="text-sm ml-1">
+              {numberWithCommas(
+                product.discountPrice ? product.discountPrice : 0
+              )}
+            </del>
           </div>
           <div className="relative">
             <HiOutlineDotsVertical

@@ -4,7 +4,7 @@ import { Th, Thead, Tr } from "react-super-responsive-table";
 const UserHeader = () => {
   return (
     <Thead>
-      <Tr className="border bg-primary text-white">
+      <Tr className="border bg-secondary text-white">
         <Th className="py-2">ID</Th>
         <Th className="py-2">Name</Th>
         <Th className="py-2">Email</Th>

@@ -121,9 +121,9 @@ const StripePayment = ({ shipment }) => {
       key={"payment"}
       initial={{ y: "100%" }}
       animate={{ y: 0, transition: { duration: 0.5, delay: 0.5 } }}
-      className="px-5 py-7 rounded-md"
+      className="py-7 rounded-md"
     >
-      <h1 className="text-lg font-semibold mt-10 mb-5">Stripe Payment</h1>
+      <h1 className="text-lg font-semibold mb-5">Stripe Payment</h1>
       <form onSubmit={handleSubmit}>
         <div className="py-4 px-2 bg-white shadow-[0_0_6px_3px_#ddd]  rounded-md">
           <CardElement

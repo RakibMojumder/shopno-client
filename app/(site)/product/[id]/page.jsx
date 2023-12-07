@@ -2,7 +2,6 @@
 
 import Layout from "@/app/components/Layout";
 import Loader from "@/app/components/Loaders/Loader";
-import ProductCount from "@/app/components/product/ProductCount";
 import { useGetProductQuery } from "@/redux/api/productApi";
 import { FiChevronRight } from "react-icons/fi";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
@@ -16,6 +15,7 @@ import { toast } from "react-hot-toast";
 import useIsWishListProduct from "@/hook/useIsWishListProduct";
 import { useParams, useRouter } from "next/navigation";
 import { addToCart } from "@/redux/features/cartSlice";
+import { CgSpinner } from "react-icons/cg";
 
 const ProductDetailsPage = () => {
   const router = useRouter();
@@ -49,14 +49,6 @@ const ProductDetailsPage = () => {
       console.log(error);
     }
   };
-
-  // const handleWishList = async (id) => {
-  //   try {
-  //     addToList(id);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   if (isLoading) return <Loader />;
 
@@ -130,10 +122,12 @@ const ProductDetailsPage = () => {
                   variant="outlined"
                   className="px-3"
                 >
-                  {isExist ? (
-                    <AiFillHeart size={27} />
+                  {response.isLoading ? (
+                    <CgSpinner size={25} className="animate-spin" />
+                  ) : isExist ? (
+                    <AiFillHeart size={25} />
                   ) : (
-                    <AiOutlineHeart size={27} />
+                    <AiOutlineHeart size={25} />
                   )}
                 </Button>
                 <Button

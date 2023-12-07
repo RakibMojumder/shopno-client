@@ -59,7 +59,7 @@ const PaymentMethod = ({ setCurrentStep, shipment }) => {
       exit={{ y: "-100%", opacity: 0, transition: { duration: 0.5 } }}
       className="flex flex-col justify-center xl:items-center w-full"
     >
-      <h1 className="text-lg font-semibold mt-10 mb-5">Payment Method</h1>
+      <h1 className="text-lg font-semibold mb-5">Payment Method</h1>
       <div className="space-y-6 w-full">
         <RadioGroup
           options={radioOptions}

@@ -84,7 +84,7 @@ export const pieData = [
     }
 ];
 
-export const lineChartData = [110, 134, 234, 532, 312, 153, 261, 523, 323, 513, 321, 512];
+export const lineChartData = [360, 394, 404, 432, 412, 408, 421, 430, 435, 450, 460, 448];
 
 export const brandImage = [
     { id: 101, image: 'https://codecony.com/wp-content/uploads/2019/08/dark-client-logo-01.png' },

@@ -12,14 +12,14 @@ const ViewProduct = ({ product, setViewProduct }) => {
   return (
     <m.div
       exit={{ opacity: 0, transition: { duration: 0.3 } }}
-      className="h-screen w-full bg-black/30 fixed top-0 left-0 z-40 flex justify-center items-center"
+      className="h-screen w-full bg-black/30 fixed top-0 left-0 z-40 flex justify-center items-center px-6 sm:px-0"
     >
       <m.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1, transition: { duration: 0.3 } }}
         exit={{ y: 50, opacity: 0, transition: { duration: 0.2 } }}
         ref={ref}
-        className="w-1/3 bg-white p-5 rounded-md relative"
+        className="w-full sm:w-2/3 xl:w-1/3 bg-white p-5 rounded-md relative"
       >
         <Image
           src={product.image}

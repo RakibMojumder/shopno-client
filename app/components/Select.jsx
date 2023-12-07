@@ -44,7 +44,7 @@ const Select = ({ options, value, setValue, label }) => {
               transition: { duration: 0.25 },
             }}
             exit={{ y: 0, opacity: 0, transition: { duration: 0.25 } }}
-            className="w-full h-[200px] overflow-y-auto bg-white py-3 border border-primary/30 rounded mt-5 absolute top-6 left-0 z-10"
+            className="w-full h-[250px] overflow-y-auto bg-white py-3 border border-primary/30 rounded mt-5 absolute top-6 left-0 z-10"
           >
             {options?.map((value) => (
               <div

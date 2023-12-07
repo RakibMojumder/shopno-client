@@ -63,7 +63,7 @@ const cartSlice = createSlice({
         addRecentView: (state, action) => {
             const find = state.recentView.find(product => product._id === action.payload._id);
             if (!find) {
-                state.recentView.push(action.payload);
+                state.recentView.unshift(action.payload);
                 Cookies.set('recent-view', JSON.stringify(state.recentView), { expires: 45 })
             }
         }

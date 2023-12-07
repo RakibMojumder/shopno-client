@@ -3,7 +3,7 @@ import { Td, Tr } from "react-super-responsive-table";
 
 const UserBody = ({ user }) => {
   return (
-    <Tr>
+    <Tr className="bg-white">
       <Td className="text-center py-1">{user._id}</Td>
       <Td className="text-center py-1">{user.username}</Td>
       <Td className="text-center py-1">{user.email}</Td>

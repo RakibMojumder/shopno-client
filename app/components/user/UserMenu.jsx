@@ -1,6 +1,6 @@
 "use client";
 
-import { setShowAuthModal, setUser } from "@/redux/features/userSlice";
+import { setUser } from "@/redux/features/userSlice";
 import { motion as m } from "framer-motion";
 import Cookies from "js-cookie";
 import Image from "next/image";
@@ -10,6 +10,10 @@ import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import userImg from "@/public/assets/user.png";
 import Link from "next/link";
+import { RiUser3Line } from "react-icons/ri";
+import { MdOutlineDashboard } from "react-icons/md";
+import { AiOutlineLogout } from "react-icons/ai";
+import { FiShoppingCart } from "react-icons/fi";
 
 const UserMenu = ({ target, setShowUserMenu }) => {
   const router = useRouter();
@@ -40,12 +44,12 @@ const UserMenu = ({ target, setShowUserMenu }) => {
   return (
     <m.div
       key="user menu"
-      initial={{ opacity: 0, y: 50 }}
-      exit={{ opacity: 0, y: 50, transition: { duration: 0.2 } }}
+      initial={{ opacity: 0, y: -30 }}
+      exit={{ opacity: 0, y: 30, transition: { duration: 0.2 } }}
       animate={{ opacity: 1, y: 0, transition: { duration: 0.2 } }}
-      className="w-64 py-2 absolute top-14 right-5 border bg-white shadow-[0px_0px_4px_#ddd] rounded z-50"
+      className="w-56 py-2 absolute top-14 right-5 lg:right-16 xl:right-24 border bg-white shadow-[0px_0px_4px_#ddd] rounded z-50"
     >
-      <div className="border-b w-full p-4 mb-2 text-center">
+      {/* <div className="border-b w-full p-4 mb-2 text-center">
         <Image
           src={userImg}
           alt="user image"
@@ -54,22 +58,32 @@ const UserMenu = ({ target, setShowUserMenu }) => {
         />
         <h1>{user.username}</h1>
         <p>{user.email}</p>
-      </div>
+      </div> */}
       <ul>
         <li className="py-1.5 px-5 hover:bg-secondary/10 hover:text-secondary cursor-pointer">
-          Profile
+          <div className="flex items-center gap-x-3">
+            <RiUser3Line size={18} />
+            <p>Profile</p>
+          </div>
         </li>
         <li className="py-1.5 px-5 hover:bg-secondary/10 hover:text-secondary cursor-pointer">
-          <Link href={"/dashboard"}>Dashboard</Link>
+          <Link href={"/dashboard"} className="flex items-center gap-x-3">
+            <MdOutlineDashboard size={18} />
+            <p>Dashboard</p>
+          </Link>
         </li>
         <li className="py-1.5 px-5 hover:bg-secondary/10 hover:text-secondary cursor-pointer">
-          <Link href={"/orders"}>Orders</Link>
+          <Link href={"/orders"} className="flex items-center gap-x-3">
+            <FiShoppingCart size={18} />
+            <p>Orders</p>
+          </Link>
         </li>
         <li
           onClick={handleLogout}
-          className="py-1.5 px-5 hover:bg-secondary/10 hover:text-secondary cursor-pointer"
+          className="py-1.5 px-5 hover:bg-secondary/10 hover:text-secondary cursor-pointer flex items-center gap-x-3"
         >
-          Logout
+          <AiOutlineLogout size={18} />
+          <p>Logout</p>
         </li>
       </ul>
     </m.div>

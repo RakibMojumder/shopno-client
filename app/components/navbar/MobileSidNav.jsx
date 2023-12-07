@@ -89,7 +89,7 @@ const MobileSidNav = ({ setShowMobileSideNav }) => {
         </div>
         {user ? (
           <>
-            {user.role == "user" && (
+            {user.role == "admin" && (
               <div
                 className="cursor-pointer font-medium"
                 onClick={() => router.push("/dashboard")}
@@ -109,7 +109,7 @@ const MobileSidNav = ({ setShowMobileSideNav }) => {
             >
               Orders
             </div>
-            <div className="cursor-pointer" onClick={handleLogout}>
+            <div className="cursor-pointer font-medium" onClick={handleLogout}>
               Logout
             </div>
           </>

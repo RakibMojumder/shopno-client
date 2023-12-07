@@ -35,7 +35,7 @@ const FeaturedProducts = () => {
         </Grid>
         <div className="text-center mt-8">
           <Button handleClick={handleClick} variant={"filled"} size={"small"}>
-            Sell All
+            See All
           </Button>
         </div>
       </div>

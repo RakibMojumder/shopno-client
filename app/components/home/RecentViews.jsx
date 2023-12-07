@@ -28,7 +28,7 @@ const RecentViews = () => {
               Recent Views
             </h3>
 
-            <div className="flex items-center gap-x-6">
+            <div className="flex items-center gap-x-3">
               <button className="recent-view-prev h-10 w-10 duration-300 hover:bg-secondary/[.15] rounded-full flex justify-center items-center cursor-pointer">
                 <FaArrowLeftLong
                   className={`text-xl ${

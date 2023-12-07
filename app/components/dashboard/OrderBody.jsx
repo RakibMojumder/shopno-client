@@ -3,7 +3,7 @@ import { Td, Tr } from "react-super-responsive-table";
 
 const OrderBody = ({ product, email, transactionId }) => {
   return (
-    <Tr className="bg-secondary/5">
+    <Tr className="bg-white">
       <Td className="text-center py-1">
         <Image alt="product image" src={product.image} width={40} height={40} />
       </Td>

@@ -49,7 +49,13 @@ const WishListPage = () => {
           <h1 className="text-lg font-semibold text-black">
             Your wish list is Empty
           </h1>
-          <Image src={cartImage} alt="cart image" height={150} width={200} />
+          <Image
+            src={cartImage}
+            alt="cart image"
+            height={150}
+            width={300}
+            // className="h-[200px] md:h-[150px] w-[200px]"
+          />
         </div>
       ) : (
         <>
@@ -68,7 +74,7 @@ const WishListPage = () => {
                     alt="product image"
                     width={130}
                     height={80}
-                    className="h-40 sm:h-full w-full"
+                    className="h-56 sm:h-full w-full"
                   />
                 </div>
                 <div className="sm:col-span-9 space-y-2">

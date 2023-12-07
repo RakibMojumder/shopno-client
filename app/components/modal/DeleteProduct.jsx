@@ -28,14 +28,14 @@ const DeleteProduct = ({ product, setIsOpen, refetch }) => {
   return (
     <m.div
       exit={{ opacity: 0, transition: { duration: 0.3 } }}
-      className="h-screen w-full bg-black/30 fixed top-0 left-0 z-40 flex justify-center items-center"
+      className="h-screen w-full bg-black/30 fixed top-0 left-0 z-40 flex justify-center items-center px-6 sm:px-0"
     >
       <m.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1, transition: { duration: 0.3 } }}
         exit={{ y: 50, opacity: 0, transition: { duration: 0.2 } }}
         ref={ref}
-        className="w-1/4 h-36 bg-white rounded-md relative"
+        className="w-full sm:w-2/3 xl:w-1/3 h-36 bg-white rounded-md relative"
       >
         <dir className="p-5 flex flex-col space-y-3 justify-center items-center text-center">
           <h3>Do you want to delete this product?</h3>

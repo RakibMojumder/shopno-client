@@ -85,7 +85,7 @@ const EditProduct = ({ product, setEditProduct, refetch }) => {
         animate={{ y: 0, opacity: 1, transition: { duration: 0.3 } }}
         exit={{ y: 50, opacity: 0, transition: { duration: 0.2 } }}
         ref={ref}
-        className="w-1/3 h-[calc(100vh_-_150px)] bg-white rounded-md relative"
+        className="w-full sm:w-2/3 xl:w-1/3 h-[calc(100vh_-_150px)] bg-white rounded-md relative px-6 sm:px-0"
       >
         <div className="h-full w-full p-5 custom-scroll overflow-y-auto">
           <h3 className="text-xl font-semibold text-center mb-8">

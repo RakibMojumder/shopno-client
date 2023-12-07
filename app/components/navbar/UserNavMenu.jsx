@@ -4,8 +4,8 @@ import Button from "../Button";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineHeart } from "react-icons/ai";
 import { LiaShoppingBagSolid } from "react-icons/lia";
-import userImage from "@/public/assets/user.png";
-import Image from "next/image";
+// import userImage from "@/public/assets/user.png";
+// import Image from "next/image";
 import { useState, useRef } from "react";
 import UserMenu from "../user/UserMenu";
 import { AnimatePresence } from "framer-motion";
@@ -14,6 +14,7 @@ import Cart from "../cart/Cart";
 import { setShowCart } from "@/redux/features/cartSlice";
 import { RxHamburgerMenu } from "react-icons/rx";
 import MobileSidNav from "./MobileSidNav";
+import { RiUser3Line } from "react-icons/ri";
 
 const UserNavMenu = () => {
   const ref = useRef();
@@ -29,7 +30,7 @@ const UserNavMenu = () => {
       <Link href="/wish-list" className="relative">
         <AiOutlineHeart size={26} className="text-primary" />
         {user?.wishList?.length > 0 && (
-          <span className="h-6 w-6 rounded-full bg-primary text-white flex justify-center items-center absolute -top-3 md:-top-4 -right-2 text-sm">
+          <span className="h-5 md:h-6 w-5 md:w-6 rounded-full bg-primary text-white flex justify-center items-center absolute -top-2 md:-top-4 -right-1 md:-right-2 text-sm">
             {user.wishList.length}
           </span>
         )}
@@ -41,7 +42,7 @@ const UserNavMenu = () => {
       >
         <LiaShoppingBagSolid size={26} className="text-primary" />
         {cart.length > 0 && (
-          <span className="h-6 w-6 rounded-full bg-primary text-white flex justify-center items-center absolute -top-3 md:-top-4 -right-2 text-sm">
+          <span className="h-5 md:h-6 w-5 md:w-6 rounded-full bg-primary text-white flex justify-center items-center absolute -top-2 md:-top-4 -right-1 md:-right-2 text-sm">
             {cart.length}
           </span>
         )}
@@ -62,13 +63,14 @@ const UserNavMenu = () => {
         ) : (
           <div ref={ref}>
             <button onClick={() => setShowUserMenu((prev) => !prev)}>
-              <Image
+              <RiUser3Line size={27} />
+              {/* <Image
                 src={userImage}
                 alt="user image"
                 height={40}
                 width={40}
                 className="h-9 w-9 rounded-full"
-              />
+              /> */}
             </button>
 
             <AnimatePresence>

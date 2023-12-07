@@ -34,7 +34,7 @@ const AreaChart = () => {
       },
       title: {
         display: true,
-        text: "Chart.js Line Chart",
+        text: "Revenue Par Year",
       },
     },
     scales: {
@@ -73,7 +73,7 @@ const AreaChart = () => {
     datasets: [
       {
         fill: true,
-        label: "Dataset 2",
+        label: "Revenue",
         data: lineChartData,
         borderColor: "#7C3AED",
         backgroundColor: ({ chart: { ctx } }) => {

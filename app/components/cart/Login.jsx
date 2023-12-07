@@ -52,7 +52,7 @@ const Login = ({ setCurrentStep }) => {
         </div>
       )}
 
-      <h1 className="text-lg font-semibold mt-10 mb-5">Login</h1>
+      <h1 className="text-lg font-semibold mb-5">Login</h1>
       <form onSubmit={handleLogin} className="space-y-6">
         <Input
           type="email"

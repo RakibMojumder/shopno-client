@@ -1,5 +1,6 @@
 "use client";
 
+import Grid from "@/app/components/Grid";
 import Layout from "@/app/components/Layout";
 import Loader from "@/app/components/Loaders/Loader";
 import Product from "@/app/components/product/Product";
@@ -15,14 +16,24 @@ const ProductCategory = ({ params }) => {
 
   return (
     <Layout>
-      <div>
-        <h1 className="my-5 text-2xl font-semibold">{params?.slug} Products</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-          {data.data.map((product) => (
-            <Product key={product._id} product={product} />
-          ))}
+      {data?.data.length === 0 ? (
+        <div>
+          <h3 className="my-5 text-lg md:text-xl lg:text-2xl font-semibold text-center">
+            No products found
+          </h3>
         </div>
-      </div>
+      ) : (
+        <div>
+          <h1 className="my-5 text-lg md:text-xl lg:text-2xl font-semibold">
+            {params?.slug} Products
+          </h1>
+          <Grid>
+            {data.data.map((product) => (
+              <Product key={product._id} product={product} />
+            ))}
+          </Grid>
+        </div>
+      )}
     </Layout>
   );
 };

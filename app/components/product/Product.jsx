@@ -10,13 +10,15 @@ import { useAddToWishListMutation } from "@/redux/api/authApi";
 import useIsWishListProduct from "@/hook/useIsWishListProduct";
 import { addRecentView } from "@/redux/features/cartSlice";
 import { twMerge } from "tailwind-merge";
+import { CgSpinner } from "react-icons/cg";
+import { numberWithCommas } from "@/utils/numberWithCommas";
 
 const Product = ({ badge, product, className }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const isExist = useIsWishListProduct(product._id);
   const user = useSelector((state) => state.user.user);
-  const [addToWishList, response] = useAddToWishListMutation();
+  const [addToWishList, { isLoading }] = useAddToWishListMutation();
+  const isExist = useIsWishListProduct(product._id);
 
   const handleClick = (product) => {
     dispatch(addRecentView(product));
@@ -78,16 +80,26 @@ const Product = ({ badge, product, className }) => {
         <div className="flex justify-between items-center">
           <div className="flex">
             <p className="font-semibold text-primary text-xl">
-              ৳ {product.price}
+              ৳ {numberWithCommas(product.price)}
             </p>
-            <del className="text-sm ml-1">{product.discountPrice}</del>
+            <del className="text-sm ml-1">
+              {numberWithCommas(
+                product.discountPrice ? product.discountPrice : 0
+              )}
+            </del>
           </div>
 
           <button
             onClick={(e) => handleWishList(e, product._id)}
             className="text-primary"
           >
-            {isExist ? <AiFillHeart size={25} /> : <AiOutlineHeart size={25} />}
+            {isLoading ? (
+              <CgSpinner size={25} className="animate-spin" />
+            ) : isExist ? (
+              <AiFillHeart size={25} />
+            ) : (
+              <AiOutlineHeart size={25} />
+            )}
           </button>
         </div>
       </div>

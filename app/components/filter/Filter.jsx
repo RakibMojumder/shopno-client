@@ -68,10 +68,10 @@ const Filter = () => {
         </div>
 
         {/* SORT BY RATINGS */}
-        <div className="mt-8">
+        {/* <div className="mt-8">
           <h3 className="border-b pb-2">Ratings</h3>
           <StarComponent star={5} />
-        </div>
+        </div> */}
 
         <Button
           onClick={() => dispatch(setShowFilter(false))}

@@ -21,7 +21,7 @@ const AddProducts = () => {
   const [productData, setProductData] = useState({
     name: "",
     price: "",
-    disCountPrice: "",
+    discountPrice: "",
     description: "",
   });
 
@@ -103,7 +103,7 @@ const AddProducts = () => {
             type="number"
             name="discountPrice"
             label="Discount Price"
-            value={productData.disCountPrice}
+            value={productData.discountPrice}
             onChange={(e) =>
               setProductData({
                 ...productData,
@@ -120,6 +120,7 @@ const AddProducts = () => {
           setValue={setCategory}
         />
         <TextArea
+          rea
           label="Description"
           name="description"
           value={productData.description}
