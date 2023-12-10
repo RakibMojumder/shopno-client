@@ -1,6 +1,7 @@
 const { createSlice } = require("@reduxjs/toolkit")
 
 const initialState = {
+    rating: null,
     sortValue: '',
     categories: [],
     searchValue: '',
@@ -43,6 +44,10 @@ const productSlice = createSlice({
             state.priceValue = action.payload;
         },
 
+        setRating: (state, action) => {
+            state.rating = action.payload;
+        },
+
         setPage: (state, action) => {
             state.page = action.payload;
         },
@@ -59,9 +64,10 @@ const productSlice = createSlice({
 
 export const {
     setPage,
-    setShowFilter,
+    setRating,
     setTotalPage,
     setSortValue,
+    setShowFilter,
     setPriceValue,
     addToWishList,
     setCategories,

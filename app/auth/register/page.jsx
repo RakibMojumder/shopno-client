@@ -106,10 +106,10 @@ const Register = () => {
         />
 
         <Button type="submit" size="large" variant="filled">
-          {isLoading ? "loading" : "Register"}
+          {isLoading ? "Register..." : "Register"}
         </Button>
       </form>
-      <div className="flex items-center justify-between gap-4 my-6">
+      {/* <div className="flex items-center justify-between gap-4 my-6">
         <span className="w-full h-[1px] bg-neutral-400"></span>
         <span className="text-slate-600 text-lg">or</span>
         <span className="w-full h-[1px] bg-neutral-400"></span>
@@ -117,7 +117,7 @@ const Register = () => {
       <div className="uppercase py-2 flex items-center justify-center gap-4 border border-primary text-neutral-600 rounded font-medium text-sm cursor-pointer">
         <FcGoogle size={24} />
         <p>Sign in with google</p>
-      </div>
+      </div> */}
       <p className="my-7 text-sm text-center">
         Already have an account?{" "}
         <Link href="/auth/login" className="text-primary hover:underline">

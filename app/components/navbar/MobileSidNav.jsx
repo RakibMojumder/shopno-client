@@ -68,7 +68,7 @@ const MobileSidNav = ({ setShowMobileSideNav }) => {
             {showCategory && (
               <m.div
                 initial={{ height: 0 }}
-                whileInView={{ height: "auto", transition: { duration: 0.5 } }}
+                animate={{ height: "auto", transition: { duration: 0.5 } }}
                 exit={{ height: 0, transition: { duration: 0.5 } }}
                 className="overflow-hidden space-y-1"
               >

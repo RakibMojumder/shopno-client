@@ -19,34 +19,24 @@ const Admins = () => {
   }
 
   return (
-    <div>
-      {data.length > 0 ? (
-        <>
-          <div className="text-center mb-3">
-            <h1 className="text-2xl font-semibold uppercase leading-none">
-              ADmins
-            </h1>
-            <h3>List of Admins</h3>
-          </div>
-          <Table className="space-y-0.5">
-            {/* Header */}
-            <UserHeader />
-            {/* Body */}
-            <Tbody className="bg-secondary/5">
-              {data?.map((user) => (
-                <UserBody key={user._id} user={user} />
-              ))}
-            </Tbody>
-          </Table>
-        </>
-      ) : (
-        <div>
-          <h3 className="text-2xl font-semibold uppercase mt-5">
-            No Admin Found
-          </h3>
-        </div>
-      )}
-    </div>
+    <>
+      <div className="text-center mb-3">
+        <h1 className="text-2xl font-semibold uppercase leading-none">
+          ADmins
+        </h1>
+        <h3>List of Admins</h3>
+      </div>
+      <Table className="space-y-0.5">
+        {/* Header */}
+        <UserHeader />
+        {/* Body */}
+        <Tbody className="bg-secondary/5">
+          {data?.map((user) => (
+            <UserBody key={user._id} user={user} />
+          ))}
+        </Tbody>
+      </Table>
+    </>
   );
 };
 

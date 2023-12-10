@@ -19,7 +19,7 @@ const LoginPage = () => {
     password: "",
   });
 
-  const [loginUser, { isLoading, data }] = useLoginUserMutation();
+  const [loginUser, { isLoading, isError, data }] = useLoginUserMutation();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,9 +28,20 @@ const LoginPage = () => {
         Cookies.set("token", data.data.token, { expires: 1 });
         dispatch(setUser(data.data.user));
         router.push("/");
+      } else {
+        setLogError(data.error);
+        console.log(data);
       }
     }
-  }, [data, dispatch, router]);
+
+    if (isLoading) {
+      console.log("loading");
+    }
+
+    if (isError) {
+      console.log("Error");
+    }
+  }, [data, dispatch, router, isError, isLoading]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -49,7 +60,9 @@ const LoginPage = () => {
           <h2 className="text-3xl text-primary font-bold uppercase">Login</h2>
         </div>
         {loginError && (
-          <p className="text-center mb-5 text-red-500">{loginError}</p>
+          <div className="py-5 mb-7 bg-red-100/50 flex justify-center items-center relative after:absolute after:top-0 after:left-0 after:h-full after:w-1 after:bg-red-400">
+            <p className="text-red-500">{loginError}</p>
+          </div>
         )}
 
         <form onSubmit={handleLogin} className="space-y-6">
@@ -69,10 +82,10 @@ const LoginPage = () => {
           />
 
           <Button type="submit" size="large" variant="filled">
-            Login
+            {isLoading ? "Login..." : "Login"}
           </Button>
         </form>
-        <div className="flex items-center justify-between gap-4 my-6">
+        {/* <div className="flex items-center justify-between gap-4 my-6">
           <span className="w-full h-[1px] bg-neutral-400"></span>
           <span className="text-slate-600 text-lg">or</span>
           <span className="w-full h-[1px] bg-neutral-400"></span>
@@ -80,7 +93,7 @@ const LoginPage = () => {
         <div className="uppercase py-2 flex items-center justify-center gap-4 border border-primary text-neutral-600 rounded font-medium text-sm cursor-pointer">
           <FcGoogle size={24} />
           <p>Sign in with google</p>
-        </div>
+        </div> */}
         <p className="my-7 text-sm text-center">
           Do not have an account?
           <Link href="/auth/register" className="text-primary hover:underline">

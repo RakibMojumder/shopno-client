@@ -1,22 +1,27 @@
 "use client";
 
 import { RxCross1 } from "react-icons/rx";
-import StarComponent from "../StarComponent";
 import Checkbox from "./Checkbox";
 import PriceSlider from "./PriceSlider";
-import Radio from "./Radio";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowFilter } from "@/redux/features/productSlice";
 import { useMediaQuery } from "react-responsive";
 import { motion as m } from "framer-motion";
 import Button from "../Button";
+import { useState } from "react";
+import { BiChevronDown } from "react-icons/bi";
+import { AnimatePresence } from "framer-motion";
+import Rating from "./Rating";
+import Sort from "./Sort";
 
 const Filter = () => {
   const dispatch = useDispatch();
+  const [showCategories, setShowCategories] = useState(true);
   const { showFilter } = useSelector((state) => state.product);
   const isMobile = useMediaQuery({
     query: "(max-width: 620px)",
   });
+
   return (
     <m.div
       initial={{ x: isMobile ? "100%" : 0 }}
@@ -41,37 +46,47 @@ const Filter = () => {
 
         {/* CATEGORIES */}
         <div className="mt-10">
-          <h3 className="border-b pb-2">Categories</h3>
-          <div className="pl-5 mt-3">
-            <Checkbox name="Fashion" />
-            <Checkbox name="Beauty" />
-            <Checkbox name="Baby" />
-            <Checkbox name="Kitchen" />
-            <Checkbox name="Health" />
-            <Checkbox name="Electronics" />
-            <Checkbox name="Automobile" />
-            <Checkbox name="Laptop" />
-            <Checkbox name="Mobile" />
-            <Checkbox name="Gymnasium" />
-            <Checkbox name="Home decor" />
-            <Checkbox name="Sports" />
+          <div
+            onClick={() => setShowCategories((prev) => !prev)}
+            className="border-b pb-2 flex justify-between cursor-pointer"
+          >
+            <h3>Categories</h3>
+            <BiChevronDown
+              size={24}
+              className={`transition-all duration-300 ${
+                showCategories && "rotate-180"
+              }`}
+            />
           </div>
-        </div>
-
-        {/* SORT BY PRICE */}
-        <div className="mt-8">
-          <h3 className="border-b pb-2">Sort By Price</h3>
-          <div className="pl-5 mt-3">
-            <Radio label="Low To Hight" value={"price"} />
-            <Radio label="Hight To Low" value={"-price"} />
-          </div>
+          <AnimatePresence initial={false}>
+            {showCategories && (
+              <m.div
+                initial={{ height: 0 }}
+                animate={{ height: "auto", transition: { duration: 0.5 } }}
+                exit={{ height: 0, transition: { duration: 0.5 } }}
+                className="pl-5 mt-3 overflow-hidden"
+              >
+                <Checkbox name="Fashion" />
+                <Checkbox name="Beauty" />
+                <Checkbox name="Baby" />
+                <Checkbox name="Kitchen" />
+                <Checkbox name="Health" />
+                <Checkbox name="Electronics" />
+                <Checkbox name="Automobile" />
+                <Checkbox name="Laptop" />
+                <Checkbox name="Mobile" />
+                <Checkbox name="Gymnasium" />
+                <Checkbox name="Home decor" />
+                <Checkbox name="Sports" />
+              </m.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* SORT BY RATINGS */}
-        {/* <div className="mt-8">
-          <h3 className="border-b pb-2">Ratings</h3>
-          <StarComponent star={5} />
-        </div> */}
+        <Rating />
+        {/* SORT BY PRICE */}
+        <Sort />
 
         <Button
           onClick={() => dispatch(setShowFilter(false))}
