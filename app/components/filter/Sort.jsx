@@ -13,7 +13,7 @@ const Sort = () => {
     <div className="mt-8">
       <div
         onClick={() => setShowSort((prev) => !prev)}
-        className="border-b pb-2 flex justify-between cursor-pointer"
+        className="border-b pb-2 mb-3 flex justify-between cursor-pointer"
       >
         <h3>Sort By Price</h3>
         <BiChevronDown
@@ -27,7 +27,7 @@ const Sort = () => {
             initial={{ height: 0 }}
             animate={{ height: "auto", transition: { duration: 0.5 } }}
             exit={{ height: 0, transition: { duration: 0.5 } }}
-            className="pl-5 mt-3 overflow-hidden"
+            className="pl-5 overflow-hidden"
           >
             <Radio label="Low To Hight" value={"price"} />
             <Radio label="Hight To Low" value={"-price"} />

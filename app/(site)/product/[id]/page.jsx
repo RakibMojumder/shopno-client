@@ -16,6 +16,7 @@ import useIsWishListProduct from "@/hook/useIsWishListProduct";
 import { useParams, useRouter } from "next/navigation";
 import { addToCart } from "@/redux/features/cartSlice";
 import { CgSpinner } from "react-icons/cg";
+import RelatedProducts from "@/app/components/product/RelatedProducts";
 
 const ProductDetailsPage = () => {
   const router = useRouter();
@@ -147,6 +148,7 @@ const ProductDetailsPage = () => {
           </div>
         </div>
       </div>
+      <RelatedProducts category={data.data.category} id={data.data._id} />
     </Layout>
   );
 };

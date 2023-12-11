@@ -33,7 +33,7 @@ const Products = () => {
       <div className="flex gap-x-5 mt-5 md:mt-0">
         <Filter />
         <div className="flex-1 pb-20">
-          <div className="mt:0 mb-5 sm:my-5 flex justify-center items-center">
+          <div className="mt:0 mb-5 sm:my-5 flex justify-end items-center">
             <Button
               handleClick={() => dispatch(setShowFilter(true))}
               variant="outlined"

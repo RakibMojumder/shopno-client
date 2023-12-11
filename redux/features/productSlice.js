@@ -1,7 +1,7 @@
 const { createSlice } = require("@reduxjs/toolkit")
 
 const initialState = {
-    rating: null,
+    rating: 0,
     sortValue: '',
     categories: [],
     searchValue: '',

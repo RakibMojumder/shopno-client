@@ -17,7 +17,7 @@ const Rating = () => {
     <div className="mt-8">
       <div
         onClick={() => setShowRating((prev) => !prev)}
-        className="border-b pb-2 flex justify-between cursor-pointer"
+        className="border-b pb-2 mb-3 flex justify-between cursor-pointer"
       >
         <h3>Ratings</h3>
         <BiChevronDown
@@ -33,7 +33,7 @@ const Rating = () => {
             initial={{ height: 0 }}
             animate={{ height: "auto", transition: { duration: 0.5 } }}
             exit={{ height: 0, transition: { duration: 0.5 } }}
-            className="pl-3 mt-3 space-y-0.5 overflow-hidden"
+            className="pl-3 overflow-hidden"
           >
             {[...Array(5)].map((_, index) => (
               <div

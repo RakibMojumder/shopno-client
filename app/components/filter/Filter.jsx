@@ -29,12 +29,12 @@ const Filter = () => {
       exit={{ x: isMobile ? "100%" : 0, transition: { duration: 0.5 } }}
       className={`${
         showFilter
-          ? "fixed top-0 left-0 w-full h-full overflow-y-auto md:static z-50 md:w-[250px] block"
+          ? "fixed top-0 left-0 w-full h-screen md:h-auto overflow-y-auto md:static z-50 md:w-[250px] block"
           : "hidden md:block"
       } md:w-[230px] md:block`}
     >
-      <div className="bg-white p-4">
-        <div className="mb-4 flex justify-between items-center sticky top-0 left-0 xl:static z-40 xl:z-auto bg-white pb-2 border-b sm:border-none">
+      <div className="bg-white p-4 h-full md:h-auto">
+        <div className="mb-4 flex justify-between items-center z-40 pb-2 border-b sm:border-none">
           <h2 className="text-2xl font-bold">Filter</h2>
           <RxCross1
             onClick={() => dispatch(setShowFilter(false))}
@@ -48,7 +48,7 @@ const Filter = () => {
         <div className="mt-10">
           <div
             onClick={() => setShowCategories((prev) => !prev)}
-            className="border-b pb-2 flex justify-between cursor-pointer"
+            className="border-b pb-2 mb-3 flex justify-between cursor-pointer"
           >
             <h3>Categories</h3>
             <BiChevronDown
@@ -64,7 +64,7 @@ const Filter = () => {
                 initial={{ height: 0 }}
                 animate={{ height: "auto", transition: { duration: 0.5 } }}
                 exit={{ height: 0, transition: { duration: 0.5 } }}
-                className="pl-5 mt-3 overflow-hidden"
+                className="pl-5 overflow-hidden"
               >
                 <Checkbox name="Fashion" />
                 <Checkbox name="Beauty" />
@@ -89,7 +89,7 @@ const Filter = () => {
         <Sort />
 
         <Button
-          onClick={() => dispatch(setShowFilter(false))}
+          handleClick={() => dispatch(setShowFilter(false))}
           variant={"filled"}
           size={"large"}
           className="mt-8 sm:hidden"
