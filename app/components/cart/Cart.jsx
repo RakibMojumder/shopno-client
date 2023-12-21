@@ -10,19 +10,24 @@ import {
   decreaseProduct,
   increaseProduct,
   removeFromCart,
+  setCart,
   setShowCart,
 } from "@/redux/features/cartSlice";
 import { numberWithCommas } from "@/utils/numberWithCommas";
 import { useRouter } from "next/navigation";
 import ProductCount from "../product/ProductCount";
+import { useRef } from "react";
+import useClickOutside from "@/hook/useClickOutside";
 
 const Cart = () => {
   let total = 0;
+  const ref = useRef();
   const router = useRouter();
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.cart);
   cart?.forEach((product) => (total += product.quantity * product.price));
   const totalWithComma = numberWithCommas(total);
+  useClickOutside(ref, () => dispatch(setShowCart(false)));
 
   const handleNavigate = () => {
     if (cart.length == 0) {
@@ -35,10 +40,11 @@ const Cart = () => {
   return (
     <m.div className="fixed inset-0 max-h-screen flex justify-end bg-black/30 z-50">
       <m.div
+        ref={ref}
         initial={{ x: "100%" }}
         animate={{ x: 0, transition: { duration: 0.5 } }}
         exit={{ x: "100%", transition: { duration: 0.5 } }}
-        className="fixed top-0 w-full md:w-[390px] h-full bg-white shadow-sm flex flex-col justify-between"
+        className="fixed top-0 w-4/5 md:w-[390px] h-full bg-white shadow-sm flex flex-col justify-between"
       >
         <div className="text-lg text-black font-medium flex justify-between items-center p-4 border-b border-primary/30 uppercase">
           <h1 className="flex gap-x-2">
@@ -53,6 +59,11 @@ const Cart = () => {
         </div>
 
         <div className="flex-1 p-4 space-y-8 overflow-y-auto">
+          {cart.length < 1 && (
+            <div className="font-semibold text-primary flex justify-center items-center">
+              Your Cart is empty
+            </div>
+          )}
           {cart?.map((product) => (
             <div key={product.name} className="grid grid-cols-12 gap-2">
               <div className="col-span-3">

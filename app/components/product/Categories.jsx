@@ -5,6 +5,7 @@ import Image from "next/image";
 import React from "react";
 import Layout from "../Layout";
 import { useRouter } from "next/navigation";
+import HeaderText from "../home/HeaderText";
 
 const Categories = () => {
   const router = useRouter();
@@ -14,9 +15,7 @@ const Categories = () => {
   return (
     <Layout>
       <div className="pt-10 pb-28">
-        <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mt-10 mb-5 text-black">
-          Categories
-        </h3>
+        <HeaderText label={"Categories"} />
         <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 bg-white divide-x">
           {categories.map((category) => (
             <div

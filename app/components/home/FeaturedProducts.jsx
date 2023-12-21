@@ -7,6 +7,7 @@ import Skelton from "../Skelton";
 import Button from "../Button";
 import { useRouter } from "next/navigation";
 import Grid from "../Grid";
+import HeaderText from "./HeaderText";
 
 const FeaturedProducts = () => {
   const router = useRouter();
@@ -23,9 +24,7 @@ const FeaturedProducts = () => {
   return (
     <Layout>
       <div className="pb-28">
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-black mb-5">
-          Our Featured Products
-        </h2>
+        <HeaderText label={"Our Featured Products"} />
         <Grid>
           {isLoading &&
             [...Array(10)].map((_, index) => <Skelton key={index} />)}

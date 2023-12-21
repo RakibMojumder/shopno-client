@@ -17,6 +17,7 @@ import { useParams, useRouter } from "next/navigation";
 import { addToCart } from "@/redux/features/cartSlice";
 import { CgSpinner } from "react-icons/cg";
 import RelatedProducts from "@/app/components/product/RelatedProducts";
+import ProductOverview from "@/app/components/review/ProductOverview";
 
 const ProductDetailsPage = () => {
   const router = useRouter();
@@ -63,10 +64,10 @@ const ProductDetailsPage = () => {
                 smallImage: {
                   alt: "product image",
                   isFluidWidth: true,
-                  src: data.data.image,
+                  src: data?.data?.image,
                 },
                 largeImage: {
-                  src: data.data.image,
+                  src: data?.data?.image,
                   width: 600,
                   height: 800,
                   enlargedImagePosition: "over",
@@ -74,81 +75,86 @@ const ProductDetailsPage = () => {
               }}
             />
           </div>
-          <div className="md:col-span-6">
-            <div className="flex items-center gap-x-2 mb-5">
-              Category
-              <span>
-                <FiChevronRight />
-              </span>
-              <span className="text-primary">{data.data.category}</span>
-            </div>
-            <div className="space-y-4">
-              <h1 className="text-2xl leading-none text-black">
-                {data.data.name}
-              </h1>
-              <div className="flex gap-x-2">
-                <StarComponent star={data.data.rating} />
-                <span className="text-sm">{data.data.totalRating} Ratings</span>
-              </div>
-              <div className="flex space-x-2">
-                <p className="text-3xl text-primary">৳ {data.data.price}</p>
-                <del>{data.data?.discountPrice}</del>
-              </div>
-            </div>
-
-            <div className="mt-14 space-y-8">
-              <div className="inline-flex items-center text-neutral-600 h-14 border bg-white divide-x-[1px]">
-                <button
-                  onClick={() => setProductCount((prev) => prev + 1)}
-                  className="px-6 h-full text-3xl"
-                >
-                  +
-                </button>
-                <span className="w-20 h-full flex justify-center items-center text-2xl font-medium">
-                  {productCount}
+          {
+            <div className="md:col-span-6">
+              <div className="flex items-center gap-x-2 mb-5">
+                Category
+                <span>
+                  <FiChevronRight />
                 </span>
-                <button
-                  onClick={() => setProductCount((prev) => prev - 1)}
-                  disabled={productCount <= 1}
-                  className="px-6 h-full text-3xl disabled:cursor-not-allowed"
-                >
-                  -
-                </button>
+                <span className="text-primary">{data?.data?.category}</span>
+              </div>
+              <div className="space-y-4">
+                <h1 className="text-2xl leading-none text-black">
+                  {data?.data?.name}
+                </h1>
+                <div className="flex gap-x-2">
+                  <StarComponent star={data?.data?.rating} />
+                  <span className="text-sm">
+                    {data?.data?.totalRating} Ratings
+                  </span>
+                </div>
+                <div className="flex space-x-2">
+                  <p className="text-3xl text-primary">৳ {data?.data?.price}</p>
+                  <del>{data?.data?.discountPrice}</del>
+                </div>
               </div>
 
-              <div className="flex items-center gap-x-5">
-                <Button
-                  handleClick={(e) => handleWishList(e, data.data._id)}
-                  size="small"
-                  variant="outlined"
-                  className="px-3"
-                >
-                  {response.isLoading ? (
-                    <CgSpinner size={25} className="animate-spin" />
-                  ) : isExist ? (
-                    <AiFillHeart size={25} />
-                  ) : (
-                    <AiOutlineHeart size={25} />
-                  )}
-                </Button>
-                <Button
-                  handleClick={() =>
-                    dispatch(
-                      addToCart({ ...data.data, quantity: productCount })
-                    )
-                  }
-                  size="large"
-                  variant="filled"
-                  className="block"
-                >
-                  Add To Cart
-                </Button>
+              <div className="mt-14 space-y-8">
+                <div className="inline-flex items-center text-neutral-600 h-14 border bg-white divide-x-[1px]">
+                  <button
+                    onClick={() => setProductCount((prev) => prev + 1)}
+                    className="px-6 h-full text-3xl"
+                  >
+                    +
+                  </button>
+                  <span className="w-20 h-full flex justify-center items-center text-2xl font-medium">
+                    {productCount}
+                  </span>
+                  <button
+                    onClick={() => setProductCount((prev) => prev - 1)}
+                    disabled={productCount <= 1}
+                    className="px-6 h-full text-3xl disabled:cursor-not-allowed"
+                  >
+                    -
+                  </button>
+                </div>
+
+                <div className="flex items-center gap-x-5">
+                  <Button
+                    handleClick={(e) => handleWishList(e, data?.data?._id)}
+                    size="small"
+                    variant="outlined"
+                    className="px-3"
+                  >
+                    {response.isLoading ? (
+                      <CgSpinner size={25} className="animate-spin" />
+                    ) : isExist ? (
+                      <AiFillHeart size={25} />
+                    ) : (
+                      <AiOutlineHeart size={25} />
+                    )}
+                  </Button>
+                  <Button
+                    handleClick={() =>
+                      dispatch(
+                        addToCart({ ...data?.data, quantity: productCount })
+                      )
+                    }
+                    size="large"
+                    variant="filled"
+                    className="block"
+                  >
+                    Add To Cart
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
+          }
         </div>
       </div>
-      <RelatedProducts category={data.data.category} id={data.data._id} />
+      <ProductOverview productId={data?.data?._id} />
+      {<RelatedProducts category={data?.data?.category} id={data?.data?._id} />}
     </Layout>
   );
 };

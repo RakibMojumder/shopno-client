@@ -9,11 +9,12 @@ import "swiper/css/effect-coverflow";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
 // import required modules
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import Skelton from "../Skelton";
 import { useDispatch } from "react-redux";
 import { setSearchValue } from "@/redux/features/productSlice";
 import { useState } from "react";
+import HeaderText from "./HeaderText";
 
 const BestSeller = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,8 @@ const BestSeller = () => {
   return (
     <Layout>
       <div className="pb-28">
-        <div className="flex items-center justify-between">
+        <HeaderText label={"Best Selling Products"} />
+        {/* <div className="flex items-center justify-between">
           <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold my-5 text-black">
             Best Selling Products
           </h3>
@@ -53,7 +55,7 @@ const BestSeller = () => {
               />
             </button>
           </div>
-        </div>
+        </div> */}
 
         <Swiper
           navigation={{
@@ -62,9 +64,13 @@ const BestSeller = () => {
             disabledClass: "swiper-button-disabled",
           }}
           // slidesPerView={5}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
           spaceBetween={12}
           onSlideChange={handleSlideChange}
-          modules={[Navigation]}
+          modules={[Navigation, Autoplay]}
           className="mySwiper relative"
           breakpoints={{
             0: {

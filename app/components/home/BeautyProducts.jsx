@@ -6,8 +6,10 @@ import Skelton from "../Skelton";
 import Product from "../product/Product";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { useState } from "react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { useGetProductsByCategoryQuery } from "@/redux/api/productApi";
+import Image from "next/image";
+import HeaderText from "./HeaderText";
 
 const BeautyProducts = () => {
   const [isEnd, setIsEnd] = useState(false);
@@ -22,27 +24,7 @@ const BeautyProducts = () => {
   return (
     <Layout>
       <div className="pb-28">
-        <div className="flex items-center justify-between">
-          <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold my-5 text-black">
-            Beauty Products
-          </h3>
-          <div className="flex items-center gap-x-3">
-            <button className="beauty-prev h-10 w-10 duration-300 hover:bg-secondary/[.15] rounded-full flex justify-center items-center cursor-pointer">
-              <FaArrowLeftLong
-                className={`text-xl ${
-                  activeIndex <= 0 ? "text-primary" : "text-secondary"
-                }`}
-              />
-            </button>
-            <button className="beauty-next h-10 w-10 duration-300 hover:bg-secondary/[.15] rounded-full flex justify-center items-center cursor-pointer">
-              <FaArrowRightLong
-                className={`text-xl ${
-                  isEnd ? "text-primary" : "text-secondary"
-                }`}
-              />
-            </button>
-          </div>
-        </div>
+        <HeaderText label={"Beauty Products"} />
 
         <Swiper
           navigation={{
@@ -51,9 +33,13 @@ const BeautyProducts = () => {
             disabledClass: "swiper-button-disabled",
           }}
           // slidesPerView={5}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
           spaceBetween={12}
           onSlideChange={handleSlideChange}
-          modules={[Navigation]}
+          modules={[Navigation, Autoplay]}
           className="mySwiper relative"
           breakpoints={{
             0: {

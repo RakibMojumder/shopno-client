@@ -66,18 +66,23 @@ const UserMenu = ({ target, setShowUserMenu }) => {
             <p>Profile</p>
           </div>
         </li>
-        <li className="py-1.5 px-5 hover:bg-secondary/10 hover:text-secondary cursor-pointer">
-          <Link href={"/dashboard"} className="flex items-center gap-x-3">
-            <MdOutlineDashboard size={18} />
-            <p>Dashboard</p>
-          </Link>
-        </li>
+
         <li className="py-1.5 px-5 hover:bg-secondary/10 hover:text-secondary cursor-pointer">
           <Link href={"/orders"} className="flex items-center gap-x-3">
             <FiShoppingCart size={18} />
             <p>Orders</p>
           </Link>
         </li>
+
+        {user.role == "admin" && (
+          <li className="py-1.5 px-5 hover:bg-secondary/10 hover:text-secondary cursor-pointer">
+            <Link href={"/dashboard"} className="flex items-center gap-x-3">
+              <MdOutlineDashboard size={18} />
+              <p>Dashboard</p>
+            </Link>
+          </li>
+        )}
+
         <li
           onClick={handleLogout}
           className="py-1.5 px-5 hover:bg-secondary/10 hover:text-secondary cursor-pointer flex items-center gap-x-3"

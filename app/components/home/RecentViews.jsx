@@ -8,6 +8,7 @@ import "swiper/css/effect-coverflow";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { Navigation } from "swiper/modules";
 import { useState } from "react";
+import HeaderText from "./HeaderText";
 
 const RecentViews = () => {
   const [isEnd, setIsEnd] = useState(false);
@@ -23,28 +24,7 @@ const RecentViews = () => {
     <Layout>
       {recentView?.length > 0 && (
         <div className="pb-28">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold my-5 text-black">
-              Recent Views
-            </h3>
-
-            <div className="flex items-center gap-x-3">
-              <button className="recent-view-prev h-10 w-10 duration-300 hover:bg-secondary/[.15] rounded-full flex justify-center items-center cursor-pointer">
-                <FaArrowLeftLong
-                  className={`text-xl ${
-                    activeIndex <= 0 ? "text-primary" : "text-secondary"
-                  }`}
-                />
-              </button>
-              <button className="recent-view-next h-10 w-10 duration-300 hover:bg-secondary/[.15] rounded-full flex justify-center items-center cursor-pointer">
-                <FaArrowRightLong
-                  className={`text-xl ${
-                    isEnd ? "text-primary" : "text-secondary"
-                  }`}
-                />
-              </button>
-            </div>
-          </div>
+          <HeaderText label={"Recent Views"} />
 
           <Swiper
             navigation={{

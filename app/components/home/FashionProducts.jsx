@@ -6,8 +6,9 @@ import Skelton from "../Skelton";
 import Product from "../product/Product";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { useState } from "react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { useGetProductsByCategoryQuery } from "@/redux/api/productApi";
+import HeaderText from "./HeaderText";
 
 const FashionProducts = () => {
   const [isEnd, setIsEnd] = useState(false);
@@ -22,27 +23,7 @@ const FashionProducts = () => {
   return (
     <Layout>
       <div className="pb-28">
-        <div className="flex items-center justify-between">
-          <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold my-5 text-black">
-            Fashion Products
-          </h3>
-          <div className="flex items-center gap-x-3">
-            <button className="fashion-prev h-10 w-10 duration-300 hover:bg-secondary/[.15] rounded-full flex justify-center items-center cursor-pointer">
-              <FaArrowLeftLong
-                className={`text-xl ${
-                  activeIndex <= 0 ? "text-primary" : "text-secondary"
-                }`}
-              />
-            </button>
-            <button className="fashion-next h-10 w-10 duration-300 hover:bg-secondary/[.15] rounded-full flex justify-center items-center cursor-pointer">
-              <FaArrowRightLong
-                className={`text-xl ${
-                  isEnd ? "text-primary" : "text-secondary"
-                }`}
-              />
-            </button>
-          </div>
-        </div>
+        <HeaderText label={"Fashion Products"} />
 
         <Swiper
           navigation={{
@@ -53,7 +34,11 @@ const FashionProducts = () => {
           // slidesPerView={5}
           spaceBetween={12}
           onSlideChange={handleSlideChange}
-          modules={[Navigation]}
+          modules={[Navigation, Autoplay]}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
           className="mySwiper relative"
           breakpoints={{
             0: {
