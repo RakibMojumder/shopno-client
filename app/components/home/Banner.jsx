@@ -24,7 +24,7 @@ const Banner = () => {
 
   return (
     <Layout>
-      <div className="grid grid-cols-12 gap-5 mt-4">
+      <div className="grid grid-cols-12 gap-3 mt-4">
         <div className="col-span-12 md:col-span-8 xl:col-span-9 overflow-hidden">
           <Slider {...settings}>
             <Image
@@ -58,7 +58,7 @@ const Banner = () => {
           </Slider>
         </div>
 
-        <div className="col-span-12 md:col-span-4 xl:col-span-3 grid grid-cols-2 md:grid-cols-1 gap-5">
+        <div className="col-span-12 md:col-span-4 xl:col-span-3 grid grid-cols-2 md:grid-cols-1 gap-3">
           <Image
             src={imgSix}
             alt="banner-img"

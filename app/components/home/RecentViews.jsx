@@ -5,20 +5,11 @@ import Layout from "../Layout";
 import Product from "../product/Product";
 import { SwiperSlide, Swiper } from "swiper/react";
 import "swiper/css/effect-coverflow";
-import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { Navigation } from "swiper/modules";
-import { useState } from "react";
 import HeaderText from "./HeaderText";
 
 const RecentViews = () => {
-  const [isEnd, setIsEnd] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
   const recentView = useSelector((state) => state.cart.recentView);
-
-  const handleSlideChange = (swiper) => {
-    setActiveIndex(swiper.realIndex);
-    setIsEnd(swiper.isEnd);
-  };
 
   return (
     <Layout>
@@ -34,7 +25,6 @@ const RecentViews = () => {
             }}
             // slidesPerView={5}
             spaceBetween={12}
-            onSlideChange={handleSlideChange}
             modules={[Navigation]}
             className="mySwiper relative"
             breakpoints={{
@@ -63,7 +53,7 @@ const RecentViews = () => {
               },
             }}
           >
-            {recentView.map((product) => (
+            {recentView.slice(0, 5).map((product) => (
               <SwiperSlide key={product._id}>
                 <Product product={product} />
               </SwiperSlide>

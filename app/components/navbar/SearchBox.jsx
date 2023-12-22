@@ -55,7 +55,7 @@ const SearchBox = () => {
             handleChange(e);
           }}
           placeholder="Search here"
-          className="w-full py-1.5 pl-4 border text-sm border-neutral-400 rounded-full focus:border-primary focus:outline-none"
+          className="w-full py-1.5 pl-4 border text-sm border-neutral-400 rounded-full focus:border-secondary focus:outline-none"
         />
         {searchValue ? (
           <MdCancel
@@ -72,7 +72,7 @@ const SearchBox = () => {
           />
         )}
       </div>
-      {debouncedSearchValue && showSearchResult && (
+      {showSearchResult && (
         <SearchResult setShowSearchResult={setShowSearchResult} />
       )}
     </div>

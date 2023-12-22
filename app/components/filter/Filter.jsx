@@ -29,12 +29,12 @@ const Filter = () => {
       exit={{ x: isMobile ? "100%" : 0, transition: { duration: 0.5 } }}
       className={`${
         showFilter
-          ? "fixed top-0 left-0 w-full h-screen md:h-auto overflow-y-auto md:static z-50 md:w-[250px] block"
+          ? "fixed top-0 left-0 w-full h-full md:static z-50 md:z-40 md:w-[250px] block"
           : "hidden md:block"
       } md:w-[230px] md:block`}
     >
-      <div className="bg-white p-4 h-full md:h-auto">
-        <div className="mb-4 flex justify-between items-center z-40 pb-2 border-b sm:border-none">
+      <div className="bg-white p-4 h-full md:h-auto overflow-y-auto">
+        <div className="mb-4 flex justify-between items-center pb-2 border-b sm:border-none">
           <h2 className="text-2xl font-bold">Filter</h2>
           <RxCross1
             onClick={() => dispatch(setShowFilter(false))}

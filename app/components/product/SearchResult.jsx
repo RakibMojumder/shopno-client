@@ -1,11 +1,15 @@
 "use client";
 
+import useClickOutside from "@/hook/useClickOutside";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useRef } from "react";
 import { useSelector } from "react-redux";
 
 const SearchResult = ({ setShowSearchResult }) => {
+  const ref = useRef();
   const router = useRouter();
+  useClickOutside(ref, () => setShowSearchResult(false));
   const { searchProducts } = useSelector((state) => state.product);
 
   const handleSeeMore = () => {
@@ -19,7 +23,10 @@ const SearchResult = ({ setShowSearchResult }) => {
   };
 
   return (
-    <div className="w-[400px] bg-white border border-primary/30 shadow-[0px_0px_8px_#ddd] p-4 pb-2 absolute top-13 left-0">
+    <div
+      ref={ref}
+      className="w-[400px] bg-white border border-primary/30 shadow-[0px_0px_8px_#ddd] p-4 pb-2 absolute top-13 left-0"
+    >
       {searchProducts?.length > 0 ? (
         <div className="space-y-2">
           {searchProducts?.slice(0, 4).map((product) => (

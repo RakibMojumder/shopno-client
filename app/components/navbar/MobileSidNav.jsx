@@ -129,6 +129,7 @@ const MobileSidNav = ({ setShowMobileSideNav }) => {
               handleClick={() => router.push("/auth/login")}
               variant={"filled"}
               size={"small"}
+              className="mt-3 ml-6"
             >
               Login
             </Button>

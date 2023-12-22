@@ -6,22 +6,26 @@ import { useQuery } from "react-query";
 import axios from "@/utils/axios.config";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/effect-coverflow";
-import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
 // import required modules
 import { Autoplay, Navigation } from "swiper/modules";
 import Skelton from "../Skelton";
 import { useDispatch } from "react-redux";
-import { setSearchValue } from "@/redux/features/productSlice";
-import { useState } from "react";
+import {
+  setSearchProducts,
+  setSearchValue,
+} from "@/redux/features/productSlice";
 import HeaderText from "./HeaderText";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { useState } from "react";
 
 const BestSeller = () => {
-  const dispatch = useDispatch();
-  const [isEnd, setIsEnd] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isEnd, setIsEnd] = useState(false);
+  const dispatch = useDispatch();
   const { data, isLoading } = useQuery("products", async () => {
     dispatch(setSearchValue(""));
+    dispatch(setSearchProducts([]));
     const res = await axios.get("/product/best-seller");
     return res.data.data;
   });
@@ -35,81 +39,79 @@ const BestSeller = () => {
     <Layout>
       <div className="pb-28">
         <HeaderText label={"Best Selling Products"} />
-        {/* <div className="flex items-center justify-between">
-          <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold my-5 text-black">
-            Best Selling Products
-          </h3>
-          <div className="flex items-center gap-x-3">
-            <button className="best-seller-prev h-10 w-10 duration-300 hover:bg-secondary/[.15] rounded-full flex justify-center items-center cursor-pointer">
-              <FaArrowLeftLong
-                className={`text-xl ${
-                  activeIndex <= 0 ? "text-primary" : "text-secondary"
-                }`}
-              />
+
+        <div className="relative overflow-hidden">
+          <div className="flex items-center justify-between gap-x-3 w-full absolute top-1/2 -translate-y-1/2 z-20">
+            <button
+              className={`best-seller-prev h-8 lg:h-11 w-8 lg:w-11 duration-300 bg-secondary flex justify-center items-center cursor-pointer ${
+                activeIndex < 1 && "invisible"
+              }`}
+            >
+              <IoIosArrowBack className="lg:text-xl text-white" />
             </button>
-            <button className="best-seller-next h-10 w-10 duration-300 hover:bg-secondary/[.15] rounded-full flex justify-center items-center cursor-pointer">
-              <FaArrowRightLong
-                className={`text-xl ${
-                  isEnd ? "text-primary" : "text-secondary"
-                }`}
-              />
+            <button
+              className={`best-seller-next h-8 lg:h-11 w-8 lg:w-11 duration-300 bg-secondary flex justify-center items-center cursor-pointer ${
+                isEnd && "invisible"
+              }`}
+            >
+              <IoIosArrowForward className="lg:text-xl text-white" />
             </button>
           </div>
-        </div> */}
 
-        <Swiper
-          navigation={{
-            nextEl: ".best-seller-next",
-            prevEl: ".best-seller-prev",
-            disabledClass: "swiper-button-disabled",
-          }}
-          // slidesPerView={5}
-          autoplay={{
-            delay: 2000,
-            disableOnInteraction: false,
-          }}
-          spaceBetween={12}
-          onSlideChange={handleSlideChange}
-          modules={[Navigation, Autoplay]}
-          className="mySwiper relative"
-          breakpoints={{
-            0: {
-              slidesPerView: 2,
-              spaceBetween: 12,
-            },
-            // when window width is >= 320px
-            450: {
-              slidesPerView: 2,
-              spaceBetween: 12,
-            },
-            // when window width is >= 480px
-            620: {
-              slidesPerView: 3,
-              spaceBetween: 12,
-            },
-            // when window width is >= 640px
-            768: {
-              slidesPerView: 4,
-              spaceBetween: 12,
-            },
-            1024: {
-              slidesPerView: 5,
-              spaceBetween: 12,
-            },
-          }}
-        >
-          {isLoading &&
-            [...Array(5)].map((_, index) => (
-              <SwiperSlide key={index}>
-                <Skelton />
+          <Swiper
+            navigation={{
+              nextEl: ".best-seller-next",
+              prevEl: ".best-seller-prev",
+              disabledClass: "swiper-button-disabled",
+            }}
+            // slidesPerView={5}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
+            spaceBetween={12}
+            onSlideChange={handleSlideChange}
+            modules={[Navigation, Autoplay]}
+            className="mySwiper relative"
+            breakpoints={{
+              0: {
+                slidesPerView: 2,
+                spaceBetween: 12,
+              },
+              // when window width is >= 320px
+              450: {
+                slidesPerView: 2,
+                spaceBetween: 12,
+              },
+              // when window width is >= 480px
+              620: {
+                slidesPerView: 3,
+                spaceBetween: 12,
+              },
+              // when window width is >= 640px
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 12,
+              },
+              1024: {
+                slidesPerView: 5,
+                spaceBetween: 12,
+              },
+            }}
+          >
+            {isLoading &&
+              [...Array(5)].map((_, index) => (
+                <SwiperSlide key={index}>
+                  <Skelton />
+                </SwiperSlide>
+              ))}
+            {data?.map((product) => (
+              <SwiperSlide key={product._id}>
+                <Product product={product} badge={true} />
               </SwiperSlide>
             ))}
-          {data?.map((product) => (
-            <SwiperSlide key={product._id}>
-              <Product product={product} badge={true} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+          </Swiper>
+        </div>
       </div>
     </Layout>
   );
