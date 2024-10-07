@@ -1,12 +1,17 @@
 import "./globals.css";
 import "swiper/css";
-import { Hind_Siliguri } from "next/font/google";
+import { Hind_Siliguri, Jost } from "next/font/google";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import RootProvider from "@/providers/RootProvider";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 const Hind = Hind_Siliguri({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const jost = Jost({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
@@ -21,7 +26,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         suppressHydrationWarning={true}
-        className={`${Hind.className} bg-primary/[.05]`}
+        className={`${jost.className} bg-primary/[.05]`}
       >
         <div className="">
           <RootProvider>{children}</RootProvider>

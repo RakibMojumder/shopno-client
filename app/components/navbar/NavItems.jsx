@@ -22,16 +22,18 @@ const NavItems = () => {
   return (
     <div className="relative font-medium hidden xl:flex items-center gap-x-5 lg:order-3">
       <div ref={ref}>
-        <div
+        <button
           onClick={() => setShow((prev) => !prev)}
-          className="flex items-center gap-0.5 cursor-pointer"
+          className="flex items-center gap-0.5 cursor-pointer relative before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-0 before:bg-primary hover:before:w-full before:duration-300"
         >
           <span>Categories</span>
           <BiChevronDown
-            size={24}
-            className={`duration-300 ${show ? "rotate-180" : "rotate-0"}`}
+            size={20}
+            className={`duration-300 text-neutral-600 ${
+              show ? "rotate-180" : "rotate-0"
+            }`}
           />
-        </div>
+        </button>
 
         <div
           className={`duration-200 origin-center ${
@@ -59,8 +61,18 @@ const NavItems = () => {
           </div>
         </div>
       </div>
-      <Link href="/">About us</Link>
-      <Link href="/">FAQ</Link>
+      <Link
+        href="/"
+        className="relative before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-0 before:bg-primary hover:before:w-full before:duration-300"
+      >
+        About us
+      </Link>
+      <Link
+        href="/faq"
+        className="relative before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-0 before:bg-primary hover:before:w-full before:duration-300"
+      >
+        FAQ
+      </Link>
     </div>
   );
 };

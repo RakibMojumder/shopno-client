@@ -15,6 +15,7 @@ import Cookies from "js-cookie";
 import { setUser } from "@/redux/features/userSlice";
 import toast from "react-hot-toast";
 import useClickOutside from "@/hook/useClickOutside";
+import Link from "next/link";
 
 const MobileSidNav = ({ setShowMobileSideNav }) => {
   const ref = useRef();
@@ -58,11 +59,17 @@ const MobileSidNav = ({ setShowMobileSideNav }) => {
             className="cursor-pointer"
           />
         </div>
-        <div className="pl-2">
+        <div className="pl-2 flex flex-col gap-y-2 mt-3">
+          <Link href="/" className="pl-6 font-medium">
+            About us
+          </Link>
+          <Link href="/faq" className="pl-6 font-medium">
+            FAQ
+          </Link>
           <div>
             <div
               onClick={() => setShowCategory((prev) => !prev)}
-              className="cursor-pointer flex items-center gap-x-2 py-1 pl-6 font-semibold border-b"
+              className="cursor-pointer flex items-center gap-x-2 py-1 pl-6 font-medium border-b"
             >
               Categories
               <BiChevronDown

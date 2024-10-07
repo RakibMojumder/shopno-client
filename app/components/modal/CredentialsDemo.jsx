@@ -35,7 +35,7 @@ const CredentialsDemo = ({ setSeeDemo }) => {
           <h3 className="text-lg font-medium">User Credentials</h3>
           <div className="px-2 py-3 bg-neutral-50 border">
             <p>
-              <span className="font-medium">Email:</span> rakib.ahmed@gmail.com
+              <span className="font-medium">Email:</span> sakib.ahmed@gmail.com
             </p>
             <p>
               <span className="font-medium">Password:</span> 123456
