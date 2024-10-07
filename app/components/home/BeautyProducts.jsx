@@ -49,10 +49,10 @@ const BeautyProducts = () => {
               disabledClass: "swiper-button-disabled",
             }}
             // slidesPerView={5}
-            autoplay={{
-              delay: 1800,
-              disableOnInteraction: false,
-            }}
+            // autoplay={{
+            //   delay: 1800,
+            //   disableOnInteraction: false,
+            // }}
             onSlideChange={handleSlideChange}
             spaceBetween={12}
             modules={[Navigation, Autoplay]}

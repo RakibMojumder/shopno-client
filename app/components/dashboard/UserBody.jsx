@@ -1,14 +1,14 @@
 import React from "react";
 import { Td, Tr } from "react-super-responsive-table";
 
-const UserBody = ({ user }) => {
+const UserBody = ({ user, index }) => {
   return (
     <Tr className="bg-white">
-      <Td className="text-center py-1">{user._id}</Td>
-      <Td className="text-center py-1">{user.username}</Td>
-      <Td className="text-center py-1">{user.email}</Td>
-      <Td className="text-center py-1">{user.phone}</Td>
-      <Td className="text-center py-1">{user.role}</Td>
+      <Td className="py-3 border-b text-center w-[100px]">{index + 1}</Td>
+      <Td className="py-3 border-b text-left">{user.username}</Td>
+      <Td className="py-3 border-b text-left">{user.email}</Td>
+      <Td className="py-3 border-b text-left">{user.phone}</Td>
+      <Td className="py-3 border-b text-left">{user.role}</Td>
     </Tr>
   );
 };

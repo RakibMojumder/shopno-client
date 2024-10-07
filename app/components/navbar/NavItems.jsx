@@ -3,6 +3,7 @@
 import useClickOutside from "@/hook/useClickOutside";
 import { categories } from "@/utils/data";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
@@ -19,11 +20,11 @@ const NavItems = () => {
   };
 
   return (
-    <div className="relative font-medium hidden xl:block">
+    <div className="relative font-medium hidden xl:flex items-center gap-x-5 lg:order-3">
       <div ref={ref}>
         <div
           onClick={() => setShow((prev) => !prev)}
-          className="flex items-center gap-1 cursor-pointer"
+          className="flex items-center gap-0.5 cursor-pointer"
         >
           <span>Categories</span>
           <BiChevronDown
@@ -58,6 +59,8 @@ const NavItems = () => {
           </div>
         </div>
       </div>
+      <Link href="/">About us</Link>
+      <Link href="/">FAQ</Link>
     </div>
   );
 };

@@ -26,7 +26,7 @@ const UserNavMenu = () => {
   const cart = useSelector((state) => state.cart.cart);
 
   return (
-    <div className="flex items-center gap-x-5 xl:gap-x-8">
+    <div className="flex items-center gap-x-5">
       <Link href="/wish-list" className="relative">
         <AiOutlineHeart size={26} className="text-primary" />
         {user?.wishList?.length > 0 && (

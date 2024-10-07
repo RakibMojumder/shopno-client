@@ -44,7 +44,6 @@ const Orders = () => {
                       key={product._id}
                       product={product}
                       email={products.customerEmail}
-                      transactionId={products.transactionId}
                     />
                   ))
                 )}

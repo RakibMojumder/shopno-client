@@ -5,15 +5,14 @@ import Image from "next/image";
 import Layout from "../Layout";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import HeaderText from "./HeaderText";
 
 const Brand = () => {
   return (
     <Layout>
       <div className="mb-28 w-full overflow-hidden">
-        <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold my-5 text-black">
-          Our Trusted Company
-        </h3>
-        <div className="bg-white py-10">
+        <HeaderText label="Our trusted company" />
+        <div className="py-10">
           <Swiper
             navigation={{
               nextEl: ".best-seller-next",
@@ -57,12 +56,12 @@ const Brand = () => {
             {brandImage?.map((brand) => (
               <SwiperSlide
                 key={brand.id}
-                className="flex justify-center opacity-30 transition-all duration-500 hover:opacity-100"
+                className="flex justify-center opacity-40 transition-all duration-500 hover:opacity-100"
               >
                 <Image
                   alt="brand image"
                   src={brand.image}
-                  width={90}
+                  width={110}
                   height={40}
                 />
               </SwiperSlide>

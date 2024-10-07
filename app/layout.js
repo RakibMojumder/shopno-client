@@ -1,29 +1,32 @@
-import './globals.css'
+import "./globals.css";
 import "swiper/css";
-import { Hind_Siliguri } from 'next/font/google'
+import { Hind_Siliguri } from "next/font/google";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import RootProvider from '@/providers/RootProvider';
-import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+import RootProvider from "@/providers/RootProvider";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
-const Hind = Hind_Siliguri({ subsets: ['latin'], weight: ["300", "400", "500", "600", "700"] });
-
+const Hind = Hind_Siliguri({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
 
 export const metadata = {
-  title: 'Shopno',
-  description: 'Shopno E-commerce website',
-}
+  title: "Shopno",
+  description: "Shopno E-commerce website",
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className={`${Hind.className} bg-primary/[.05]`}>
-        <div className="3xl:w-[1420px] mx-auto">
-          <RootProvider>
-            {children}
-          </RootProvider>
+      <body
+        suppressHydrationWarning={true}
+        className={`${Hind.className} bg-primary/[.05]`}
+      >
+        <div className="">
+          <RootProvider>{children}</RootProvider>
         </div>
       </body>
     </html>
-  )
+  );
 }

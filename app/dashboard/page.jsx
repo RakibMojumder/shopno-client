@@ -11,13 +11,13 @@ const Dashboard = () => {
   return (
     <>
       <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5">
-        <Sales amount={143124} label={"Month"} />
-        <TotalOrder amount={135321} label={"Month"} />
-        <TotalEarned amount={87643} label={"Month"} />
-        <TotalUsers amount={304} label={"Month"} />
+        <Sales amount={43124} label={"Month"} />
+        <TotalOrder amount={321} label={"Month"} />
+        <TotalEarned amount={7643} label={"Month"} />
+        <TotalUsers amount={30} label={"Month"} />
       </div>
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-5 my-5">
-        <div className="xl:col-span-5 bg-white p-5 rounded-xl">
+        <div className="xl:col-span-5 bg-white border p-5 rounded-xl">
           <h3 className="text-xl font-semibold mb-3 text-center">
             Payment Method
           </h3>
@@ -28,10 +28,10 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-5">
         <AreaChart />
         <div className="xl:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <Sales amount={2342342} label={"Year"} />
-          <TotalOrder amount={2332134} label={"Year"} />
-          <TotalEarned amount={932543} label={"Year"} />
-          <TotalUsers amount={29321} label={"Year"} />
+          <Sales amount={342342} label={"Year"} />
+          <TotalOrder amount={12134} label={"Year"} />
+          <TotalEarned amount={92543} label={"Year"} />
+          <TotalUsers amount={921} label={"Year"} />
         </div>
       </div>
     </>

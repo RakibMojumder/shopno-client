@@ -65,10 +65,10 @@ const BestSeller = () => {
               disabledClass: "swiper-button-disabled",
             }}
             // slidesPerView={5}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-            }}
+            // autoplay={{
+            //   delay: 2000,
+            //   disableOnInteraction: false,
+            // }}
             spaceBetween={12}
             onSlideChange={handleSlideChange}
             modules={[Navigation, Autoplay]}

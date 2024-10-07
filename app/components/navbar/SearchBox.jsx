@@ -46,7 +46,7 @@ const SearchBox = () => {
   };
 
   return (
-    <div className="w-full lg:flex-1 relative order-last lg:order-1">
+    <div className="w-full lg:w-80 relative order-last lg:order-1">
       <div className="bg-white relative">
         <input
           type="text"
@@ -55,7 +55,7 @@ const SearchBox = () => {
             handleChange(e);
           }}
           placeholder="Search here"
-          className="w-full py-1.5 pl-4 border text-sm border-neutral-400 rounded-full focus:border-secondary focus:outline-none"
+          className="w-full py-1.5 pl-4 border text-sm border-neutral-400 focus:border-secondary focus:outline-none"
         />
         {searchValue ? (
           <MdCancel
@@ -63,12 +63,12 @@ const SearchBox = () => {
             onClick={() => {
               dispatch(setSearchValue(""));
             }}
-            className="absolute top-1.5 md:top-2 right-4 text-neutral-400 cursor-pointer z-10"
+            className="absolute top-1.5 right-4 text-neutral-400 cursor-pointer z-10"
           />
         ) : (
           <IoSearchOutline
             size={20}
-            className="absolute top-1.5 md:top-2 right-4 text-slate-500 cursor-pointer z-10"
+            className="absolute top-1.5 right-4 text-slate-500 cursor-pointer z-10"
           />
         )}
       </div>

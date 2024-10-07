@@ -8,7 +8,7 @@ import { AnimatePresence } from "framer-motion";
 const DashboardClientLayout = ({ children }) => {
   const [showDashboard, setShowDashboard] = useState(false);
   return (
-    <div className="h-screen flex bg-[#EDE9FE]/20">
+    <div className="h-screen flex bg-neutral-100">
       <AnimatePresence>
         <Sidebar
           showDashboard={showDashboard}

@@ -3,7 +3,7 @@
 import { ResponsivePie } from "@nivo/pie";
 
 const PieChart = ({ data }) => (
-  <div className="xl:col-span-7 relative bg-white rounded-xl">
+  <div className="xl:col-span-7 relative bg-white border rounded-xl">
     <h3 className="text-xl font-semibold mt-4 mb-3 text-center">
       Total Product Sale
     </h3>

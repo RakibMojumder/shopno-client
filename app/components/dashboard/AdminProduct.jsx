@@ -60,14 +60,14 @@ const AdminProduct = ({ product, showMenuId, handleShowMenuId, refetch }) => {
                   animate={{
                     height: "120px",
                     padding: "12px 8px",
-                    transition: { duration: 0.3, ease: "easeOut" },
+                    transition: { duration: 0.2, ease: "easeOut" },
                   }}
                   exit={{
                     height: 0,
                     padding: 0,
-                    transition: { duration: 0.3 },
+                    transition: { duration: 0.2 },
                   }}
-                  className="bg-[#ECE3F9] text-secondary rounded-full absolute bottom-10 right-0 w-10 flex flex-col justify-between items-center"
+                  className="bg-neutral-100 text-secondary rounded-full absolute bottom-10 right-0 w-10 flex flex-col justify-between items-center shadow"
                 >
                   <FaEye
                     onClick={() => setViewProduct(true)}

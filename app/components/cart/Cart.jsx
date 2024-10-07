@@ -93,7 +93,7 @@ const Cart = () => {
                 <RxCrossCircled
                   size={22}
                   className="cursor-pointer"
-                  onClick={() => dispatch(removeFromCart(product._id))}
+                  onClick={() => dispatch(removeFromCart(product))}
                 />
               </div>
             </div>

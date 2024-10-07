@@ -11,7 +11,7 @@ const DashboardNav = ({ setShowDashboard, showDashboard }) => {
   if (isLoading) return;
 
   return (
-    <div className="h-16 bg-white sticky top-0 z-20 px-5 flex items-center justify-between xl:justify-end">
+    <div className="h-16 bg-white sticky top-0 z-20 px-5 flex items-center justify-between xl:justify-end shadow">
       <div>
         <RxHamburgerMenu
           onClick={() => setShowDashboard(true)}

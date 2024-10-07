@@ -59,8 +59,8 @@ const Navbar = () => {
           <div className="flex flex-wrap lg:flex-nowrap gap-y-2 items-center justify-between md:gap-x-6 lg:gap-x-8 xl:gap-x-14">
             <Logo />
             <SearchBox />
-            <div className="flex justify-end xl:justify-between items-center flex-1 md:flex-none lg:w-[30%] order-2 md:order-3">
-              <NavItems />
+            <NavItems />
+            <div className="flex justify-end xl:justify-between items-center flex-1 md:flex-none order-2 md:order-3">
               <UserNavMenu />
             </div>
           </div>

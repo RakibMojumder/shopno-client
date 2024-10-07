@@ -31,8 +31,8 @@ const Admins = () => {
         <UserHeader />
         {/* Body */}
         <Tbody className="bg-secondary/5">
-          {data?.map((user) => (
-            <UserBody key={user._id} user={user} />
+          {data?.map((user, index) => (
+            <UserBody key={user._id} index={index} user={user} />
           ))}
         </Tbody>
       </Table>

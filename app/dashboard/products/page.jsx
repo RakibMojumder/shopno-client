@@ -47,7 +47,7 @@ const Products = () => {
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Search Product"
-            className="pl-5 py-1 rounded-full w-full border border-secondary"
+            className="pl-5 py-2 rounded-full w-full border border-neutral-300"
           />
           {debounceValue && (
             <MdCancel
@@ -55,7 +55,7 @@ const Products = () => {
               onClick={() => {
                 setSearchValue("");
               }}
-              className="absolute top-1.5 md:top-2 right-4 text-neutral-400 cursor-pointer"
+              className="absolute top-2.5 right-4 text-neutral-400 cursor-pointer"
             />
           )}
         </div>

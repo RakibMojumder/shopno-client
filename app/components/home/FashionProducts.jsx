@@ -52,10 +52,10 @@ const FashionProducts = () => {
             spaceBetween={12}
             onSlideChange={handleSlideChange}
             modules={[Navigation, Autoplay]}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-            }}
+            // autoplay={{
+            //   delay: 2000,
+            //   disableOnInteraction: false,
+            // }}
             className="mySwiper relative"
             breakpoints={{
               0: {

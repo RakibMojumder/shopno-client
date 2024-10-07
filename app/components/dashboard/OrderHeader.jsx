@@ -4,12 +4,12 @@ import { Th, Thead, Tr } from "react-super-responsive-table";
 const OrderHeader = () => {
   return (
     <Thead>
-      <Tr className="border bg-secondary text-white">
-        <Th className="py-2">Image</Th>
-        <Th className="py-2">Name</Th>
-        <Th className="py-2">Price</Th>
-        <Th className="py-2">Customer Email</Th>
-        <Th className="py-2">TransactionID</Th>
+      <Tr className="border bg-primary text-white">
+        <Th className="py-3 w-[100px]">Image</Th>
+        <Th className="py-3 text-left lg:w-[400px]">Name</Th>
+        <Th className="py-3 text-left">Customer Email</Th>
+        <Th className="py-3 text-left">Quantity</Th>
+        <Th className="py-3 text-left">Price</Th>
       </Tr>
     </Thead>
   );

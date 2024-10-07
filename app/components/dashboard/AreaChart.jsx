@@ -87,7 +87,7 @@ const AreaChart = () => {
   };
 
   return (
-    <div className="xl:col-span-7 rounded-xl p-5 bg-white">
+    <div className="xl:col-span-7 rounded-xl p-5 bg-white border">
       <Line options={options} data={data} style={{ width: "100%!" }} />
     </div>
   );

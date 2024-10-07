@@ -21,9 +21,15 @@ const Orders = () => {
   return (
     <Layout>
       <div className="min-h-screen">
-        <h3 className="text-2xl text-center font-semibold my-5">
-          Order History
-        </h3>
+        {data?.length ? (
+          <h3 className="text-2xl text-center font-semibold my-5">
+            Order History
+          </h3>
+        ) : (
+          <h3 className="text-2xl text-center font-semibold my-5">
+            No order found
+          </h3>
+        )}
         {data.map((order) => (
           <div key={order._id} className="mt-10">
             <div className="flex gap-5 items-center mb-5">
