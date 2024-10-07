@@ -1,6 +1,5 @@
 "use client";
 
-import { FcGoogle } from "react-icons/fc";
 import { useState, useEffect } from "react";
 import { useLoginUserMutation } from "@/redux/api/authApi";
 import Cookies from "js-cookie";
