@@ -10,7 +10,6 @@ import {
   decreaseProduct,
   increaseProduct,
   removeFromCart,
-  setCart,
   setShowCart,
 } from "@/redux/features/cartSlice";
 import { numberWithCommas } from "@/utils/numberWithCommas";
