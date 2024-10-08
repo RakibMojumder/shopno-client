@@ -4,7 +4,7 @@ import Image from "next/image";
 const HeaderText = ({ label }) => {
   return (
     <div className="flex flex-col justify-center items-center mb-5">
-      <h3 className="text-3xl font-medium text-black">{label}</h3>
+      <h3 className="text-3xl text-black">{label}</h3>
       <Image
         src={headerImage}
         alt="header image"

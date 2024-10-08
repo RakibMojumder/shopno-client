@@ -5,10 +5,10 @@ import BestSeller from "./components/home/BestSeller";
 import Brand from "./components/home/Brand";
 import FashionProducts from "./components/home/FashionProducts";
 import FeaturedProducts from "./components/home/FeaturedProducts";
+import NewsLatter from "./components/home/NewsLatter";
 import RecentViews from "./components/home/RecentViews";
 import Navbar from "./components/navbar/Navbar";
 import Categories from "./components/product/Categories";
-
 
 export default function Home() {
   return (
@@ -22,7 +22,8 @@ export default function Home() {
       <BeautyProducts />
       <FeaturedProducts />
       <Brand />
+      <NewsLatter />
       <Footer />
     </>
-  )
+  );
 }
