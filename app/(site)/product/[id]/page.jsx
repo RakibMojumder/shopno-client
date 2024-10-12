@@ -56,7 +56,7 @@ const ProductDetailsPage = () => {
 
   return (
     <Layout>
-      <div className="xl:w-3/4 mx-auto pt-10 pb-20">
+      <div className="xl:w-3/4 mx-auto py-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 bg-white px-10 py-8">
           <div className="md:col-span-6">
             <ReactImageMagnify

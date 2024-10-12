@@ -82,13 +82,15 @@ const AddReview = ({ productId }) => {
           {isError && <p className="mt-5 text-red-500">{isError}</p>}
         </div>
       ) : (
-        <div className="text-center py-4">
-          <h3 className="font-semibold text-primary mb-2">
-            You are not Logged in
-          </h3>
-          <Button handleClick={handleClick} variant={"filled"} size={"small"}>
-            Login
-          </Button>
+        <div className="h-72 flex justify-center items-center border bg-neutral-200">
+          <div className="text-center py-4">
+            <h3 className="font-semibold text-primary mb-2">
+              You are not Logged in
+            </h3>
+            <Button handleClick={handleClick} variant={"filled"} size={"small"}>
+              Login
+            </Button>
+          </div>
         </div>
       )}
     </m.div>

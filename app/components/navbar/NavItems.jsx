@@ -4,13 +4,14 @@ import useClickOutside from "@/hook/useClickOutside";
 import { categories } from "@/utils/data";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 
 const NavItems = () => {
   const ref = useRef();
   const router = useRouter();
+  const path = usePathname();
   const [show, setShow] = useState(false);
   useClickOutside(ref, () => setShow(false));
 
@@ -62,14 +63,22 @@ const NavItems = () => {
         </div>
       </div>
       <Link
-        href="/"
-        className="relative before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-0 before:bg-primary hover:before:w-full before:duration-300"
+        href="/about-us"
+        className={`relative before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-0 before:bg-primary hover:before:w-full before:duration-300 ${
+          path === "/about-us"
+            ? "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-primary after:w-full"
+            : ""
+        }`}
       >
         About us
       </Link>
       <Link
         href="/faq"
-        className="relative before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-0 before:bg-primary hover:before:w-full before:duration-300"
+        className={`relative before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-0 before:bg-primary hover:before:w-full before:duration-300 ${
+          path === "/faq"
+            ? "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-primary after:w-full"
+            : ""
+        }`}
       >
         FAQ
       </Link>

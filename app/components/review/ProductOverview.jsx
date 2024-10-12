@@ -23,14 +23,14 @@ const ProductOverview = ({ productId }) => {
         reviewNav={reviewNav}
         setReviewNav={setReviewNav}
       />
-      <div className="p-5 bg-white overflow-hidden">
-        <AnimatePresence initial={false}>
+      <div className="p-5 pl-0 overflow-hidden">
+        <AnimatePresence initial={false} key="shipping">
           {reviewNav.label == "Shipping & Returns" && <Shipping />}
         </AnimatePresence>
-        <AnimatePresence>
+        <AnimatePresence key="reviews">
           {reviewNav.label == "Reviews" && <Reviews productId={productId} />}
         </AnimatePresence>
-        <AnimatePresence>
+        <AnimatePresence key="add review">
           {reviewNav.label == "Add Review" && (
             <AddReview productId={productId} />
           )}
