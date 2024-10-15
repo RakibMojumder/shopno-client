@@ -28,9 +28,7 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning={true}
         className={`${jost.className} bg-primary/[.05]`}
       >
-        <div className="">
           <RootProvider>{children}</RootProvider>
-        </div>
       </body>
     </html>
   );

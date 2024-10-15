@@ -1,104 +1,43 @@
 import React from "react";
 import Layout from "./Layout";
+import Link from "next/link";
+import logo from "@/public/assets/logo.png";
+import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="py-6 bg-primary text-gray-100">
+    <footer className="py-6 bg-white">
       <Layout>
-        <div className="container grid grid-cols-2 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 md:grid-cols-4">
+        <div className="container grid grid-cols-1 mx-auto gap-x-3 gap-y-8 md:grid-cols-3">
           <div className="flex flex-col space-y-4">
-            <h2 className="font-medium">Getting started</h2>
-            <div className="flex flex-col space-y-2 text-sm ">
-              <a rel="noopener noreferrer" href="/">
-                Installation
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Release Notes
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Upgrade Guide
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Using with Preprocessors
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Optimizing for Production
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Browser Support
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                IntelliSense
-              </a>
+            <Image src={logo} alt="logo" width={200} />
+            <p>
+              At Shopno, we believe that shopping should be an enjoyable
+              experience filled with variety and convenience. Founded in 2023,
+              our mission is to provide a one-stop destination for all your
+              shopping needs, offering a diverse range of high-quality products
+              across multiple categories.
+            </p>
+          </div>
+          <div className="flex flex-col space-y-4">
+            <div className="w-full md:w-1/2 md:mx-auto">
+              <h2 className="font-medium">Pages</h2>
+              <div className="flex flex-col space-y-2 text-sm ">
+                <Link href="/">Home</Link>
+                <Link href="/about-us">About Us</Link>
+                <Link href="/faq">FAQ</Link>
+              </div>
             </div>
           </div>
           <div className="flex flex-col space-y-4">
-            <h2 className="font-medium">Core Concepts</h2>
-            <div className="flex flex-col space-y-2 text-sm ">
-              <a rel="noopener noreferrer" href="/">
-                Utility-First
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Responsive Design
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Hover, Focus, &amp; Other States
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Dark Mode
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Adding Base Styles
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Extracting Components
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Adding New Utilities
-              </a>
-            </div>
-          </div>
-          <div className="flex flex-col space-y-4">
-            <h2 className="font-medium">Customization</h2>
-            <div className="flex flex-col space-y-2 text-sm ">
-              <a rel="noopener noreferrer" href="/">
-                Configuration
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Theme Configuration
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Breakpoints
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Customizing Colors
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Customizing Spacing
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Configuring Variants
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Plugins
-              </a>
-            </div>
-          </div>
-          <div className="flex flex-col space-y-4">
-            <h2 className="font-medium">Community</h2>
-            <div className="flex flex-col space-y-2 text-sm ">
-              <a rel="noopener noreferrer" href="/">
-                GitHub
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Discord
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                Twitter
-              </a>
-              <a rel="noopener noreferrer" href="/">
-                YouTube
-              </a>
+            <div className="w-full md:w-1/2 md:mx-auto">
+              <h2 className="font-medium">Community</h2>
+              <div className="flex flex-col space-y-2 text-sm ">
+                <Link href="/">GitHub</Link>
+                <Link href="/">Discord</Link>
+                <Link href="/">Twitter</Link>
+                <Link href="/">YouTube</Link>
+              </div>
             </div>
           </div>
         </div>

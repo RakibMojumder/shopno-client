@@ -9,7 +9,7 @@ const Input = ({
   disabled,
   onChange,
   onClick,
-  required,
+  required = false,
   show,
   FiEye,
   FiEyeOff,

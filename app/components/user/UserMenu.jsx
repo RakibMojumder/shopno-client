@@ -62,10 +62,10 @@ const UserMenu = ({ target, setShowUserMenu }) => {
       <ul>
         {user.role === "user" && (
           <li className="py-1.5 px-5 hover:bg-secondary/10 hover:text-secondary cursor-pointer">
-            <div className="flex items-center gap-x-3">
+            <Link href={"/profile"} className="flex items-center gap-x-3">
               <RiUser3Line size={18} />
               <p>Profile</p>
-            </div>
+            </Link>
           </li>
         )}
 

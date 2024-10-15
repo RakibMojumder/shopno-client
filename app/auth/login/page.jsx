@@ -13,6 +13,7 @@ import authImg from "@/public/assets/auth.png";
 import Image from "next/image";
 import CredentialsDemo from "@/app/components/modal/CredentialsDemo";
 import { AnimatePresence } from "framer-motion";
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -54,7 +55,16 @@ const LoginPage = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 h-screen">
-      <div className="col-span-1 lg:col-span-5 flex justify-center items-center bg-white p-5">
+      <div className="col-span-1 lg:col-span-5 flex flex-col justify-center items-center bg-white p-5">
+        <div className="text-left w-[400px] mb-14 text-neutral-500">
+          <button
+            onClick={() => router.push("/")}
+            className="flex items-center space-x-3"
+          >
+            <MdOutlineKeyboardBackspace size={24} />
+            <span> Back Home</span>
+          </button>
+        </div>
         <div className="w-[400px]">
           <div className="text-center mb-8">
             <h5 className="text-xs font-medium">Welcome Back</h5>

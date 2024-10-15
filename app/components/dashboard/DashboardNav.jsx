@@ -3,10 +3,10 @@
 import { useGetLoginUserQuery } from "@/redux/api/authApi";
 import Image from "next/image";
 import userImage from "@/public/assets/user.png";
-import { RxCross1, RxHamburgerMenu } from "react-icons/rx";
+import { RxHamburgerMenu } from "react-icons/rx";
 
-const DashboardNav = ({ setShowDashboard, showDashboard }) => {
-  const { isSuccess, isLoading, data } = useGetLoginUserQuery();
+const DashboardNav = ({ setShowDashboard }) => {
+  const { isLoading, data } = useGetLoginUserQuery();
 
   if (isLoading) return;
 
