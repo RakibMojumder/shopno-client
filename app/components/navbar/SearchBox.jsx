@@ -15,6 +15,7 @@ import { MdCancel } from "react-icons/md";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const [showSearchResult, setShowSearchResult] = useState(false);
   const { sortValue, categories, priceValue, rating, page, searchValue } =
     useSelector((state) => state.product);
@@ -22,9 +23,11 @@ const SearchBox = () => {
 
   useEffect(() => {
     const handleSearch = async () => {
+      setIsLoading(true);
       const res = await axios.get(
         `/product/search?value=${debouncedSearchValue}&price=${priceValue}&categories=${categories}&sort=${sortValue}&page=${page}&rating=${rating}`
       );
+      setIsLoading(false);
       dispatch(setTotalPage(res?.data.totalPage));
       dispatch(setSearchProducts(res?.data?.data));
     };
@@ -73,7 +76,10 @@ const SearchBox = () => {
         )}
       </div>
       {showSearchResult && (
-        <SearchResult setShowSearchResult={setShowSearchResult} />
+        <SearchResult
+          isLoading={isLoading}
+          setShowSearchResult={setShowSearchResult}
+        />
       )}
     </div>
   );
